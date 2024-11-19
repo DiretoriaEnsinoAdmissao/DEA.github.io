@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parâmetros de revisão</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: #e0e0e0;
+        }
+
+        h1 {
+            color: #58a6ff; /* Azul vibrante */
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+
+        #items-list .item-container {
+            margin: 20px auto;
+            padding: 15px;
+            background-color: transparent;
+            border-radius: 8px;
+            text-align: left; /* Texto alinhado à esquerda */
+			box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+            display: flex;
+            align-items: center; /* Alinha a imagem e o texto verticalmente */
+            gap: 15px;
+            width: 90%;
+            max-width: 600px;
+        }
+
+        .item-container img {
+            width: 80px;  /* Ajuste o tamanho da imagem (ícone) */
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .item-container .item-details {
+            flex-grow: 1;
+        }
+
+        .item-container h3 {
+            color: #58a6ff; /* Azul vibrante */
+            margin: 0;
+        }
+
+        .item-container p {
+            color: #c9d1d9; /* Cinza claro */
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Parâmetros de revisão</h1>
+
+    <div id="items-list"></div>
+
+    <script>
+        const itemsList = document.getElementById('items-list');
+
+        async function loadItems() {
+            try {
+                itemsList.innerHTML = '<p>Carregando...</p>';
+                const url = 'https://script.google.com/macros/s/AKfycbxk8lX97IEDWk8UlAT0QqZ05Ctwwp5XlJmw7vZdzMntaNoTw5XwDYGuGfea4ezMRdtnBg/exec';
+
+                const response = await fetch(url);
+                const items = await response.json();
+                displayItems(items);
+            } catch (error) {
+                console.error('Erro ao carregar os itens:', error);
+                itemsList.innerHTML = "<p>Erro ao carregar os itens.</p>";
+            }
+        }
+
+function displayItems(items) {
+    if (items.length > 0) {
+        itemsList.innerHTML = items.map(item => {
+            let quantia = item.minima;
+
+            // Verifica se o valor de 'item.minima' é numérico e maior que 0
+            if (!isNaN(quantia) && quantia > 0) {
+                // Verifica se o número é maior que 1.000 e aplica o formato R$
+                if (quantia >= 1000) {
+                    quantia = `R$ ${quantia.toLocaleString()} Notas Marcadas.`;
+                } else {
+                    quantia = quantia === 1 ? `${quantia} unidade.` : `${quantia} unidades.`;  // Se for 1, coloca "unidade", senão "unidades"
+                }
+            } else if (typeof quantia === 'string' && quantia.trim() !== '') {
+                // Se 'item.minima' for uma string não vazia (como "4 armas ou 60 peças de arma"), mantemos o texto original
+                quantia = `${quantia}.`;
+            } else {
+                quantia = 'Não especificado.';  // Exibe "Não especificado" quando não há valor válido
+            }
+
+            return `
+                <div class="item-container">
+                    <img src="${item.imagem}" alt="${item.nome}">
+                    <div class="item-details">
+                        <h3>${item.nome}</h3>
+                        <p><strong>Descrição:</strong> ${item.descricao}</p>
+                        <p><strong>Quantia Mínima:</strong> ${quantia}</p>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    } else {
+        itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";
+    }
+}
+
+
+
+        window.onload = loadItems;
+    </script>
+</body>
+</html>
