@@ -11,34 +11,31 @@
       font-family: Arial, sans-serif;
       background: url('https://i.ibb.co/LZfT5Ff/Design-sem-nome-2.png') no-repeat center center fixed;
       background-size: cover;
-      color: #fff;
+      color: #f4f4f4; /* Cor de texto mais suave */
     }
 
     .container {
-      max-width: 900px;
-      margin: 20px auto; /* Reposiciona mais acima */
-      background: rgba(0, 0, 0, 0.8);
-      padding: 20px;
+      max-width: 1000px;
+      text-align: center;
+      margin: 10px auto;
+      background: rgba(0, 0, 0, 0.6); /* Fundo mais suave */
+      padding: 15px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #ffcc00;
+      position: relative;
+      right: -50px;
     }
 
     .tabs {
       display: flex;
-      justify-content: center;
-      margin-bottom: 10px; /* Reduz a margem para alinhar mais acima */
+      justify-content: flex-start;
+      margin-bottom: 15px;
     }
 
     .tab {
       padding: 10px 20px;
       cursor: pointer;
-      background: #4CAF50;
+      background: #6a7f7d; /* Cor de fundo neutra */
       margin: 0 5px;
       border-radius: 5px;
       text-align: center;
@@ -47,11 +44,11 @@
     }
 
     .tab:hover {
-      background: #45a049;
+      background: #567a69; /* Cor levemente mais escura ao passar o mouse */
     }
 
     .tab.active {
-      background: #ffcc00;
+      background: #ffcc00; /* Cor de destaque para a aba ativa */
       color: #000;
     }
 
@@ -59,7 +56,7 @@
       display: none;
       padding: 20px;
       border-radius: 5px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.1); /* Cor de fundo mais suave no conteúdo */
     }
 
     .content.active {
@@ -69,7 +66,6 @@
 </head>
 <body>
   <div class="container">
-    <h1>Bem-vindo</h1>
     <div class="tabs">
       <div class="tab active" data-target="tab1">Hierarquia</div>
       <div class="tab" data-target="tab2">Mercadoria</div>
