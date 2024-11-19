@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Horas Trabalhadas</title>
+  <style>
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  color: #ffffff; /* Texto principal em branco */
+  background-color: transparent; /* Fundo transparente */
+}
+
+.login-container {
+  position: absolute;
+  top: 50%; /* Centraliza verticalmente */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* Compensa o deslocamento */
+  text-align: center;
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  background-color: transparent; /* Fundo transparente */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra leve */
+}
+
+
+    h1, h2, p {
+      color: white; /* Define as cores dos textos como branco */
+    }
+
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      margin: 10px 0; /* Espaçamento para centralizar */
+    }
+
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #totalHoras {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 16px;
+      margin: 10px 0;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: transparent; /* Fundo dos campos transparente */
+      color: white; /* Letras brancas */
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.7); /* Placeholder branco com transparência */
+    }
+  </style>
+  <script>
+    // Função para garantir que o horário esteja no formato correto (hh:mm)
+    function formatarHorario(horario) {
+      var partes = horario.split(':');
+      if (partes[1] && partes[1].length === 1) {
+        partes[1] = '0' + partes[1];
+      }
+      return partes.join(':');
+    }
+
+    // Função para calcular a diferença entre os horários em minutos
+    function calcularDiferenca(inicio, fim) {
+      var inicioArray = inicio.split(':');
+      var fimArray = fim.split(':');
+
+      var inicioMinutos = parseInt(inicioArray[0]) * 60 + parseInt(inicioArray[1]);
+      var fimMinutos = parseInt(fimArray[0]) * 60 + parseInt(fimArray[1]);
+
+      if (fimMinutos < inicioMinutos) {
+        fimMinutos += 24 * 60; // Adiciona 24 horas
+      }
+
+      var diferenca = fimMinutos - inicioMinutos;
+      return diferenca / 60;
+    }
+
+    // Função para formatar o total de horas no formato "x h y min"
+    function formatarHoras(totalHoras) {
+      var horas = Math.floor(totalHoras);
+      var minutos = Math.round((totalHoras - horas) * 60);
+      return horas + "h " + minutos + "min";
+    }
+
+    // Função para verificar o login
+    function login() {
+      var usuario = document.getElementById('usuario').value;
+      var senha = document.getElementById('senha').value;
+
+      if (usuario === 'DEA' && senha === '1414') {
+        document.getElementById('loginContainer').style.display = 'none'; // Esconde a tela de login
+        document.getElementById('container').style.display = 'block'; // Mostra a calculadora de horas
+      } else {
+        alert('Usuário ou senha incorretos');
+      }
+    }
+
+    // Função principal para calcular as horas trabalhadas
+    function calcularHoras() {
+      var dadosBrutos = document.getElementById("dadosBrutos").value.trim();
+      var regexInicio = /(Horário\s*de\s*inicio|Horario\s*de\s*inicio):\s*(\d{1,2}:\d{1,2})/g;
+      var regexFinalizacao = /(Horário\s*de\s*finalização|Horario\s*de\s*finalização):\s*(\d{1,2}:\d{1,2})/g;
+
+      var totalHoras = 0;
+      var matchInicio;
+      var matchFinalizacao;
+
+      if (!dadosBrutos) {
+        alert("Por favor, insira os dados.");
+        return;
+      }
+
+      while ((matchInicio = regexInicio.exec(dadosBrutos)) !== null && (matchFinalizacao = regexFinalizacao.exec(dadosBrutos)) !== null) {
+        var inicio = formatarHorario(matchInicio[2]);
+        var fim = formatarHorario(matchFinalizacao[2]);
+
+        totalHoras += calcularDiferenca(inicio, fim);
+      }
+
+      document.getElementById("totalHoras").textContent = "Total de horas trabalhadas: " + formatarHoras(totalHoras);
+    }
+  </script>
+</head>
+<body>
+  <!-- Tela de login -->
+  <div class="login-container" id="loginContainer">
+    <h2>Login</h2>
+    <input type="text" id="usuario" placeholder="Usuário">
+    <input type="password" id="senha" placeholder="Senha">
+    <button onclick="login()">Entrar</button>
+  </div>
+
+  <!-- Calculadora de horas (oculta até o login) -->
+  <div class="container" id="container" style="display: none;">
+    <h1>Calculadora de Horas Trabalhadas</h1>
+    <textarea id="dadosBrutos" placeholder="Insira os dados brutos aqui..."></textarea>
+    <button onclick="calcularHoras()">Calcular Total de Horas</button>
+    <p id="totalHoras">Total de horas trabalhadas: 0h 0min</p>
+  </div>
+</body>
+</html>
