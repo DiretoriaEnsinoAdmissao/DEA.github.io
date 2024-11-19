@@ -164,9 +164,9 @@
                     <div class="item-container">
                         <img src="${item.imagem}" alt="${item.nome}" width="100">
                         <h3>${item.nome}</h3>
-                        <p><strong>Mínimo:</strong> ${item.minima && item.minima > 0 ? (item.minima.toString().includes('.') ? `R$ ${item.minima.toLocaleString('pt-BR')} em Notas Marcadas` : (item.minima > 1 ? `${item.minima} unidades` : `${item.minima} unidade`)) : ''}</p>
+                        <p><strong>Quantia Mínima:</strong> ${item.minima && item.minima > 0 ? (item.minima.toString().includes('.') ? `R$ ${item.minima.toLocaleString('pt-BR')} em Notas Marcadas.` : (item.minima > 1 ? `${item.minima} unidades.` : `${item.minima} unidade.`)) : ''}</p>
                         <p><strong>Descrição:</strong> ${item.descricao}</p>
-                        <p><strong>Revisão de bens:</strong> ${item.revisao && item.revisao > 0 ? (item.revisao.toString().includes('.') ? `R$ ${item.revisao.toLocaleString('pt-BR')} em Notas Marcadas` : (item.revisao > 1 ? `${item.revisao} unidades` : `${item.revisao} unidade`)) : 'Não se enquadra na revisão de bens.'}</p>
+                        <p><strong>Revisão de bens:</strong> ${item.revisao && item.revisao > 0 ? (item.revisao.toString().includes('.') ? `R$ ${item.revisao.toLocaleString('pt-BR')} em Notas Marcadas.` : (item.revisao > 1 ? `${item.revisao} unidades.` : `${item.revisao} unidade.`)) : 'Não se enquadra na revisão de bens.'}</p>
 
 
 
