@@ -3,16 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hierarquia Diretoria de Ensino e Admissão</title>
+  <title>Página com Abas</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 20px;
-      text-align: center;
+      padding: 0;
+      font-family: Arial, sans-serif;
       background: url('https://i.ibb.co/LZfT5Ff/Design-sem-nome-2.png') no-repeat center center fixed;
       background-size: cover;
-      color: #e0e0e0;
+      color: #fff;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
     }
 
     h1 {
@@ -21,154 +29,77 @@
       color: #ffcc00;
     }
 
-    .nivel {
-      margin: 20px 0;
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+
+    .tab {
+      padding: 10px 20px;
+      cursor: pointer;
+      background: #4CAF50;
+      margin: 0 5px;
+      border-radius: 5px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 15px;
-      border-radius: 20px;
+      transition: background 0.3s;
+      color: #fff;
     }
 
-    .nivel h2 {
-      margin: 5px 0;
-      color: #4CAF50;
-      font-size: 1.5em;
-      text-decoration: underline;
+    .tab:hover {
+      background: #45a049;
     }
 
-    .nivel ul {
-      list-style-type: none;
-      padding-left: 0;
-      display: inline-block;
-      text-align: center;
+    .tab.active {
+      background: #ffcc00;
+      color: #000;
     }
 
-    .nivel li {
-      margin: 10px 0;
-      color: #f0f0f0;
+    .content {
+      display: none;
+      padding: 20px;
+      border-radius: 5px;
+      background: rgba(255, 255, 255, 0.1);
     }
 
-    .nivel .responsavel {
-      font-style: italic;
+    .content.active {
       display: block;
-      margin-top: 5px;
-      text-align: center;
-      color: #ffcc00;
-    }
-
-    .nivel .auxiliar {
-      font-style: italic;
-      color: #ffcc00;
     }
   </style>
 </head>
 <body>
-  <h1>Hierarquia de Funções</h1>
-  <div id="hierarquia"></div>
+  <div class="container">
+    <h1>Bem-vindo</h1>
+    <div class="tabs">
+      <div class="tab active" data-target="tab1">Hierarquia</div>
+      <div class="tab" data-target="tab2">Outro Código</div>
+    </div>
+    <div class="content active" id="tab1">
+      <h2>Hierarquia Diretoria</h2>
+      <p>Vincule a página de hierarquia clicando <a href="hierarquia.html" target="_blank" style="color: #ffcc00;">aqui</a>.</p>
+    </div>
+    <div class="content" id="tab2">
+      <h2>Outro Código</h2>
+      <p>Vincule a segunda página clicando <a href="mercadorias.html" target="_blank" style="color: #ffcc00;">aqui</a>.</p>
+    </div>
+  </div>
 
   <script>
-    async function obterDadosPlanilha() {
-      const url = 'https://script.google.com/macros/s/AKfycbwQofmcgkhNRZM-329DMtRrh2e7XhbvnO-X_x6Bjwz9Qx4achNoEdSUXX0C-FhEnmmn/exec';
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.content');
 
-      try {
-        const resposta = await fetch(url);
-        const dados = await resposta.json();
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Remove active class from all tabs and contents
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
 
-        if (!Array.isArray(dados) || dados.length === 0) {
-          document.getElementById("hierarquia").innerHTML = "<p>Nenhum dado encontrado.</p>";
-          return;
-        }
-
-        const categoriasFuncoes = {
-          'Coordenador de Ensino': 'CHEFIA D.E.A',
-          'Diretor da AMEC': 'CHEFIA D.E.A',
-          'Supervisor A.M.E.C': 'SUPERVISÃO',
-          'Supervisor D.E.A': 'SUPERVISÃO',
-          'Coord. S.C.D': 'COORDENAÇÃO',
-          'Coord. S.R.H': 'COORDENAÇÃO',
-          'Coord. S.F.M': 'COORDENAÇÃO',
-          'Coord. S.E.I': 'COORDENAÇÃO',
-          'Coord. S.O.D': 'COORDENAÇÃO',
-          'Auxiliar S.C.D': 'Setor de Cumprimento de Disciplina',
-          'Estagiário S.C.D': 'Setor de Cumprimento de Disciplina',
-          'Auxiliar S.R.H': 'Setor de Recursos Humanos',
-          'Estagiário S.R.H': 'Setor de Recursos Humanos',
-          'Instrutor S.E.I': 'Setor de Educacional e Instrucional',
-          'Auxiliar S.E.I': 'Setor de Educacional e Instrucional',
-          'Monitor S.F.M': 'Setor de Fiscalização e Monitoria',
-          'Auxiliar S.F.M': 'Setor de Fiscalização e Monitoria',
-          'Auxiliar S.O.D': 'Setor de Operações Direcionadas',
-          'Estagiário S.O.D': 'Setor de Operações Direcionadas',
-        };
-
-        const categorias = {
-          'CHEFIA D.E.A': [],
-          'SUPERVISÃO': [],
-          'COORDENAÇÃO': [],
-          'Setor de Cumprimento de Disciplina': [],
-          'Setor de Recursos Humanos': [],
-          'Setor de Fiscalização e Monitoria': [],
-          'Setor de Educacional e Instrucional': [],
-          'Setor de Operações Direcionadas': [],
-        };
-
-        dados.forEach(linha => {
-          if (linha.funcao && categoriasFuncoes[linha.funcao]) {
-            const categoria = categoriasFuncoes[linha.funcao];
-            categorias[categoria].push(linha);
-          }
-        });
-
-        function construirHierarquia(categoria, subordinados) {
-          const divCategoria = document.createElement("div");
-          divCategoria.classList.add("nivel");
-
-          const h2 = document.createElement("h2");
-          h2.textContent = categoria;
-          divCategoria.appendChild(h2);
-
-          const ulSubordinados = document.createElement("ul");
-
-          subordinados.forEach(subordinado => {
-            const liSubordinado = document.createElement("li");
-
-            liSubordinado.innerHTML = `
-              <span><strong>${subordinado.funcao}</strong></span>
-              <span class="responsavel">${subordinado.patente ? subordinado.patente.trim() + ' ' : ''}${subordinado.nome} - ${subordinado.funcional}</span>
-            `;
-
-            if (subordinado.auxiliares && subordinado.auxiliares.length > 0) {
-              const ulAuxiliares = document.createElement("ul");
-              subordinado.auxiliares.forEach(auxiliar => {
-                const liAuxiliar = document.createElement("li");
-                liAuxiliar.innerHTML = `<span class="auxiliar">${auxiliar.nome} | Funcional: ${auxiliar.funcional}</span>`;
-                ulAuxiliares.appendChild(liAuxiliar);
-              });
-              liSubordinado.appendChild(ulAuxiliares);
-            }
-
-            ulSubordinados.appendChild(liSubordinado);
-          });
-
-          divCategoria.appendChild(ulSubordinados);
-          return divCategoria;
-        }
-
-        Object.keys(categorias).forEach(categoria => {
-          const subordinados = categorias[categoria];
-          if (subordinados.length > 0) {
-            const itemHierarquia = construirHierarquia(categoria, subordinados);
-            document.getElementById("hierarquia").appendChild(itemHierarquia);
-          }
-        });
-
-      } catch (error) {
-        console.error('Erro ao obter os dados:', error);
-        document.getElementById("hierarquia").innerHTML = "<p>Wellinton está verificando estrutura. Tente novamente mais tarde.</p>";
-      }
-    }
-
-    obterDadosPlanilha();
+        // Add active class to clicked tab and corresponding content
+        tab.classList.add('active');
+        const target = document.getElementById(tab.getAttribute('data-target'));
+        target.classList.add('active');
+      });
+    });
   </script>
 </body>
 </html>
