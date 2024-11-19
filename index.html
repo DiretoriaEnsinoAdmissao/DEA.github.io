@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página com Abas</title>
+  <title>Diretoria de Ensino e Admissão</title>
+  <!-- Adicionando o favicon -->
+  <link rel="icon" href="https://i.ibb.co/Y0vjshh/ICON-DISCORD.png" type="image/png">
   <style>
     body {
       margin: 0;
@@ -11,54 +13,47 @@
       font-family: Arial, sans-serif;
       background: url('https://i.ibb.co/LZfT5Ff/Design-sem-nome-2.png') no-repeat center center fixed;
       background-size: cover;
-      color: #e0e0e0; /* Cor de texto em cinza claro */
+      color: #e0e0e0;
     }
-
     .container {
       max-width: 1000px;
       text-align: center;
       margin: 10px auto;
-      background: rgba(0, 0, 0, 0.6); /* Fundo mais suave */
+      background: rgba(0, 0, 0, 0.6);
       padding: 15px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
       position: relative;
       right: -50px;
     }
-
     .tabs {
       display: flex;
       justify-content: flex-start;
       margin-bottom: 15px;
     }
-
     .tab {
       padding: 10px 20px;
       cursor: pointer;
-      background: #30363d; /* Azul escuro */
+      background: #30363d;
       margin: 0 5px;
       border-radius: 5px;
       text-align: center;
       transition: background 0.3s;
-      color: #e0e0e0; /* Texto em cinza claro */
+      color: #e0e0e0;
     }
-
     .tab:hover {
-      background: #58a6ff; /* Azul vibrante ao passar o mouse */
+      background: #58a6ff;
     }
-
     .tab.active {
-      background: #58a6ff; /* Cor de destaque para a aba ativa */
-      color: #000; /* Texto preto quando ativo */
+      background: #58a6ff;
+      color: #000;
     }
-
     .content {
       display: none;
       padding: 20px;
       border-radius: 5px;
-      background: rgba(255, 255, 255, 0.1); /* Fundo mais suave no conteúdo */
+      background: rgba(255, 255, 255, 0.1);
     }
-
     .content.active {
       display: block;
     }
