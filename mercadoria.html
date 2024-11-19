@@ -6,26 +6,19 @@
     <title>Mercadorias</title>
     <style>
         /* Estilos para o corpo */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-            background: url('https://i.ibb.co/LZfT5Ff/Design-sem-nome-2.png') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      color: #e0e0e0;
+    }
 
         h1 {
             text-align: center;
-            color: #fff;
-            margin-bottom: 5px; /* Diminui o espaço abaixo do título */
-            font-size: 25px;  /* Ajusta o tamanho da fonte */
+            color: #58a6ff; /* Azul vibrante */
+            margin-bottom: 10px;
+            font-size: 28px;
         }
 
         #search-container {
@@ -38,25 +31,27 @@
         #search-input {
             padding: 10px;
             font-size: 15px;
-            border: 1px solid #ccc;
+            border: 1px solid #30363d; /* Borda cinza escuro */
             border-radius: 5px;
-            height: 10px;  /* Ajusta a altura do campo de pesquisa */
+            height: 30px;
+            background-color: transparent;
+            color: #c9d1d9; /* Texto em cinza claro */
         }
 
         #search-button {
             margin-left: 10px;
-            padding: 5px 10px;
+            padding: 5px 15px;
             font-size: 15px;
             border: none;
-            background-color: #007bff;
+            background-color: #161b22; /* Verde para botão */
             color: white;
-            border-radius: 5px;
+            border-radius: 15px;
             cursor: pointer;
-            height: 30px;  /* Ajusta a altura do botão de pesquisa */
+            height: 42px;
         }
 
         #search-button:hover {
-            background-color: #0056b3;
+            background-color: #161b22; /* Verde para botão */
         }
 
         .item-container {
@@ -65,53 +60,51 @@
             min-width: 300px;
             margin: 20px auto;
             padding: 15px;
-            border: 1px solid #ccc;
+            background-color: transparent;
             border-radius: 8px;
-            background-color: rgba(192,192,192, 0.1);
-            opacity: 0.9;
             text-align: center;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Alinha imagem e nome no centro */
-            justify-content: flex-start; /* Alinha conteúdo ao topo */
+            align-items: center;
         }
 
         .item-container img {
             width: 100px;
-            margin-bottom: 5px; /* Aumente este valor para descer a imagem */
+            margin-bottom: 10px;
         }
 
         .item-container h3 {
-            margin-top: 10px; /* Cria espaço acima do título */
-            margin-bottom: 5px; /* Cria espaço abaixo do título */
-            font-size: 20px; /* Tamanho da fonte do título, já existente */
+            color: #58a6ff; /* Azul vibrante */
+            margin: 10px 0;
+            font-size: 22px;
         }
 
         .item-container p {
-            margin: 5px 0; /* Mantém o espaçamento entre os parágrafos */
+            margin: 5px 0;
             padding: 0;
             text-align: left;
-            width: 100%;  /* Faz com que o parágrafo ocupe toda a largura do container */
-            margin-left: 20px;  /* Aproxima as informações do lado esquerdo */
+            width: 100%;
+            color: #8b949e; /* Cinza intermediário */
         }
 
         /* Estilos para o carregamento */
         #loading-container {
             display: none;
-            margin-top: 80px;  /* Adiciona margem superior para mover o carregamento para baixo */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
         }
 
         #loading-container img {
             width: 150px;
-			align-items: center;
             margin-bottom: 10px;
         }
 
         #loading-container p {
-		    width: 150px;
             font-size: 20px;
-			align-items: center;
+            color: #c9d1d9; /* Cinza claro */
             animation: pulsar 1s infinite;
         }
 
@@ -120,80 +113,74 @@
             50% { opacity: 1; }
             100% { opacity: 0.5; }
         }
-
     </style>
 </head>
 <body>
     <h1>Mercadorias</h1>
 
     <div id="search-container">
-        <input type="text" id="search-input" placeholder="Digite o nome do item"> <!-- Campo de pesquisa -->
-        <button id="search-button">🔍</button> <!-- Botão de pesquisa -->
+        <input type="text" id="search-input" placeholder="Digite o nome do item">
+        <button id="search-button">🔍</button>
     </div>
 
-    <div id="loading-container"> <!-- Container de carregamento -->
-        <img src="https://i.imgur.com/5ICVZeE.gif" alt="Carregando..."> <!-- GIF de carregamento -->
-        <p>Carregando...</p> <!-- Texto de carregamento -->
+    <div id="loading-container">
+        <img src="https://i.imgur.com/5ICVZeE.gif" alt="Carregando...">
+        <p>Carregando...</p>
     </div>
 
-    <div id="items-list"></div> <!-- Lista de itens exibidos -->
+    <div id="items-list"></div>
 
     <script>
-        const itemsList = document.getElementById('items-list');  // Elemento onde os itens serão listados
-        const loadingContainer = document.getElementById('loading-container');  // Container de carregamento
-        const searchInput = document.getElementById('search-input');  // Campo de pesquisa
-        const searchButton = document.getElementById('search-button');  // Botão de pesquisa
+        const itemsList = document.getElementById('items-list');
+        const loadingContainer = document.getElementById('loading-container');
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
 
-        let allItems = [];  // Variável para armazenar todos os itens
+        let allItems = [];
 
-        async function loadItems(search = "") {  // Função para carregar itens com base na pesquisa
+        async function loadItems(search = "") {
             try {
-                loadingContainer.style.display = 'block';  // Exibe o carregamento
-                itemsList.innerHTML = '';  // Limpa a lista de itens exibidos
+                loadingContainer.style.display = 'block';
+                itemsList.innerHTML = '';
 
-                // Configura a URL com o parâmetro de busca
                 const url = new URL('https://script.google.com/macros/s/AKfycbzprjrFTFbUJKsRlmRl5Itt3ijwYfOhrJgOGQiVyHYbqh4H23Jt64An1D-HsLVan6zKSA/exec');
-                if (search) url.searchParams.append('search', search);  // Adiciona o termo de pesquisa à URL, se fornecido
+                if (search) url.searchParams.append('search', search);
 
-                // Requisição para o Apps Script
                 const response = await fetch(url);
-                allItems = await response.json();  // Armazena os itens retornados da requisição
+                allItems = await response.json();
 
-                // Exibe os itens retornados
-                displayItems(allItems);  // Chama a função para exibir os itens
+                displayItems(allItems);
             } catch (error) {
-                console.error('Erro ao carregar os itens:', error);  // Exibe erro no console se falhar
-                itemsList.innerHTML = "<p>Erro ao carregar os itens.</p>";  // Exibe mensagem de erro na tela
+                console.error('Erro ao carregar os itens:', error);
+                itemsList.innerHTML = "<p>Erro ao carregar os itens.</p>";
             } finally {
-                loadingContainer.style.display = 'none';  // Oculta o carregamento após a requisição
+                loadingContainer.style.display = 'none';
             }
         }
 
-        function displayItems(items) {  // Função para exibir os itens na tela
+        function displayItems(items) {
             if (items.length > 0) {
                 itemsList.innerHTML = items.map(item => `
                     <div class="item-container">
-                        <img src="${item.imagem}" alt="${item.nome}" width="100">  <!-- Imagem do item -->
-                        <h3>${item.nome}</h3>  <!-- Nome do item -->
-                        <p><strong>Mínimo:</strong> ${item.minima || 'Não especificado'} ${item.minima > 1 ? 'unidades' : 'unidade'}</p>  <!-- Mínima, se disponível -->
-                        <p><strong>Descrição:</strong> ${item.descricao}</p>  <!-- Descrição do item -->
-                        <p><strong>Revisão de bens:</strong> ${item.revisao || 'Não especificado'} ${item.revisao > 1 ? 'unidades' : 'unidade'}</p>  <!-- Revisão do item -->
+                        <img src="${item.imagem}" alt="${item.nome}" width="100">
+                        <h3>${item.nome}</h3>
+                        <p><strong>Mínimo:</strong> ${item.minima || 'Não especificado'} ${item.minima > 1 ? 'unidades' : 'unidade'}</p>
+                        <p><strong>Descrição:</strong> ${item.descricao}</p>
+                        <p><strong>Revisão de bens:</strong> ${item.revisao || 'Não especificado'} ${item.revisao > 1 ? 'unidades' : 'unidade'}</p>
                     </div>
-                `).join('');  // Mapeia e exibe cada item com as informações
+                `).join('');
             } else {
-                itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";  // Exibe mensagem se nenhum item for encontrado
+                itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";
             }
-            console.log('Itens exibidos:', items);  // Exibe os itens no console
+            console.log('Itens exibidos:', items);
         }
 
-        // Ação ao clicar no botão de pesquisa
         searchButton.addEventListener('click', () => {
-            const searchQuery = searchInput.value.trim();  // Obtém o texto de pesquisa
-            loadItems(searchQuery);  // Chama a função para carregar itens com o parâmetro de pesquisa
+            const searchQuery = searchInput.value.trim();
+            loadItems(searchQuery);
         });
 
-        // Carrega os itens ao carregar a página
-        window.onload = () => loadItems();  // Chama a função de carregar itens ao carregar a página
+        window.onload = () => loadItems();
     </script>
 </body>
 </html>
