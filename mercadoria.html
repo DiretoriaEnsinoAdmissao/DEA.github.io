@@ -6,13 +6,13 @@
     <title>Mercadorias</title>
     <style>
         /* Estilos para o corpo */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-            color: #e0e0e0;
-        }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      color: #e0e0e0;
+    }
 
         h1 {
             text-align: center;
@@ -34,7 +34,7 @@
             border: 1px solid #30363d; /* Borda cinza escuro */
             border-radius: 5px;
             height: 30px;
-            background-color: transparent;
+            background-color: #161b22; /* Verde para botão */
             color: #c9d1d9; /* Texto em cinza claro */
         }
 
@@ -140,30 +140,25 @@
 
         async function loadItems(search = "") {
             try {
-                // Exibe o indicador de carregamento
                 loadingContainer.style.display = 'block';
-                itemsList.innerHTML = ''; // Limpa a lista de itens
+                itemsList.innerHTML = '';
 
                 const url = new URL('https://script.google.com/macros/s/AKfycbzprjrFTFbUJKsRlmRl5Itt3ijwYfOhrJgOGQiVyHYbqh4H23Jt64An1D-HsLVan6zKSA/exec');
                 if (search) url.searchParams.append('search', search);
 
-                // Realiza a requisição para a API
                 const response = await fetch(url);
-                if (!response.ok) throw new Error('Erro ao carregar os dados');
-
                 allItems = await response.json();
-                displayItems(allItems); // Exibe os itens
 
+                displayItems(allItems);
             } catch (error) {
                 console.error('Erro ao carregar os itens:', error);
-                itemsList.innerHTML = "<p>Erro ao carregar os itens. Tente novamente mais tarde.</p>";
+                itemsList.innerHTML = "<p>Erro ao carregar os itens.</p>";
             } finally {
-                loadingContainer.style.display = 'none'; // Esconde o indicador de carregamento
+                loadingContainer.style.display = 'none';
             }
         }
 
         function displayItems(items) {
-            // Verifica se há itens e exibe na página
             if (items.length > 0) {
                 itemsList.innerHTML = items.map(item => `
                     <div class="item-container">
@@ -177,15 +172,14 @@
             } else {
                 itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";
             }
+            console.log('Itens exibidos:', items);
         }
 
-        // Evento de busca
         searchButton.addEventListener('click', () => {
             const searchQuery = searchInput.value.trim();
-            loadItems(searchQuery); // Carrega os itens filtrados
+            loadItems(searchQuery);
         });
 
-        // Carrega os itens ao carregar a página
         window.onload = () => loadItems();
     </script>
 </body>
