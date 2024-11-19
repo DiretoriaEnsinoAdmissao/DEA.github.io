@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hierarquia Diretoria de Ensino e Admissão</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      background: url('https://i.ibb.co/LZfT5Ff/Design-sem-nome-2.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #e0e0e0;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #ffcc00;
+    }
+
+    .nivel {
+      margin: 20px 0;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 20px;
+    }
+
+    .nivel h2 {
+      margin: 5px 0;
+      color: #4CAF50;
+      font-size: 1.5em;
+      text-decoration: underline;
+    }
+
+    .nivel ul {
+      list-style-type: none;
+      padding-left: 0;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .nivel li {
+      margin: 10px 0;
+      color: #f0f0f0;
+    }
+
+    .nivel .responsavel {
+      font-style: italic;
+      display: block;
+      margin-top: 5px;
+      text-align: center;
+      color: #ffcc00;
+    }
+
+    .nivel .auxiliar {
+      font-style: italic;
+      color: #ffcc00;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hierarquia de Funções</h1>
+  <div id="hierarquia"></div>
+
+  <script>
+    async function obterDadosPlanilha() {
+      const url = 'https://script.google.com/macros/s/AKfycbwQofmcgkhNRZM-329DMtRrh2e7XhbvnO-X_x6Bjwz9Qx4achNoEdSUXX0C-FhEnmmn/exec';
+
+      try {
+        const resposta = await fetch(url);
+        const dados = await resposta.json();
+
+        if (!Array.isArray(dados) || dados.length === 0) {
+          document.getElementById("hierarquia").innerHTML = "<p>Nenhum dado encontrado.</p>";
+          return;
+        }
+
+        const categoriasFuncoes = {
+          'Coordenador de Ensino': 'CHEFIA D.E.A',
+          'Diretor da AMEC': 'CHEFIA D.E.A',
+          'Supervisor A.M.E.C': 'SUPERVISÃO',
+          'Supervisor D.E.A': 'SUPERVISÃO',
+          'Coord. S.C.D': 'COORDENAÇÃO',
+          'Coord. S.R.H': 'COORDENAÇÃO',
+          'Coord. S.F.M': 'COORDENAÇÃO',
+          'Coord. S.E.I': 'COORDENAÇÃO',
+          'Coord. S.O.D': 'COORDENAÇÃO',
+          'Auxiliar S.C.D': 'Setor de Cumprimento de Disciplina',
+          'Estagiário S.C.D': 'Setor de Cumprimento de Disciplina',
+          'Auxiliar S.R.H': 'Setor de Recursos Humanos',
+          'Estagiário S.R.H': 'Setor de Recursos Humanos',
+          'Instrutor S.E.I': 'Setor de Educacional e Instrucional',
+          'Auxiliar S.E.I': 'Setor de Educacional e Instrucional',
+          'Monitor S.F.M': 'Setor de Fiscalização e Monitoria',
+          'Auxiliar S.F.M': 'Setor de Fiscalização e Monitoria',
+          'Auxiliar S.O.D': 'Setor de Operações Direcionadas',
+          'Estagiário S.O.D': 'Setor de Operações Direcionadas',
+        };
+
+        const categorias = {
+          'CHEFIA D.E.A': [],
+          'SUPERVISÃO': [],
+          'COORDENAÇÃO': [],
+          'Setor de Cumprimento de Disciplina': [],
+          'Setor de Recursos Humanos': [],
+          'Setor de Fiscalização e Monitoria': [],
+          'Setor de Educacional e Instrucional': [],
+          'Setor de Operações Direcionadas': [],
+        };
+
+        dados.forEach(linha => {
+          if (linha.funcao && categoriasFuncoes[linha.funcao]) {
+            const categoria = categoriasFuncoes[linha.funcao];
+            categorias[categoria].push(linha);
+          }
+        });
+
+        function construirHierarquia(categoria, subordinados) {
+          const divCategoria = document.createElement("div");
+          divCategoria.classList.add("nivel");
+
+          const h2 = document.createElement("h2");
+          h2.textContent = categoria;
+          divCategoria.appendChild(h2);
+
+          const ulSubordinados = document.createElement("ul");
+
+          subordinados.forEach(subordinado => {
+            const liSubordinado = document.createElement("li");
+
+            liSubordinado.innerHTML = `
+              <span><strong>${subordinado.funcao}</strong></span>
+              <span class="responsavel">${subordinado.patente ? subordinado.patente.trim() + ' ' : ''}${subordinado.nome} - ${subordinado.funcional}</span>
+            `;
+
+            if (subordinado.auxiliares && subordinado.auxiliares.length > 0) {
+              const ulAuxiliares = document.createElement("ul");
+              subordinado.auxiliares.forEach(auxiliar => {
+                const liAuxiliar = document.createElement("li");
+                liAuxiliar.innerHTML = `<span class="auxiliar">${auxiliar.nome} | Funcional: ${auxiliar.funcional}</span>`;
+                ulAuxiliares.appendChild(liAuxiliar);
+              });
+              liSubordinado.appendChild(ulAuxiliares);
+            }
+
+            ulSubordinados.appendChild(liSubordinado);
+          });
+
+          divCategoria.appendChild(ulSubordinados);
+          return divCategoria;
+        }
+
+        Object.keys(categorias).forEach(categoria => {
+          const subordinados = categorias[categoria];
+          if (subordinados.length > 0) {
+            const itemHierarquia = construirHierarquia(categoria, subordinados);
+            document.getElementById("hierarquia").appendChild(itemHierarquia);
+          }
+        });
+
+      } catch (error) {
+        console.error('Erro ao obter os dados:', error);
+        document.getElementById("hierarquia").innerHTML = "<p>Wellinton está verificando estrutura. Tente novamente mais tarde.</p>";
+      }
+    }
+
+    obterDadosPlanilha();
+  </script>
+</body>
+</html>
