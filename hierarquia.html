@@ -5,59 +5,93 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hierarquia Diretoria de Ensino e Admissão</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-      color: #e0e0e0;
-    }
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  color: #ffffff; /* Texto principal em branco */
+  background-color: transparent; /* Fundo transparente */
+}
 
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #ffcc00;
-    }
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #4fa2f2; /* Azul vibrante */
+}
 
-    .nivel {
-      margin: 20px 0;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 15px;
-      border-radius: 20px;
-    }
+#hierarquia {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza a hierarquia */
+  justify-content: center;
+  text-align: center;
+}
 
-    .nivel h2 {
-      margin: 5px 0;
-      color: #4CAF50;
-      font-size: 1.5em;
-      text-decoration: underline;
-    }
+.nivel {
+  margin: 20px auto;
+  width: 80%; /* Ajusta para que o conteúdo ocupe mais espaço */
+  max-width: 800px;
+  text-align: left; /* Garante que o texto da lista fique à esquerda */
+  background-color: transparent;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+}
 
-    .nivel ul {
-      list-style-type: none;
-      padding-left: 0;
-      display: inline-block;
-      text-align: center;
-    }
+.nivel h2 {
+  margin: 10px 0;
+  color: #4fa2f2;
+  font-size: 1.7em;
+  text-decoration: underline;
+  text-align: center; /* Centraliza o título da categoria */
+}
 
-    .nivel li {
-      margin: 10px 0;
-      color: #f0f0f0;
-    }
+.nivel ul {
+  list-style-type: none;
+  padding-left: 0;
+  display: block;
+  text-align: center; /* Alinha os itens da lista ao centro */
+  width: 100%; /* Garante que a lista ocupe toda a largura */
+}
 
-    .nivel .responsavel {
-      font-style: italic;
-      display: block;
-      margin-top: 5px;
-      text-align: center;
-      color: #ffcc00;
-    }
+.nivel li {
+  margin: 10px 0;
+  color: #cdd4e3;
+}
 
-    .nivel .auxiliar {
-      font-style: italic;
-      color: #ffcc00;
-    }
+.nivel .responsavel {
+  font-style: italic;
+  display: block;
+  margin-top: 5px;
+  color: #d4edfc; /* Azul-claro */
+}
+
+.nivel .auxiliar {
+  font-style: italic;
+  color: #a8c1e1; /* Azul médio */
+}
+
+.nivel li > .responsavel {
+  font-size: 0.9em; /* Ajusta o tamanho do texto */
+  text-align: center; /* Centraliza o texto do responsável */
+}
+
+.nivel li > .auxiliar {
+  font-size: 0.8em; /* Ajusta o tamanho do texto */
+  text-align: center; /* Centraliza o texto do auxiliar */
+}
+
+.nivel li > .responsavel,
+.nivel li > .auxiliar {
+  padding-left: 20px; /* Adiciona recuo para criar o efeito de hierarquia */
+}
+
+.nivel li > .auxiliar {
+  padding-left: 40px; /* Mais recuo para auxiliares */
+}
+
+
   </style>
 </head>
 <body>
