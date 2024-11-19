@@ -9,58 +9,57 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 20px;
-      text-align: center; /* Centraliza todo o conteúdo do corpo */
-      background: url('https://i.ibb.co/LZfT5Ff/Design-sem-nome-2.png') no-repeat center center fixed; /* Substitua pelo URL do fundo desejado */
-      background-size: cover; /* Ajusta a imagem para cobrir toda a tela */
-      color: #e0e0e0; /* Ajusta a cor do texto para um tom suave */
+      text-align: center;
+      background: url('https://i.ibb.co/LZfT5Ff/Design-sem-nome-2.png') no-repeat center center fixed;
+      background-size: cover;
+      color: #e0e0e0;
     }
 
     h1 {
-      text-align: center; /* Centraliza o título principal */
+      text-align: center;
       margin-bottom: 20px;
-      color: #ffcc00; /* Alterar para um tom dourado */
+      color: #ffcc00;
     }
 
     .nivel {
-      margin: 20px 0; /* Espaçamento maior entre categorias */
-      text-align: center; /* Centraliza o conteúdo das categorias */
-      background: rgba(0, 0, 0, 0.5); /* Fundo mais escuro para contraste */
-      padding: 15px; /* Aumenta o espaçamento interno */
-      border-radius: 20px; /* Borda arredondada */
+      margin: 20px 0;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 20px;
     }
 
     .nivel h2 {
-      margin: 5px 0; /* Espaçamento acima e abaixo do título */
-      color: #4CAF50; /* Verde mais suave */
+      margin: 5px 0;
+      color: #4CAF50;
       font-size: 1.5em;
       text-decoration: underline;
     }
 
     .nivel ul {
       list-style-type: none;
-      padding-left: 0; /* Remove recuo padrão da lista */
-      display: inline-block; /* Centraliza os itens da lista */
-      text-align: center; /* Centraliza o conteúdo dos itens */
+      padding-left: 0;
+      display: inline-block;
+      text-align: center;
     }
 
     .nivel li {
-      margin: 10px 0; /* Aumenta o espaçamento entre os itens da lista */
-      color: #f0f0f0; /* Cor dos itens em um tom suave */
+      margin: 10px 0;
+      color: #f0f0f0;
     }
 
     .nivel .responsavel {
       font-style: italic;
-      display: block; /* Quebra de linha para separação visual */
-      margin-top: 5px; /* Espaçamento acima do texto do responsável */
-      text-align: center; /* Centraliza o nome do responsável */
-      color: #ffcc00; /* Cor do nome do responsável em dourado */
+      display: block;
+      margin-top: 5px;
+      text-align: center;
+      color: #ffcc00;
     }
 
     .nivel .auxiliar {
       font-style: italic;
-      color: #ffcc00; /* Colorir os auxiliares em dourado */
+      color: #ffcc00;
     }
-
   </style>
 </head>
 <body>
@@ -74,8 +73,6 @@
       try {
         const resposta = await fetch(url);
         const dados = await resposta.json();
-
-        console.log(dados);
 
         if (!Array.isArray(dados) || dados.length === 0) {
           document.getElementById("hierarquia").innerHTML = "<p>Nenhum dado encontrado.</p>";
@@ -135,13 +132,11 @@
           subordinados.forEach(subordinado => {
             const liSubordinado = document.createElement("li");
 
-            // Adicionando patente à exibição
             liSubordinado.innerHTML = `
               <span><strong>${subordinado.funcao}</strong></span>
               <span class="responsavel">${subordinado.patente ? subordinado.patente.trim() + ' ' : ''}${subordinado.nome} - ${subordinado.funcional}</span>
             `;
 
-            // Exibindo auxiliares se houver
             if (subordinado.auxiliares && subordinado.auxiliares.length > 0) {
               const ulAuxiliares = document.createElement("ul");
               subordinado.auxiliares.forEach(auxiliar => {
