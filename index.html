@@ -16,7 +16,7 @@
 
     .container {
       max-width: 900px;
-      margin: 50px auto;
+      margin: 20px auto; /* Reposiciona mais acima */
       background: rgba(0, 0, 0, 0.8);
       padding: 20px;
       border-radius: 10px;
@@ -32,7 +32,7 @@
     .tabs {
       display: flex;
       justify-content: center;
-      margin-bottom: 20px;
+      margin-bottom: 10px; /* Reduz a margem para alinhar mais acima */
     }
 
     .tab {
@@ -75,12 +75,10 @@
       <div class="tab" data-target="tab2">Outro Código</div>
     </div>
     <div class="content active" id="tab1">
-      <h2>Hierarquia Diretoria</h2>
-      <p>Vincule a página de hierarquia clicando <a href="hierarquia.html" target="_blank" style="color: #ffcc00;">aqui</a>.</p>
+      <iframe src="hierarquia.html" style="width: 100%; height: 500px; border: none;"></iframe>
     </div>
     <div class="content" id="tab2">
-      <h2>Outro Código</h2>
-      <p>Vincule a segunda página clicando <a href="outro.html" target="_blank" style="color: #ffcc00;">aqui</a>.</p>
+      <iframe src="outro.html" style="width: 100%; height: 500px; border: none;"></iframe>
     </div>
   </div>
 
