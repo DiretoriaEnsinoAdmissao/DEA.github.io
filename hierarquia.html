@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercadorias</title>
+    <style>
+        /* Estilos para o corpo */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background: url('https://i.ibb.co/LZfT5Ff/Design-sem-nome-2.png') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 5px; /* Diminui o espaço abaixo do título */
+            font-size: 25px;  /* Ajusta o tamanho da fonte */
+        }
+
+        #search-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 15px;
+        }
+
+        #search-input {
+            padding: 10px;
+            font-size: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            height: 10px;  /* Ajusta a altura do campo de pesquisa */
+        }
+
+        #search-button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            font-size: 15px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            height: 30px;  /* Ajusta a altura do botão de pesquisa */
+        }
+
+        #search-button:hover {
+            background-color: #0056b3;
+        }
+
+        .item-container {
+            width: 90%;
+            max-width: 1000px;
+            min-width: 300px;
+            margin: 20px auto;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: rgba(192,192,192, 0.1);
+            opacity: 0.9;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Alinha imagem e nome no centro */
+            justify-content: flex-start; /* Alinha conteúdo ao topo */
+        }
+
+        .item-container img {
+            width: 100px;
+            margin-bottom: 5px; /* Aumente este valor para descer a imagem */
+        }
+
+        .item-container h3 {
+            margin-top: 10px; /* Cria espaço acima do título */
+            margin-bottom: 5px; /* Cria espaço abaixo do título */
+            font-size: 20px; /* Tamanho da fonte do título, já existente */
+        }
+
+        .item-container p {
+            margin: 5px 0; /* Mantém o espaçamento entre os parágrafos */
+            padding: 0;
+            text-align: left;
+            width: 100%;  /* Faz com que o parágrafo ocupe toda a largura do container */
+            margin-left: 20px;  /* Aproxima as informações do lado esquerdo */
+        }
+
+        /* Estilos para o carregamento */
+        #loading-container {
+            display: none;
+            margin-top: 80px;  /* Adiciona margem superior para mover o carregamento para baixo */
+            text-align: center;
+        }
+
+        #loading-container img {
+            width: 150px;
+			align-items: center;
+            margin-bottom: 10px;
+        }
+
+        #loading-container p {
+		    width: 150px;
+            font-size: 20px;
+			align-items: center;
+            animation: pulsar 1s infinite;
+        }
+
+        @keyframes pulsar {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Mercadorias</h1>
+
+    <div id="search-container">
+        <input type="text" id="search-input" placeholder="Digite o nome do item"> <!-- Campo de pesquisa -->
+        <button id="search-button">🔍</button> <!-- Botão de pesquisa -->
+    </div>
+
+    <div id="loading-container"> <!-- Container de carregamento -->
+        <img src="https://i.imgur.com/5ICVZeE.gif" alt="Carregando..."> <!-- GIF de carregamento -->
+        <p>Carregando...</p> <!-- Texto de carregamento -->
+    </div>
+
+    <div id="items-list"></div> <!-- Lista de itens exibidos -->
+
+    <script>
+        const itemsList = document.getElementById('items-list');  // Elemento onde os itens serão listados
+        const loadingContainer = document.getElementById('loading-container');  // Container de carregamento
+        const searchInput = document.getElementById('search-input');  // Campo de pesquisa
+        const searchButton = document.getElementById('search-button');  // Botão de pesquisa
+
+        let allItems = [];  // Variável para armazenar todos os itens
+
+        async function loadItems(search = "") {  // Função para carregar itens com base na pesquisa
+            try {
+                loadingContainer.style.display = 'block';  // Exibe o carregamento
+                itemsList.innerHTML = '';  // Limpa a lista de itens exibidos
+
+                // Configura a URL com o parâmetro de busca
+                const url = new URL('https://script.google.com/macros/s/AKfycbzprjrFTFbUJKsRlmRl5Itt3ijwYfOhrJgOGQiVyHYbqh4H23Jt64An1D-HsLVan6zKSA/exec');
+                if (search) url.searchParams.append('search', search);  // Adiciona o termo de pesquisa à URL, se fornecido
+
+                // Requisição para o Apps Script
+                const response = await fetch(url);
+                allItems = await response.json();  // Armazena os itens retornados da requisição
+
+                // Exibe os itens retornados
+                displayItems(allItems);  // Chama a função para exibir os itens
+            } catch (error) {
+                console.error('Erro ao carregar os itens:', error);  // Exibe erro no console se falhar
+                itemsList.innerHTML = "<p>Erro ao carregar os itens.</p>";  // Exibe mensagem de erro na tela
+            } finally {
+                loadingContainer.style.display = 'none';  // Oculta o carregamento após a requisição
+            }
+        }
+
+        function displayItems(items) {  // Função para exibir os itens na tela
+            if (items.length > 0) {
+                itemsList.innerHTML = items.map(item => `
+                    <div class="item-container">
+                        <img src="${item.imagem}" alt="${item.nome}" width="100">  <!-- Imagem do item -->
+                        <h3>${item.nome}</h3>  <!-- Nome do item -->
+                        <p><strong>Mínimo:</strong> ${item.minima || 'Não especificado'} ${item.minima > 1 ? 'unidades' : 'unidade'}</p>  <!-- Mínima, se disponível -->
+                        <p><strong>Descrição:</strong> ${item.descricao}</p>  <!-- Descrição do item -->
+                        <p><strong>Revisão de bens:</strong> ${item.revisao || 'Não especificado'} ${item.revisao > 1 ? 'unidades' : 'unidade'}</p>  <!-- Revisão do item -->
+                    </div>
+                `).join('');  // Mapeia e exibe cada item com as informações
+            } else {
+                itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";  // Exibe mensagem se nenhum item for encontrado
+            }
+            console.log('Itens exibidos:', items);  // Exibe os itens no console
+        }
+
+        // Ação ao clicar no botão de pesquisa
+        searchButton.addEventListener('click', () => {
+            const searchQuery = searchInput.value.trim();  // Obtém o texto de pesquisa
+            loadItems(searchQuery);  // Chama a função para carregar itens com o parâmetro de pesquisa
+        });
+
+        // Carrega os itens ao carregar a página
+        window.onload = () => loadItems();  // Chama a função de carregar itens ao carregar a página
+    </script>
+</body>
+</html>
