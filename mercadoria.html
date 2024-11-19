@@ -164,9 +164,11 @@
                     <div class="item-container">
                         <img src="${item.imagem}" alt="${item.nome}" width="100">
                         <h3>${item.nome}</h3>
-                        <p><strong>Mínimo:</strong> ${item.minima || 'Não especificado'} ${item.minima > 1 ? 'unidades' : 'unidade'}</p>
+                        <p><strong>Mínimo:</strong> ${item.minima && item.minima > 0 ? (item.minima > 1 ? `${item.minima} unidades` : `${item.minima} unidade`) : ''}</p>
                         <p><strong>Descrição:</strong> ${item.descricao}</p>
-                        <p><strong>Revisão de bens:</strong> ${item.revisao || 'Não especificado'} ${item.revisao > 1 ? 'unidades' : 'unidade'}</p>
+                        <p><strong>Revisão de bens:</strong> ${item.revisao && item.revisao > 0 ? (item.revisao > 1 ? `${item.revisao} unidades` : `${item.revisao} unidade`) : 'Não se enquadra na revisão de bens.'}</p>
+
+
                     </div>
                 `).join('');
             } else {
