@@ -17,73 +17,88 @@
             color: #58a6ff;
             font-size: 28px;
             text-align: center;
+			color: #58a6ff !important;
             margin-bottom: 20px;
         }
 
         .container {
             max-width: 900px;
-            width: 100%; /* Garante que o container se ajuste a telas pequenas */
+            width: 100%;
             margin: 0 auto;
             text-align: left;
-            padding: 10px; /* Adiciona espaçamento interno */
+            padding: 6px;
         }
 
         .container img {
             display: block;
-            margin: 0 auto 20px auto; /* Centraliza a imagem com espaçamento inferior */
-            width: 70%; /* Faz a imagem ocupar toda a largura do container */
-            max-width: 600px; /* Limita o tamanho máximo da imagem */
+            margin: 0 auto 20px auto;
+            width: 70%;
+            max-width: 600px;
         }
 
         .container p {
             margin: 10px 0;
-            line-height: 1.6; /* Aumenta o espaçamento entre linhas */
+            line-height: 1.2;
             color: #c9d1d9;
-            font-size: 14px; /* Tamanho padrão para o corpo do texto */
+            font-size: 16px;
         }
 
         .container strong {
-            color: #58a6ff; /* Destaca palavras importantes */
+            color: #a1c6ff;
         }
 
-        .container .observacao {
-            color: #ffeb3b !important; /* Cor amarela com prioridade */
+        .observacao {
             font-weight: bold;
+            color: #ffeb3b !important;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 15px;
         }
 
-        /* Subtítulos com tamanho 18px */
+        .observacao-texto {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
         .container strong.subtitle {
-            font-size: 20px; /* Subtítulos */
+            font-size: 18px;
+			color: #58a6ff !important;
         }
 
         .rules {
             margin-top: 20px;
             padding: 10px;
             border-radius: 8px;
+            /* Removido o fundo */
+        }
+
+        .rules h3 {
+            font-size: 20px;
+            color: #58a6ff;
         }
 
         .rules p {
             margin: 5px 0;
         }
 
-        /* Responsividade */
         @media (max-width: 768px) {
             h1 {
                 font-size: 24px;
             }
 
             .container {
-                max-width: 95%; /* Ajusta o container para caber em telas menores */
-                padding: 5px; /* Reduz o espaçamento interno */
+                max-width: 95%;
+                padding: 5px;
             }
 
             .container img {
-                width: 100%; /* Garante que a imagem ocupe toda a largura disponível */
-                max-width: none; /* Remove o limite de largura máxima */
+                width: 100%;
+                max-width: none;
             }
 
             .container p {
-                font-size: 14px; /* Reduz o tamanho do texto */
+                font-size: 14px;
             }
         }
 
@@ -93,80 +108,91 @@
             }
 
             .container p {
-                font-size: 12px; /* Tamanho de texto menor para telas muito pequenas */
+                font-size: 12px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
     <h1>Modo de Abordagem</h1>
 
-<p>A abordagem é um método ou procedimento utilizado por agentes da lei ao interagir com indivíduos ou grupos durante o cumprimento de suas funções. É essencial que, ao realizar uma abordagem, o policial esteja atento a <strong>normativas específicas</strong> para evitar violações, assegurando, ao mesmo tempo, a integridade do abordado.</p>
-<p>A <strong>Polícia Militar (DRP)</strong> aplica o <strong>policiamento ostensivo</strong> como procedimento geral. Nesse contexto, destaca-se a aplicação específica da abordagem a <strong>veículos</strong> ou <strong>motocicletas</strong> ocupados por <strong>suspeitos</strong>, <strong>infratores da lei</strong> ou <strong>transeuntes</strong>. O presente trabalho tem como objetivo subsidiar todas as unidades operacionais da <strong>DRP</strong> que realizam atividades de <strong>Rádio Patrulhamento</strong>, padronizando os <strong>procedimentos operacionais</strong> para garantir a <strong>eficácia</strong> e a <strong>segurança</strong> nas abordagens.</p>
+    <p>A abordagem é um procedimento utilizado por agentes da lei ao interagir com indivíduos ou grupos durante o desempenho de suas funções. É essencial que, ao realizar uma abordagem, o policial esteja atento a <strong>normativas específicas</strong>, a fim de evitar violações e assegurar a integridade do abordado.</p>
+    
+    <p>A <strong>Polícia Militar (DRP)</strong> aplica o <strong>policiamento ostensivo</strong> como procedimento geral. Nesse contexto, destaca-se a aplicação específica da abordagem a <strong>veículos</strong> ou <strong>motocicletas</strong> ocupados por <strong>suspeitos</strong>, <strong>infratores da lei</strong> ou <strong>transeuntes</strong>. O presente trabalho tem como objetivo subsidiar todas as unidades operacionais da <strong>DRP</strong> que realizam atividades de <strong>Rádio Patrulhamento</strong>, padronizando os <strong>procedimentos operacionais</strong> para garantir a <strong>eficácia</strong> e a <strong>segurança</strong> nas abordagens.</p>
 
-        <img src="https://imgur.com/AiyBxPj.png" alt="Imagem Informativa">
-        <p><strong class="subtitle">Fundada suspeita</strong><br>
-        São atitudes realizadas por alguém que deixam a outra desconfiada de que algo de errado pode estar acontecendo. Os motivos levados para essa desconfiança podem ser, <strong>uso de máscara</strong>, <strong>denúncia</strong>, <strong>indivíduo corre quando a polícia chega em um local</strong>.</p>
+    <img src="https://imgur.com/AiyBxPj.png" alt="Imagem ilustrativa mostrando a abordagem policial em ação">
+    
+    <p><strong class="subtitle">Fundada suspeita</strong><br>
+    São atitudes observadas que causam desconfiança sobre a possibilidade de algo errado estar acontecendo. Os motivos que podem gerar essa desconfiança incluem: <strong>uso de máscara</strong>, <strong>denúncia</strong> ou <strong>indivíduo que corre ao notar a presença policial</strong>.</p>
 
-        <p><strong class="subtitle">Fundadas que não são válidas:</strong><br>
-        Abordar só porque existem 4 pessoas dentro do carro, roupas de cores de facções.</p>
+    <p><strong class="subtitle">Fundadas que não são válidas:</strong><br>
+    Abordar apenas pela presença de 4 pessoas no veículo ou por causa de roupas associadas a facções.</p>
 
-        <p><strong class="observacao">Observação:</strong>
-        Se o cidadão que está sendo preso solicitar a identificação dos policiais, <strong>todos os agentes devem apresentar seus distintivos</strong>.</p>
-    </div>
+    <p><strong class="observacao">Observação:</strong>
+    Caso o cidadão preso solicite, <strong>todos os agentes devem apresentar seus distintivos</strong>.</p>
+</div>
+
+<div class="container">
+    <h1><strong class="subtitle">Fiscalização de Trânsito</strong></h1>
+    <img src="https://imgur.com/AcORwQ9.png" alt="Imagem demonstrando a fiscalização de trânsito com a abordagem a um veículo">
+    
+    <p><strong class="subtitle">Abordagem de Trânsito</strong>:<br>
+    A abordagem de trânsito tem como objetivo identificar <strong>infrações de trânsito</strong>, com foco na <strong>revista</strong> do <strong>veículo</strong> e verificação da <strong>CNH</strong> do condutor.</p>
+
+    <p>
+        <strong class="observacao">Observação:</strong>
+        <span class="observacao-texto">Inicie a abordagem com uma fundada suspeita e motivos claros.</span>
+        <span class="observacao-texto">A abordagem não deve ser justificada como rotina; é necessário ter motivos concretos e específicos para sua realização.</span>
+        <span class="observacao-texto">Máscaras: O uso de <strong>máscaras</strong> é motivo de abordagem e <strong>revista</strong>.</span>
+    </p>
+
+    <p><strong class="subtitle">Modo de Abordagem</strong></p>
+    <p>Motorista de equipe: Responsável por conduções veiculares gerais e condicionar o bom funcionamento do bem público.</p>
+
+    <p>Comando ou Comandante de equipe: Responsável por emanar todas as ordens gerais envolvendo a equipe, dentre elas comandar abordagens, modulações em radiofrequência, determinar posicionamentos veiculares, resolver conflitos do turno e afins. Geralmente, esta posição é preenchida pelo militar mais graduado ou mais antigo do setor.</p>
+
+    <p>Auxiliar: Responsável por assegurar a proteção da guarnição policial em abordagens, paradas curtas, auxílio em condução de corpos e afins.</p>
+
+    <p>Anotador: Responsável por realizar as anotações do turno, apreensões no presídio federal, confeccionar talões de início de serviço e registrar apreendidos pela guarnição policial.</p>
+
+    <p><strong class="observacao">Observação:</strong>
+    <span class="observacao-texto">Ao se deslocar para uma ocorrência (QRU), sempre informe o Copom que está em deslocamento (QTI). Se na ocorrência houver mais civis do que oficiais da Polícia, realize a abordagem somente após a chegada do reforço (APOIO) à ocorrência (QTH).</span>
+    </p>
+
+    <p><strong class="subtitle">Abordagem na Prática</strong></p>
+    <p>Para realizar uma abordagem, é necessário ter uma fundada suspeita, baseada na atividade ilícita e na região. Abordar apenas pela quantidade de pessoas dentro do veículo é inválido.</p>
+
+    <p>Não é permitido realizar abordagem com uma arma de fogo apontada ao suspeito que não seja Taser quando o suspeito não apresenta riscos evidentes à vida dos policiais presentes.</p>
+
+    <p>A abordagem deve se iniciar de forma respeitosa com a ordem de parada. Deve conter no mínimo dois policiais para se iniciar a abordagem.</p>
+
+    <p><strong>Giroflex em Patrulhamento :</strong> Sempre utilize o Giroflex em patrulhamento para garantir a visibilidade e segurança de todos.</p>
+
+    <p><strong>Sirene em Acompanhamentos :</strong> Em casos de acompanhamento, aciona a sirene para alertar outros veículos, pedestres, garantindo a prioridade e segurança.</p>
 	
-    <div class="container">
-        <h1><strong class="subtitle">Fiscalização de Trânsito</strong></h1>
-        <img src="https://imgur.com/AcORwQ9.png" alt="Imagem Informativa">
-        <p><strong class="subtitle">Abordagem de Trânsito</strong>:<br>
-        Abordagem com o objetivo de encontrar <strong>infrações de trânsito</strong>. Esse tipo de abordagem tem <strong>revista</strong>, com o foco na verificação do <strong>veículo</strong> e <strong>CNH</strong> do condutor.</p>
+	<p><strong>Velocidade Moderada em Áreas Urbanas :</strong> Mantenha uma velocidade moderada quando estiver em patrulhamento em áreas urbanas, para garantir a segurança do público em geral.<p>
+	
+	<p><strong>Acidentes Durante Deslocamentos :</strong> Se ocorrer um acidente durante deslocamento, <strong>interrompa</strong> o mesmo e verifique a vítima. Se não for grave, prossiga com cautela.</p>
 
-        <p><strong class="observacao">Observação:</strong>
-            Para começar uma abordagem, sempre leve em conta a <strong>fundada suspeita</strong>, jamais aborde alguém sem motivos <strong>CLAROS</strong>.<br>
-            Não é possível justificar a abordagem de um cidadão como sendo por <strong>Rotina</strong>, uma vez que a abordagem a um indivíduo deve ser justificada por <strong>motivos concretos e específicos</strong>, não podendo ser realizada simplesmente como parte de um procedimento <strong>padronizado</strong>.<br>
-            <strong>Máscaras</strong>: O uso de <strong>máscaras</strong> é motivo de abordagem e <strong>revista</strong>.</p>
+<p><strong class="subtitle">Locais de abordagem sobre claro motivo</strong></p>
 
-        <p><strong class="subtitle">Modo de Abordagem</strong></p>
-        <p>Motorista de equipe: Responsável por conduções veiculares gerais e condicionar o bom funcionamento do bem público.</p>
+<p><strong>Garagem :</strong> Em casos de garagem, abordar apenas em casos visuais onde se encontra produtos ilegais ou se há busca por tal pessoa e veículo.</p>
 
-        <p>Comando ou Comandante de equipe: Responsável por emanar todas as ordens gerais envolvendo a equipe, dentre elas comandar abordagens, modulações em radiofrequência, determinar posicionamentos veiculares, resolver conflitos do turno e afins. Geralmente, esta posição é preenchida pelo militar mais graduado ou mais antigo do setor.</p>
+<p><strong>Pedágio :</strong> Abordar no pedágio apenas quando se está procurando algum suspeito e parar apenas os que estiverem suspeitos de ser o procurado.</p>
 
-        <p>Auxiliar: Responsável por assegurar a proteção da guarnição policial em abordagens, paradas curtas, auxílio em condução de corpos e afins.</p>
+<p><strong class="subtitle">Revista em Cidadãos do Sexo Feminino</strong></p>
+<p>A revista em pessoas do sexo feminino deve ser sempre realizada por uma <strong>Policial Feminina</strong>. Caso não haja uma policial feminina disponível, solicite a presença de uma profissional através do <strong>COPOM</strong> ou <strong>CEPOL</strong>.</p>
+<p>Se não houver resposta imediata, oriente que a revista seja realizada com discrição e cautela.</p>
 
-        <p>Anotador: Responsável por realizar as anotações do turno, apreensões no presídio federal, confeccionar talões de início de serviço e registrar apreendidos pela guarnição policial.</p>
-
-        <p><strong class="observacao">Observação:</strong>
-        Ao se deslocar para uma ocorrência (QRU), sempre informe o Copom que está em deslocamento (QTI). Se na ocorrência houver mais civis do que oficiais da Polícia, realize a abordagem somente após a chegada do reforço (APOIO) à ocorrência (QTH).</p>
-
-        <p><strong class="subtitle">Abordagem na Prática</strong></p>
-        <p>Para abordar um cidadão(s) ou veículo(s), é necessário ter um fundamento suspeito, baseado na atividade ilícita e região. Abordar apenas por haver uma certa quantidade de pessoas dentro do veículo é inválido.</p>
-
-        <p>Não é permitido realizar abordagem com uma arma de fogo apontada ao suspeito que não seja Taser quando o suspeito não apresenta riscos evidentes à vida dos policiais presentes.</p>
-
-        <p>A abordagem deve se iniciar de forma respeitosa com a ordem de parada. Deve conter no mínimo dois policiais para se iniciar a abordagem.</p>
-
-        <p><strong>Giroflex em Patrulhamento :</strong> Sempre utilize o Giroflex em patrulhamento para garantir a visibilidade e segurança de todos.</p>
-
-        <p><strong>Sirene em Acompanhamentos :</strong> Em casos de acompanhamento, aciona a sirene para alertar outros veículos, pedestres, garantindo a prioridade e segurança.</p>
-
-        <p><strong>Velocidade Moderada em Áreas Urbanas :</strong> Mantenha uma velocidade moderada quando estiver em patrulhamento em áreas urbanas, para garantir a segurança do público em geral.</p>
-
-        <p><strong>Acidentes Durante Deslocamentos :</strong> Se ocorrer um acidente durante deslocamento, interrompa o mesmo e verifique a vítima. Se não for grave, prossiga com cautela.</p>
-
-        <p><strong class="subtitle">Locais de abordagem sobre claro motivo</strong></p>
-
-        <p><strong>Garagem</strong>: Em casos de garagem, abordar apenas em casos visuais onde se encontra produtos ilegais ou se há busca por tal pessoa e veículo.</p>
-
-        <p><strong>Pedágio</strong>: Abordar no pedágio apenas quando se está procurando algum suspeito e parar apenas os que estiverem suspeitos de ser o procurado.</p>
-<p><strong class="observacao">Observação:</strong> Faz-se necessário o uso das animações oh9 para que seja identificado visualmente que você está fazendo uma revista e criando mais <em>interatividade ao roleplay.</em></p>
-
-<p><strong class="subtitle">Revistar cidadãos do sexo feminino</strong></p>
-<p>A revista em civil feminina deve ser sempre executada por uma <strong>Policial Feminina</strong>, caso não haja, solicite uma policial feminina no <strong>COPOM</strong> ou <strong>CEPOL</strong>.</p>
-<p>Mas em caso onde o policial fica sem resposta, basta pedir para ela colocar os itens no capô da viatura para um roleplay <strong>respeitoso</strong>.</p>
-<p><strong class="observacao">Observação:</strong> Caso não tenha uma PFEM (policial feminina) antes da revista, solicite que a mulher escreva no papel: <em>Colocando no capô da viatura.</em></p>
-		
-		
+    <p><strong class="subtitle">Procedimentos</strong><br>
+    Verifique a regularidade dos documentos, condições de uso do veículo, caso haja a presença de ilícitos e registre tudo.</p>
+    
+    <div class="rules">
+        <strong>Regras Gerais</strong>
+        <p>A abordagem de rotina deve ser realizada de forma criteriosa e respeitosa.</p>
+        <p>A utilização de força deve ser proporcional à resistência ou ameaça apresentada.</p>
     </div>
+</div>
 </body>
 </html>
