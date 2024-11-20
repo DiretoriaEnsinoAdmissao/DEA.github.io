@@ -25,7 +25,7 @@
             background-color: transparent;
             border-radius: 8px;
             text-align: left; /* Texto alinhado à esquerda */
-			box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra sutil */
             display: flex;
             align-items: center; /* Alinha a imagem e o texto verticalmente */
             gap: 15px;
@@ -52,6 +52,26 @@
             color: #c9d1d9; /* Cinza claro */
             margin: 5px 0;
         }
+
+        .container {
+            max-width: 800px;
+            width: 100%; /* Garante que o container se ajuste a telas pequenas */
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) { /* Para telas menores, como celulares */
+            .container {
+                max-width: 95%; /* O container ocupará 95% da largura da tela */
+            }
+        }
+
+        .container {
+            max-width: 90%; /* O container ocupará até 90% da largura da tela */
+            width: 100%; /* Garante ajuste total em telas menores */
+            margin: 0 auto;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -76,43 +96,41 @@
             }
         }
 
-function displayItems(items) {
-    if (items.length > 0) {
-        itemsList.innerHTML = items.map(item => {
-            let quantia = item.minima;
+        function displayItems(items) {
+            if (items.length > 0) {
+                itemsList.innerHTML = items.map(item => {
+                    let quantia = item.minima;
 
-            // Verifica se o valor de 'item.minima' é numérico e maior que 0
-            if (!isNaN(quantia) && quantia > 0) {
-                // Verifica se o número é maior que 1.000 e aplica o formato R$
-                if (quantia >= 1000) {
-                    quantia = `R$ ${quantia.toLocaleString()} Notas Marcadas.`;
-                } else {
-                    quantia = quantia === 1 ? `${quantia} unidade.` : `${quantia} unidades.`;  // Se for 1, coloca "unidade", senão "unidades"
-                }
-            } else if (typeof quantia === 'string' && quantia.trim() !== '') {
-                // Se 'item.minima' for uma string não vazia (como "4 armas ou 60 peças de arma"), mantemos o texto original
-                quantia = `${quantia}.`;
+                    // Verifica se o valor de 'item.minima' é numérico e maior que 0
+                    if (!isNaN(quantia) && quantia > 0) {
+                        // Verifica se o número é maior que 1.000 e aplica o formato R$
+                        if (quantia >= 1000) {
+                            quantia = `R$ ${quantia.toLocaleString()} Notas Marcadas.`;
+                        } else {
+                            quantia = quantia === 1 ? `${quantia} unidade.` : `${quantia} unidades.`;  // Se for 1, coloca "unidade", senão "unidades"
+                        }
+                    } else if (typeof quantia === 'string' && quantia.trim() !== '') {
+                        // Se 'item.minima' for uma string não vazia (como "4 armas ou 60 peças de arma"), mantemos o texto original
+                        quantia = `${quantia}.`;
+                    } else {
+                        quantia = 'Não especificado.';  // Exibe "Não especificado" quando não há valor válido
+                    }
+
+                    return `
+                        <div class="item-container">
+                            <img src="${item.imagem}" alt="${item.nome}">
+                            <div class="item-details">
+                                <h3>${item.nome}</h3>
+                                <p><strong>Descrição:</strong> ${item.descricao}</p>
+                                <p><strong>Quantia Mínima:</strong> ${quantia}</p>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
             } else {
-                quantia = 'Não especificado.';  // Exibe "Não especificado" quando não há valor válido
+                itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";
             }
-
-            return `
-                <div class="item-container">
-                    <img src="${item.imagem}" alt="${item.nome}">
-                    <div class="item-details">
-                        <h3>${item.nome}</h3>
-                        <p><strong>Descrição:</strong> ${item.descricao}</p>
-                        <p><strong>Quantia Mínima:</strong> ${quantia}</p>
-                    </div>
-                </div>
-            `;
-        }).join('');
-    } else {
-        itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";
-    }
-}
-
-
+        }
 
         window.onload = loadItems;
     </script>
