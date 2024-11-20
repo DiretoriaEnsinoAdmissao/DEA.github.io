@@ -17,7 +17,10 @@
     }
 
     .container {
+      max-width: 90%;
       width: 100%;
+      margin: 0 auto;
+      text-align: left;
       height: 100vh;
       display: flex;
       flex-direction: column;
@@ -26,6 +29,12 @@
       box-sizing: border-box;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        max-width: 95%;
+      }
     }
 
     .tabs {
@@ -118,9 +127,10 @@
         Ocorrências
         <div class="dropdown">
           <div class="tab" data-target="tab4" role="tab">Limite</div>
+          <div class="tab" data-target="tab5" role="tab">Abordagem</div>
         </div>
       </div>
-      <div class="tab" data-target="tab5" role="tab">Horas</div>
+      <div class="tab" data-target="tab6" role="tab">Horas</div>
     </div>
     
     <div class="content active" id="tab1">
@@ -136,65 +146,57 @@
       <iframe src="limite.html" title="Limite"></iframe>
     </div>
     <div class="content" id="tab5">
+      <iframe src="abordagem.html" title="Abordagem"></iframe>
+    </div>
+    <div class="content" id="tab6">
       <iframe src="horas.html" title="Horas"></iframe>
     </div>
   </div>
 
-<script>
-  const tabs = document.querySelectorAll('.tab:not(.tab-dropdown)');
-  const dropdownTabs = document.querySelectorAll('.tab-dropdown');
-  const contents = document.querySelectorAll('.content');
-  const dropdownItems = document.querySelectorAll('.dropdown .tab');
-  const iframe = document.querySelector('iframe');  // Pega o iframe único na página
+  <script>
+    const tabs = document.querySelectorAll('.tab:not(.tab-dropdown)');
+    const dropdownTabs = document.querySelectorAll('.tab-dropdown');
+    const dropdownItems = document.querySelectorAll('.dropdown .tab');
+    const contents = document.querySelectorAll('.content');
 
-  // Ativação de abas
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      // Remove o estilo de aba ativa de todas as abas
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      contents.forEach(c => c.classList.remove('active'));
-
-      tab.classList.add('active');
-      const target = document.getElementById(tab.getAttribute('data-target'));
-      if (target) target.classList.add('active');
-
-      // Altera o conteúdo do iframe de acordo com a aba
-      if (tab.getAttribute('data-target') === 'tab1') {
-        iframe.src = 'hierarquia.html';
-      } else if (tab.getAttribute('data-target') === 'tab2') {
-        iframe.src = 'mercadoria.html';
-      } else if (tab.getAttribute('data-target') === 'tab3') {
-        iframe.src = 'revisão.html';
-      } else if (tab.getAttribute('data-target') === 'tab4') {
-        iframe.src = 'limite.html';  // Aqui o conteúdo do 'Limite'
-      } else if (tab.getAttribute('data-target') === 'tab5') {
-        iframe.src = 'horas.html';
-      }
-    });
-  });
-
-  // Dropdown funcionalidade
-  dropdownTabs.forEach(dropdownTab => {
-    dropdownTab.addEventListener('click', (event) => {
-      event.stopPropagation();
-      dropdownTabs.forEach(d => d !== dropdownTab && d.classList.remove('active'));
-      dropdownTab.classList.toggle('active');
-    });
-  });
-
-  // Dropdown itens
-  dropdownItems.forEach(item => {
-    item.addEventListener('click', (event) => {
-      event.stopPropagation();
-      const target = document.getElementById(item.getAttribute('data-target'));
-      if (target) {
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
         contents.forEach(c => c.classList.remove('active'));
-        target.classList.add('active');
-      }
+
+        tab.classList.add('active');
+        const target = document.getElementById(tab.getAttribute('data-target'));
+        if (target) target.classList.add('active');
+      });
+    });
+
+    dropdownTabs.forEach(dropdownTab => {
+      dropdownTab.addEventListener('click', (event) => {
+        event.stopPropagation();
+        dropdownTabs.forEach(d => d !== dropdownTab && d.classList.remove('active'));
+        dropdownTab.classList.toggle('active');
+      });
+    });
+
+    dropdownItems.forEach(item => {
+      item.addEventListener('click', (event) => {
+        event.stopPropagation();
+
+        const target = document.getElementById(item.getAttribute('data-target'));
+        if (target) {
+          contents.forEach(c => c.classList.remove('active'));
+          target.classList.add('active');
+        }
+
+        // Fechar todos os dropdowns ao selecionar uma subcategoria
+        dropdownTabs.forEach(d => d.classList.remove('active'));
+      });
+    });
+
+    // Fechar dropdowns ao clicar fora
+    document.addEventListener('click', () => {
       dropdownTabs.forEach(d => d.classList.remove('active'));
     });
-  });
-</script>
-
+  </script>
 </body>
 </html>
