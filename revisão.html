@@ -3,184 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercadorias</title>
+    <title>Parâmetros de revisão</title>
     <style>
-        /* Estilos para o corpo */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-      color: #e0e0e0;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: #e0e0e0;
+        }
 
         h1 {
-            text-align: center;
             color: #58a6ff; /* Azul vibrante */
             margin-bottom: 10px;
             font-size: 28px;
         }
 
-        #search-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 15px;
-        }
-
-        #search-input {
-            padding: 10px;
-            font-size: 15px;
-            border: 1px solid #30363d; /* Borda cinza escuro */
-            border-radius: 5px;
-            height: 30px;
-            background-color: #161b22; /* Verde para botão */
-            color: #c9d1d9; /* Texto em cinza claro */
-        }
-
-        #search-button {
-            margin-left: 10px;
-            padding: 5px 15px;
-            font-size: 15px;
-            border: none;
-            background-color: #161b22; /* Verde para botão */
-            color: white;
-            border-radius: 15px;
-            cursor: pointer;
-            height: 42px;
-        }
-
-        #search-button:hover {
-            background-color: #161b22; /* Verde para botão */
-        }
-
-        .item-container {
-            width: 90%;
-            max-width: 1000px;
-            min-width: 300px;
+        #items-list .item-container {
             margin: 20px auto;
             padding: 15px;
             background-color: transparent;
             border-radius: 8px;
-            text-align: center;
+            text-align: left; /* Texto alinhado à esquerda */
+			box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra sutil */
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            align-items: center; /* Alinha a imagem e o texto verticalmente */
+            gap: 15px;
+            width: 90%;
+            max-width: 600px;
         }
 
         .item-container img {
-            width: 100px;
-            margin-bottom: 10px;
+            width: 80px;  /* Ajuste o tamanho da imagem (ícone) */
+            height: auto;
+            border-radius: 15px;
+        }
+
+        .item-container .item-details {
+            flex-grow: 1;
         }
 
         .item-container h3 {
             color: #58a6ff; /* Azul vibrante */
-            margin: 10px 0;
-            font-size: 22px;
+            margin: 0;
         }
 
         .item-container p {
-            margin: 5px 0;
-            padding: 0;
-            text-align: left;
-            width: 100%;
-            color: #8b949e; /* Cinza intermediário */
-        }
-
-        /* Estilos para o carregamento */
-        #loading-container {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center;
-        }
-
-        #loading-container img {
-            width: 150px;
-            margin-bottom: 10px;
-        }
-
-        #loading-container p {
-            font-size: 20px;
             color: #c9d1d9; /* Cinza claro */
-            animation: pulsar 1s infinite;
-        }
-
-        @keyframes pulsar {
-            0% { opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { opacity: 0.5; }
+            margin: 5px 0;
         }
     </style>
 </head>
 <body>
-    <h1>Mercadorias</h1>
-
-    <div id="search-container">
-        <input type="text" id="search-input" placeholder="Digite o nome do item">
-        <button id="search-button">🔍</button>
-    </div>
-
-    <div id="loading-container">
-        <img src="https://i.imgur.com/5ICVZeE.gif" alt="Carregando...">
-        <p>Carregando...</p>
-    </div>
+    <h1>Parâmetros de revisão</h1>
 
     <div id="items-list"></div>
 
     <script>
         const itemsList = document.getElementById('items-list');
-        const loadingContainer = document.getElementById('loading-container');
-        const searchInput = document.getElementById('search-input');
-        const searchButton = document.getElementById('search-button');
 
-        let allItems = [];
-
-        async function loadItems(search = "") {
+        async function loadItems() {
             try {
-                loadingContainer.style.display = 'block';
-                itemsList.innerHTML = '';
-
-                const url = new URL('https://script.google.com/macros/s/AKfycbzw8aeDs_g2mmR-riej9jHNqlwjOP8XR_MRnSNeztLu-s4Tusi4uncEk0_2kkVPmxY4Lw/exec');
-                if (search) url.searchParams.append('search', search);
+                itemsList.innerHTML = '<p>Carregando...</p>';
+                const url = 'https://script.google.com/macros/s/AKfycbwHbk58WBHFxyfvudIEZYfeiDf8k4NmKUclCvMMk1AIgNLZrDwSfTiQUUPGHICdvLkyAw/exec';
 
                 const response = await fetch(url);
-                allItems = await response.json();
-
-                displayItems(allItems);
+                const items = await response.json();
+                displayItems(items);
             } catch (error) {
                 console.error('Erro ao carregar os itens:', error);
                 itemsList.innerHTML = "<p>Erro ao carregar os itens.</p>";
-            } finally {
-                loadingContainer.style.display = 'none';
             }
         }
 
-        function displayItems(items) {
-            if (items.length > 0) {
-                itemsList.innerHTML = items.map(item => `
-                    <div class="item-container">
-                        <img src="${item.imagem}" alt="${item.nome}" width="100">
-                        <h3>${item.nome}</h3>
-                        <p><strong>Quantia Mínima:</strong> ${item.minima && item.minima > 0 ? (item.minima.toString().includes('.') ? `R$ ${item.minima.toLocaleString('pt-BR')} em Notas Marcadas.` : (item.minima > 1 ? `${item.minima} unidades.` : `${item.minima} unidade.`)) : ''}</p>
-                        <p><strong>Descrição:</strong> ${item.descricao}</p>
-                        <p><strong>Revisão de bens:</strong> ${item.revisao && item.revisao > 0 ? (item.revisao.toString().includes('.') ? `R$ ${item.revisao.toLocaleString('pt-BR')} em Notas Marcadas.` : (item.revisao > 1 ? `${item.revisao} unidades.` : `${item.revisao} unidade.`)) : 'Não se enquadra na revisão de bens.'}</p>
-                    </div>
-                `).join('');
+function displayItems(items) {
+    if (items.length > 0) {
+        itemsList.innerHTML = items.map(item => {
+            let quantia = item.minima;
+
+            // Verifica se o valor de 'item.minima' é numérico e maior que 0
+            if (!isNaN(quantia) && quantia > 0) {
+                // Verifica se o número é maior que 1.000 e aplica o formato R$
+                if (quantia >= 1000) {
+                    quantia = `R$ ${quantia.toLocaleString()} Notas Marcadas.`;
+                } else {
+                    quantia = quantia === 1 ? `${quantia} unidade.` : `${quantia} unidades.`;  // Se for 1, coloca "unidade", senão "unidades"
+                }
+            } else if (typeof quantia === 'string' && quantia.trim() !== '') {
+                // Se 'item.minima' for uma string não vazia (como "4 armas ou 60 peças de arma"), mantemos o texto original
+                quantia = `${quantia}.`;
             } else {
-                itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";
+                quantia = 'Não especificado.';  // Exibe "Não especificado" quando não há valor válido
             }
-            console.log('Itens exibidos:', items);
-        }
 
-        searchButton.addEventListener('click', () => {
-            const searchQuery = searchInput.value.trim();
-            loadItems(searchQuery);
-        });
+            return `
+                <div class="item-container">
+                    <img src="${item.imagem}" alt="${item.nome}">
+                    <div class="item-details">
+                        <h3>${item.nome}</h3>
+                        <p><strong>Descrição:</strong> ${item.descricao}</p>
+                        <p><strong>Quantia Mínima:</strong> ${quantia}</p>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    } else {
+        itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";
+    }
+}
 
-        window.onload = () => loadItems();
+
+
+        window.onload = loadItems;
     </script>
 </body>
 </html>
