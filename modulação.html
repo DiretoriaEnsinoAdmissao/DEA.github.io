@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Language" content="pt-BR">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Procedimentos operacionais da Polícia Militar para abordagem de veículos e fiscalização de trânsito.">
+    <meta name="keywords" content="abordagem policial, fiscalização, DRP, Polícia Militar, procedimentos operacionais">
+    <meta name="author" content="Wellinton Jose - 25347">
+    <title>Limite de Acompanhamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #e0e0e0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #58a6ff;
+            font-size: 28px;
+            text-align: center;
+			color: #58a6ff;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            margin: 0 auto;
+            text-align: left;
+            padding: 6px;
+        }
+
+        .container img {
+            display: block;
+            margin: 0 auto 20px auto;
+            width: 70%;
+            max-width: 600px;
+        }
+
+        .container p {
+            margin: 10px 0;
+            line-height: 1.2;
+            color: #c9d1d9;
+            font-size: 16px;
+        }
+
+        .container strong {
+            color: #a1c6ff;
+        }
+
+        .observacao {
+            font-weight: bold;
+            color: #ffeb3b !important;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 15px;
+        }
+
+        .observacao-texto {
+            display: block;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+
+        .container strong.subtitle {
+            font-size: 18px;
+			color: #58a6ff;
+        }
+
+        .rules {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            /* Removido o fundo */
+        }
+
+        .rules h3 {
+            font-size: 20px;
+            color: #58a6ff;
+        }
+
+        .rules p {
+            margin: 5px 0;
+        }
+        .modo-incorreto {
+           font-size: 14px;
+           color: #FF0000; /* Cor vermelha para erro */
+        }
+
+        .modo-correto {
+           font-size: 14px;
+           color: #90EE90; /* Cor verde para sucesso */
+        }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .container {
+                max-width: 95%;
+                padding: 5px;
+            }
+
+            .container img {
+                width: 100%;
+                max-width: none;
+            }
+
+            .container p {
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            .container p {
+                font-size: 12px;
+            }
+        }
+		
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Modo de Modulação</h1>
+
+    <p>Modulação é a comunicação entre os policiais em serviço, é através dela que podemos informar o que está ocorrendo em um determinado local. Essa comunicação é realizada através de um rádio comunicador, que o agente utilizará para modular um acompanhamento, ocorrências de risco, solicitação de guincho, dentre outros.
+A linguagem utilizada na modulação é a fusão dos códigos usados pela polícia (como a       codificação de ocorrências) e as gírias absorvidas durante o trabalho nas ruas.
+</p>
+    
+    <img src="https://imgur.com/rTKztfF.png" alt="Imagem ilustrativa mostrando o códigos">
+    <p>(As codificações de ocorrências são prefixos usados para identificar cada situação, independentemente de qual seja. É uma forma de organizar melhor a modulação).</p>
+	
+	<p>
+	<strong class="subtitle">Códigos</strong>:<br>
+    <p><strong><span style="color: #808080;">Código 0</span></strong> - Iniciando serviço
+	<span class="observacao-texto">Exemplo: "COPOM, Unidade Alfa em (Código 0) pela 1º CIA em QRV de rede. (Reajustando)</span>
+	<p><strong><span style="color: #add8e6;">Código 1</span></strong> - Ocorrência de Baixa intensidade
+	<span class="observacao-texto">Exemplo: "COPOM, Unidade Alfa em QRU, em abordagem veicular, ocorrência se encontra em (Código 1), QSL? (Reajustando)</span>
+    <p><strong><span style="color: #ff8c00;">Código 2</span></strong> - Ocorrência de Média Intensidade
+	<span class="observacao-texto">Exemplo: "COPOM, Unidade Alfa em acompanhamento a indivíduo empreendendo fuga pelas proximidades do Hospital da 1º CIA, sem visual de armamento, apoio com uma certa, QSL?". (Reajustando)</span>
+    <p><strong><span style="color: #ffa07a;">Código 3</span></strong> - Ocorrência de Alto risco 
+	<span class="observacao-texto">Exemplo: "COPOM, Unidade Alfa em acompanhamento a uma motocicleta (Caráter Geral - Informações sobre a motocicleta, cor e etc), com 2 indivíduos armados, no QTH da 1º CIA, Las Colinas, ocorrência em (Código 3), (Limite da ocorrência) apoio com uma certa prioridade." (Reajustando</span>
+    <p><strong><span style="color: #90ee90;">Código 4</span></strong> - Ocorrência de intensidade controlada 
+	<span class="observacao-texto">Exemplo: "COPOM, Ocorrência de (Código 5), na 1º CIA, Vinewood, evoluída para (Código 4), TKS a todas as unidades.” (Reajustando)</span>
+    <p><strong><span style="color: #ff7f7f;">Código 5</span></strong> - Disparos com arma de fogo 
+	<span class="observacao-texto">Exemplo: "COPOM, Unidade Alfa em (Código 5) na 1º CIA, Hotel laranja, apoio com prioridade, (Limite da ocorrência)." (Reajustando)</span>
+    <p><strong><span style="color: #dda0dd;">Código 6</span></strong> - Investigando área 
+	<span class="observacao-texto">Exemplo: "COPOM, Unidade Alfa em (Código 6) nas das Mansões de Vinewood." (Reajustando)</span>	
+	</p>
+	
+	<p><strong class="subtitle">Cidades</strong><br>
+	<p><strong>1° CIA :</strong> Los Santos;</p>
+    <p><strong>2° CIA :</strong> Las Venturas;</p>
+    <p><strong>3° CIA :</strong> San Fierro;</p>
+    <p><span style="font-size: 12px;"><strong>CIA</strong> significa as cidades.</span></p>
+
+    <p>
+        <strong class="observacao">Observação:</strong>
+        <span class="observacao-texto">Em casos de <strong>Código 5</strong>, SEMPRE mantenha a calma na hora de modular.</span>
+        <span class="observacao-texto">Em casos de Código 5, <strong>EVITAR</strong> modulações desnecessárias. Ex: Matei um, Matei dois entre outros.</span>
+        <span class="observacao-texto">Ao solicitar <strong>APOIO</strong>, evitar usos de falar como. <strong>AQUI PERTO DE MIM, ALI EM CIMA</strong>, e de antemão Informa QTH.</span>
+		<span class="observacao-texto">Em termos de <strong>QRR</strong>, não são mais utilizados. Caso seja necessário, solicite <strong>APOIO</strong> modular.</span>
+    </p>
+	
+<div style="text-align: center;">
+  <p><strong class="subtitle">Códigos Q</strong></p>
+  <img src="https://imgur.com/Ffi1xKq.png" alt="Imagem ilustrativa mostrando o códigos Q" width="800">
+</div>
+<p><strong>O Código Q</strong> é um sistema padronizado de comunicação de código de três letras usado em transmissões de rádio, adotado internacionalmente pelas <strong>Forças Armadas</strong>.</p>
+
+<div style="text-align: center;">
+  <p><strong class="subtitle">Alfabeto Fonético e Números na modulação</strong></p>
+  <img src="https://imgur.com/ctNr3RG.png" alt="Imagem ilustrativa mostrando o códigos Q" width="700">
+</div>
+
+	<strong class="subtitle">Frequências</strong><br>
+	<span class="observacao-texto">Central - Operações de Grande Porte </span>
+	<p><span class="subtitle"; style="font-size: 14px;"><strong>DRP - Freq. 190 a 196</strong><br>
+	<span class="observacao-texto"><strong>190</strong> - Utilização obrigatória durante o patrulhamento ostensivo(CPO).</span>
+	<span class="observacao-texto"><strong>191</strong> - Utilização obrigatória durante o policiamento comunitário (CPP).</span>
+	<span class="observacao-texto"><strong>192</strong> - Utilização para realização de operações.</span>
+	<span class="observacao-texto"><strong>193</strong> - Utilização para realização de intervenções em lojas.</span>
+	<span class="observacao-texto"><strong>194</strong> - Utilização obrigatória pelas unidades do SOT em serviço.</span>
+	<span class="observacao-texto"><strong>195</strong> - Utilização para realização de intervenções em joalherias.</span>
+	<span class="observacao-texto"><strong>196</strong> - Utilização livre.</span>
+    <p><span class="subtitle"; style="font-size: 14px;"><strong>DRP - Freq. 197 a 200</strong><br>
+	<span class="observacao-texto"><strong>197</strong> - Rádio padrão</span>
+	<span class="observacao-texto"><strong>198</strong> - Solicitar Guincho</span>	
+	
+<p><strong class="observacao" style="font-size: 16px;">Observações</strong></p>
+
+<p><span class="subtitle" style="font-size: 14px;">
+    <strong>Freq. 190 - COPOM</strong><br>
+    A frequência geral, sendo 190, deverá ser modulada através do nome <strong>COPOM</strong>, não mais "Central" como utilizado anteriormente. Segue exemplo abaixo:
+</span></p>
+<p><strong><span style="color: #FF8080;">Modo Incorreto :</span></strong></p>
+<p><span class="observacao-texto">"<strong>QAP Central</strong>, unidade X iniciando (...)"</span></p>
+
+<p><strong><span style="color: #C8F7C5;">Modo Correto :</span></strong></p>
+<p><span class="observacao-texto">"<strong>QAP COPOM</strong>, unidade X iniciando (...)"</span></p>
+
+<p><span class="subtitle" style="font-size: 14px;">
+    <strong>Freq. 197 - CEPOL</strong><br>
+    Essa frequência deve ser utilizada exclusivamente para assuntos relacionados às atribuições e solicitações à Polícia Federal (DDJ).
+</span></p>
+
+<p><strong><span style="color: #FF8080;">Modo Incorreto :</span></strong></p>
+<p><span class="observacao-texto">"<strong>QAP DDJ</strong>, alguém disponível para (...)"</span></p>
+
+<p><strong><span style="color: #C8F7C5;">Modo Correto :</span></strong></p>
+<p><span class="observacao-texto">"<strong>QAP CEPOL</strong>, algum agente disponível para(...)"</span></p>
+
+<p><span class="observacao-texto">"<strong>QAP CEPOL</strong>, algum guincho disponível para(...)"</span></p>
+
+
+<div style="font-size: 12px; margin-top: 20px; margin-bottom: 10px; border-bottom: 1px solid #ccc; padding-bottom: 5px;">
+    <strong class="subtitle">Opções de Download</strong><br>
+
+    <p style="margin: 0;">
+        <a href="https://drive.usercontent.google.com/uc?id=1FaLGo7Akbf4fxgLG8RXEoqKNYboBu2o2&export=download" download>
+            Mapa Operacional
+        </a>
+    </p>
+</div>
+
+</body>
+</html>
