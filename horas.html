@@ -79,6 +79,19 @@ body {
     input::placeholder {
       color: rgba(255, 255, 255, 0.7); /* Placeholder branco com transparência */
     }
+
+    .container {
+      max-width: 90%; /* O container ocupará até 90% da largura da tela */
+      width: 100%; /* Garante ajuste total em telas menores */
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    @media (max-width: 768px) { /* Para telas menores, como celulares */
+      .container {
+        max-width: 95%; /* O container ocupará 95% da largura da tela */
+      }
+    }
   </style>
   <script>
     // Função para garantir que o horário esteja no formato correto (hh:mm)
