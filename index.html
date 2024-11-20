@@ -171,9 +171,11 @@
   dropdownItems.forEach(item => {
     item.addEventListener('click', (event) => {
       event.stopPropagation();
-      contents.forEach(c => c.classList.remove('active'));
       const target = document.getElementById(item.getAttribute('data-target'));
-      if (target) target.classList.add('active');
+      if (target) {
+        contents.forEach(c => c.classList.remove('active'));
+        target.classList.add('active');
+      }
       dropdownTabs.forEach(d => d.classList.remove('active'));
     });
   });
