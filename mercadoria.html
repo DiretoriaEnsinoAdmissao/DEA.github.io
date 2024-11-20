@@ -113,6 +113,27 @@
             50% { opacity: 1; }
             100% { opacity: 0.5; }
         }
+
+        /* Estilos para o container */
+        .container {
+            max-width: 800px;
+            width: 100%; /* Garante que o container se ajuste a telas pequenas */
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        @media (max-width: 768px) { /* Para telas menores, como celulares */
+            .container {
+                max-width: 95%; /* O container ocupará 95% da largura da tela */
+            }
+        }
+
+        .container {
+            max-width: 90%; /* O container ocupará até 90% da largura da tela */
+            width: 100%; /* Garante ajuste total em telas menores */
+            margin: 0 auto;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -143,7 +164,7 @@
                 loadingContainer.style.display = 'block';
                 itemsList.innerHTML = '';
 
-                const url = new URL('https://script.google.com/macros/s/AKfycbzw8aeDs_g2mmR-riej9jHNqlwjOP8XR_MRnSNeztLu-s4Tusi4uncEk0_2kkVPmxY4Lw/exec');
+                const url = new URL('https://script.google.com/macros/s/AKfycbzprjrFTFbUJKsRlmRl5Itt3ijwYfOhrJgOGQiVyHYbqh4H23Jt64An1D-HsLVan6zKSA/exec');
                 if (search) url.searchParams.append('search', search);
 
                 const response = await fetch(url);
