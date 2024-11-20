@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diretoria de Ensino e Admissão</title>
-  <!-- Adicionando o favicon -->
   <link rel="icon" href="https://i.ibb.co/Y0vjshh/ICON-DISCORD.png" type="image/png">
   <style>
-    /* Estilo do corpo */
     body {
       margin: 0;
       padding: 0;
@@ -15,15 +13,14 @@
       background: url('https://i.ibb.co/LZfT5Ff/Design-sem-nome-2.png') no-repeat center center fixed;
       background-size: cover;
       color: #e0e0e0;
-      overflow: hidden; /* Remove a rolagem do corpo */
+      overflow: hidden;
     }
 
-    /* Estilo do container principal */
     .container {
       width: 100%;
-      height: 100vh; /* Ocupa toda a altura da tela */
+      height: 100vh;
       display: flex;
-      flex-direction: column; /* Organiza abas e conteúdo em coluna */
+      flex-direction: column;
       background: rgba(0, 0, 0, 0.6);
       padding: 15px;
       box-sizing: border-box;
@@ -31,10 +28,9 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
     }
 
-    /* Estilo das abas */
     .tabs {
       display: flex;
-      justify-content: center; /* Centraliza as abas */
+      justify-content: center;
       margin-bottom: 15px;
     }
 
@@ -58,67 +54,129 @@
       color: #000;
     }
 
-    /* Estilo do conteúdo */
+    .tab-dropdown {
+      position: relative;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: transparent;
+      border-radius: 10px;
+      text-align: center;
+      z-index: 1;
+      min-width: 150px;
+    }
+
+    .tab-dropdown.active .dropdown {
+      display: block;
+    }
+
+    .dropdown .tab {
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 15px;
+    }
+
+    .dropdown .tab:hover {
+      background: #58a6ff;
+    }
+
     .content {
-      flex: 1; /* Faz o conteúdo ocupar o espaço restante */
+      flex: 1;
       display: none;
       border-radius: 5px;
-      overflow: hidden; /* Remove barras de rolagem internas */
+      overflow: hidden;
     }
 
     .content.active {
       display: block;
     }
 
-    /* Estilo do iframe */
     iframe {
       width: 100%;
-      height: 100%; /* Preenche todo o espaço disponível */
+      height: 100%;
       border: none;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Abas -->
-    <div class="tabs">
-      <div class="tab active" data-target="tab1">Hierarquia</div>
-      <div class="tab" data-target="tab2">Mercadoria</div>
-      <div class="tab" data-target="tab3">Revisão de bens</div>
-      <div class="tab" data-target="tab4">Horas</div>
+    <div class="tabs" role="tablist">
+      <div class="tab active" data-target="tab1" role="tab">Hierarquia</div>
+      <div class="tab tab-dropdown" id="mercadoriaTab" role="tab" aria-label="Mercadorias">
+        Mercadorias
+        <div class="dropdown">
+          <div class="tab" data-target="tab2" role="tab">Mercadoria</div>
+          <div class="tab" data-target="tab3" role="tab">Revisão de bens</div>
+        </div>
+      </div>
+      <div class="tab tab-dropdown" id="ocorrenciasTab" role="tab" aria-label="Ocorrências">
+        Ocorrências
+        <div class="dropdown">
+          <div class="tab" data-target="tab4" role="tab">Limite</div>
+        </div>
+      </div>
+      <div class="tab" data-target="tab5" role="tab">Horas</div>
     </div>
 
-    <!-- Conteúdo -->
     <div class="content active" id="tab1">
-      <iframe src="hierarquia.html"></iframe>
+      <iframe src="hierarquia.html" title="Hierarquia"></iframe>
     </div>
     <div class="content" id="tab2">
-      <iframe src="mercadoria.html"></iframe>
+      <iframe src="mercadoria.html" title="Mercadoria"></iframe>
     </div>
     <div class="content" id="tab3">
-      <iframe src="revisão.html"></iframe>
+      <iframe src="revisão.html" title="Revisão de bens"></iframe>
     </div>
     <div class="content" id="tab4">
-      <iframe src="horas.html"></iframe>
+      <iframe src="limite.html" title="Limite"></iframe>
+    </div>
+    <div class="content" id="tab5">
+      <iframe src="horas.html" title="Horas"></iframe>
     </div>
   </div>
 
-  <script>
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.content');
+<script>
+  const tabs = document.querySelectorAll('.tab:not(.tab-dropdown)');
+  const dropdownTabs = document.querySelectorAll('.tab-dropdown');
+  const contents = document.querySelectorAll('.content');
+  const dropdownItems = document.querySelectorAll('.dropdown .tab');
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        // Remove active class de todas as abas e conteúdos
-        tabs.forEach(t => t.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
+  // Ativação de abas
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
 
-        // Adiciona active class na aba e conteúdo clicados
-        tab.classList.add('active');
-        const target = document.getElementById(tab.getAttribute('data-target'));
-        target.classList.add('active');
-      });
+      tab.classList.add('active');
+      const target = document.getElementById(tab.getAttribute('data-target'));
+      if (target) target.classList.add('active');
     });
-  </script>
+  });
+
+  // Dropdown funcionalidade
+  dropdownTabs.forEach(dropdownTab => {
+    dropdownTab.addEventListener('click', (event) => {
+      event.stopPropagation();
+      dropdownTabs.forEach(d => d !== dropdownTab && d.classList.remove('active'));
+      dropdownTab.classList.toggle('active');
+    });
+  });
+
+  // Dropdown itens
+  dropdownItems.forEach(item => {
+    item.addEventListener('click', (event) => {
+      event.stopPropagation();
+      contents.forEach(c => c.classList.remove('active'));
+      const target = document.getElementById(item.getAttribute('data-target'));
+      if (target) target.classList.add('active');
+      dropdownTabs.forEach(d => d.classList.remove('active'));
+    });
+  });
+</script>
 </body>
 </html>
