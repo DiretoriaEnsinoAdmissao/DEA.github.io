@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Diretoria de Ensino e Admissão</title>
-  <!-- Adicionando o favicon -->
   <link rel="icon" href="https://i.ibb.co/Y0vjshh/ICON-DISCORD.png" type="image/png">
   <style>
     body {
@@ -14,48 +13,94 @@
       background: url('https://i.ibb.co/LZfT5Ff/Design-sem-nome-2.png') no-repeat center center fixed;
       background-size: cover;
       color: #e0e0e0;
+      overflow: hidden;
     }
+
     .container {
-      max-width: 1000px;
-      text-align: center;
-      margin: 10px auto;
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
       background: rgba(0, 0, 0, 0.6);
       padding: 15px;
+      box-sizing: border-box;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-      position: relative;
-      right: -50px;
     }
+
     .tabs {
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       margin-bottom: 15px;
     }
+
     .tab {
-      padding: 5px 10px;
+      padding: 10px 20px;
       cursor: pointer;
       background: #30363d;
-      margin: 0 5px;
-      border-radius: 10px;
+      margin: 0 10px;
+      border-radius: 30px;
       text-align: center;
       transition: background 0.3s;
       color: #e0e0e0;
     }
+
     .tab:hover {
       background: #58a6ff;
     }
+
     .tab.active {
       background: #58a6ff;
       color: #000;
     }
-    .content {
-      display: none;
-      padding: 20px;
-      border-radius: 5px;
-      background: rgba(255, 255, 255, 0.1);
+
+    .tab-dropdown {
+      position: relative;
+      text-align: center; /* Centraliza a categoria principal */
     }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%); /* Centraliza o dropdown */
+      background-color: transparent;
+      border-radius: 10px;
+      text-align: center;
+      z-index: 1;
+      min-width: 150px;
+    }
+
+    .tab-dropdown.active .dropdown {
+      display: block;
+    }
+
+    .dropdown .tab {
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 15px;
+    }
+
+    .dropdown .tab:hover {
+      background: #58a6ff;
+    }
+
+    .content {
+      flex: 1;
+      display: none;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+
     .content.active {
       display: block;
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
     }
   </style>
 </head>
@@ -63,41 +108,106 @@
   <div class="container">
     <div class="tabs">
       <div class="tab active" data-target="tab1">Hierarquia</div>
-      <div class="tab" data-target="tab2">Mercadoria</div>
-	  <div class="tab" data-target="tab3">Revisão de bens</div>
-      <div class="tab" data-target="tab4">Horas</div>
-
+      <div class="tab tab-dropdown" id="mercadoriaTab">
+        Mercadorias
+        <div class="dropdown">
+          <div class="tab" data-target="tab2">Mercadoria</div>
+          <div class="tab" data-target="tab3">Revisão de bens</div>
+        </div>
+      </div>
+      <!-- Categoria de Ocorrências -->
+      <div class="tab tab-dropdown" id="ocorrenciasTab">
+        Ocorrências
+        <div class="dropdown">
+          <div class="tab" data-target="tab4">Limite</div> <!-- A aba Limite fica aqui dentro -->
+        </div>
+      </div>
+      <div class="tab" data-target="tab5">Horas</div>
     </div>
+
     <div class="content active" id="tab1">
-      <iframe src="hierarquia.html" style="width: 100%; height: 500px; border: none;"></iframe>
+      <iframe src="hierarquia.html"></iframe>
     </div>
     <div class="content" id="tab2">
-      <iframe src="mercadoria.html" style="width: 100%; height: 500px; border: none;"></iframe>
+      <iframe src="mercadoria.html"></iframe>
     </div>
     <div class="content" id="tab3">
-      <iframe src="revisão.html" style="width: 100%; height: 500px; border: none;"></iframe>
+      <iframe src="revisão.html"></iframe>
     </div>
     <div class="content" id="tab4">
-      <iframe src="horas.html" style="width: 100%; height: 500px; border: none;"></iframe>
+      <iframe src="limite.html"></iframe> <!-- A aba Limite será carregada aqui -->
+    </div>
+    <div class="content" id="tab5">
+      <iframe src="horas.html"></iframe>
     </div>
   </div>
 
-  <script>
-    const tabs = document.querySelectorAll('.tab');
-    const contents = document.querySelectorAll('.content');
+<script>
+  const tabs = document.querySelectorAll('.tab:not(.tab-dropdown)');
+  const dropdownTabs = document.querySelectorAll('.tab-dropdown');
+  const contents = document.querySelectorAll('.content');
+  const dropdownItems = document.querySelectorAll('.dropdown .tab');
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        // Remove active class from all tabs and contents
-        tabs.forEach(t => t.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
+  // Funcionalidade para trocar de conteúdo ao clicar nas abas
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      // Remove active class de todas as abas e conteúdos
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
 
-        // Add active class to clicked tab and corresponding content
-        tab.classList.add('active');
-        const target = document.getElementById(tab.getAttribute('data-target'));
-        target.classList.add('active');
-      });
+      // Adiciona active class na aba e conteúdo clicados
+      tab.classList.add('active');
+      const target = document.getElementById(tab.getAttribute('data-target'));
+      if (target) target.classList.add('active');
     });
-  </script>
+  });
+
+  // Funcionalidade para exibir/ocultar dropdown ao clicar na categoria
+  dropdownTabs.forEach(dropdownTab => {
+    dropdownTab.addEventListener('click', (event) => {
+      // Previne que o clique na aba principal feche a aba
+      event.stopPropagation();
+
+      // Remove a classe 'active' de todas as abas dropdown
+      dropdownTabs.forEach(d => {
+        if (d !== dropdownTab) {
+          d.classList.remove('active');
+          d.querySelector('.dropdown').style.display = 'none';
+        }
+      });
+
+      // Alterna a visibilidade do dropdown da categoria clicada
+      dropdownTab.classList.toggle('active');
+      const dropdown = dropdownTab.querySelector('.dropdown');
+      if (dropdownTab.classList.contains('active')) {
+        dropdown.style.display = 'block';
+      } else {
+        dropdown.style.display = 'none';
+      }
+    });
+  });
+
+  // Funcionalidade para abrir conteúdo ao clicar nas subcategorias do dropdown
+  dropdownItems.forEach(item => {
+    item.addEventListener('click', (event) => {
+      event.stopPropagation();
+
+      // Fecha todas as categorias abertas
+      dropdownTabs.forEach(d => {
+        d.classList.remove('active');
+        const dropdown = d.querySelector('.dropdown');
+        if (dropdown) dropdown.style.display = 'none';
+      });
+
+      // Remove active class de todas as abas e conteúdos
+      contents.forEach(c => c.classList.remove('active'));
+
+      // Abre o conteúdo correspondente à subcategoria clicada
+      const target = document.getElementById(item.getAttribute('data-target'));
+      if (target) target.classList.add('active');
+    });
+  });
+</script>
+
 </body>
 </html>
