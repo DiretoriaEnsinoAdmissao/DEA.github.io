@@ -1,206 +1,124 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Diretoria de Ensino e Admissão</title>
-  <link rel="icon" href="https://i.ibb.co/Y0vjshh/ICON-DISCORD.png" type="image/png">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      background: url('https://i.ibb.co/LZfT5Ff/Design-sem-nome-2.png') no-repeat center center fixed;
-      background-size: cover;
-      color: #e0e0e0;
-      overflow: hidden;
-    }
-
-    .container {
-      max-width: 90%;
-      width: 100%;
-      margin: 0 auto;
-      text-align: left;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 15px;
-      box-sizing: border-box;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-    }
-
-    @media (max-width: 768px) {
-      .container {
-        max-width: 95%;
-      }
-    }
-
-    .tabs {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 15px;
-    }
-
-    .tab {
-      padding: 10px 20px;
-      cursor: pointer;
-      background: #30363d;
-      margin: 0 10px;
-      border-radius: 30px;
-      text-align: center;
-      transition: background 0.3s;
-      color: #e0e0e0;
-    }
-
-    .tab:hover {
-      background: #58a6ff;
-    }
-
-    .tab.active {
-      background: #58a6ff;
-      color: #000;
-    }
-
-    .tab-dropdown {
-      position: relative;
-    }
-
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: transparent;
-      border-radius: 10px;
-      text-align: center;
-      z-index: 1;
-      min-width: 150px;
-    }
-
-    .tab-dropdown.active .dropdown {
-      display: block;
-    }
-
-    .dropdown .tab {
-      margin: 5px 0;
-      padding: 10px;
-      border-radius: 15px;
-    }
-
-    .dropdown .tab:hover {
-      background: #58a6ff;
-    }
-
-    .content {
-      flex: 1;
-      display: none;
-      border-radius: 5px;
-      overflow: hidden;
-    }
-
-    .content.active {
-      display: block;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="tabs" role="tablist">
-      <div class="tab active" data-target="tab1" role="tab">Hierarquia</div>
-      <div class="tab tab-dropdown mercadoriasTab" role="tab" aria-label="Mercadorias">
-        Mercadorias
-        <div class="dropdown">
-          <div class="tab" data-target="tab2" role="tab">Mercadoria</div>
-          <div class="tab" data-target="tab3" role="tab">Revisão de bens</div>
-        </div>
-      </div>
-      <div class="tab tab-dropdown ocorrenciasTab" role="tab" aria-label="Ocorrências">
-        Ocorrências
-        <div class="dropdown">
-          <div class="tab" data-target="tab4" role="tab">Limite</div>
-          <div class="tab" data-target="tab5" role="tab">Abordagem</div>
-		  <div class="tab" data-target="tab6" role="tab">Modulação</div>
-        </div>
-      </div>
-      <div class="tab" data-target="tab7" role="tab">Horas</div>
-    </div>
-    
-    <div class="content active" id="tab1">
-      <iframe src="hierarquia.html" title="Hierarquia"></iframe>
-    </div>
-    <div class="content" id="tab2">
-      <iframe src="mercadoria.html" title="Mercadoria"></iframe>
-    </div>
-    <div class="content" id="tab3">
-      <iframe src="revisão.html" title="Revisão de bens"></iframe>
-    </div>
-    <div class="content" id="tab4">
-      <iframe src="limite.html" title="Limite"></iframe>
-    </div>
-    <div class="content" id="tab5">
-      <iframe src="abordagem.html" title="Abordagem"></iframe>
-    </div>
-    <div class="content" id="tab6">
-      <iframe src="Modulação.html" title="Modulação"></iframe>
-    </div>
-    <div class="content" id="tab7">
-      <iframe src="horas.html" title="Horas"></iframe>
-    </div>
-  </div>
-
-  <script>
-    const tabs = document.querySelectorAll('.tab:not(.tab-dropdown)');
-    const dropdownTabs = document.querySelectorAll('.tab-dropdown');
-    const dropdownItems = document.querySelectorAll('.dropdown .tab');
-    const contents = document.querySelectorAll('.content');
-
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-        contents.forEach(c => c.classList.remove('active'));
-
-        tab.classList.add('active');
-        const target = document.getElementById(tab.getAttribute('data-target'));
-        if (target) target.classList.add('active');
-      });
-    });
-
-    dropdownTabs.forEach(dropdownTab => {
-      dropdownTab.addEventListener('click', (event) => {
-        event.stopPropagation();
-        dropdownTabs.forEach(d => d !== dropdownTab && d.classList.remove('active'));
-        dropdownTab.classList.toggle('active');
-      });
-    });
-
-    dropdownItems.forEach(item => {
-      item.addEventListener('click', (event) => {
-        event.stopPropagation();
-
-        const target = document.getElementById(item.getAttribute('data-target'));
-        if (target) {
-          contents.forEach(c => c.classList.remove('active'));
-          target.classList.add('active');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limite de Acompanhamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #e0e0e0;
+            background: rgba(0, 0, 0, 0.2);
         }
 
-        // Fechar todos os dropdowns ao selecionar uma subcategoria
-        dropdownTabs.forEach(d => d.classList.remove('active'));
-      });
-    });
+        h1 {
+            color: #58a6ff;
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    // Fechar dropdowns ao clicar fora
-    document.addEventListener('click', () => {
-      dropdownTabs.forEach(d => d.classList.remove('active'));
-    });
-  </script>
+        .container {
+            max-width: 800px;
+            width: 100%; /* Garante que o container se ajuste a telas pequenas */
+            margin: 0 auto;
+            text-align: left; /* Alinha o texto à esquerda */
+        }
+
+        @media (max-width: 768px) { /* Para telas menores, como celulares */
+            .container {
+                max-width: 95%; /* O container ocupará 95% da largura da tela */
+            }
+        }
+
+        .container {
+            max-width: 90%; /* O container ocupará até 90% da largura da tela */
+            width: 100%; /* Garante ajuste total em telas menores */
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .container img {
+            display: block;
+            margin: 0 auto 20px auto; /* Centraliza a imagem com espaçamento inferior */
+            width: 100%; /* Faz a imagem ocupar toda a largura do container */
+            max-width: 600px; /* Limita o tamanho máximo da imagem */
+        }
+
+        .container p {
+            margin: 10px 0;
+            line-height: 1.6; /* Aumenta o espaçamento entre linhas */
+            color: #c9d1d9;
+        }
+
+        .container strong {
+            color: #58a6ff; /* Destaca palavras importantes */
+        }
+
+        .rules {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .rules p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Limite de Acompanhamento</h1>
+
+    <div class="container">
+        <img src="https://imgur.com/3PGcLeg.png" alt="Imagem Informativa">
+        
+        <p><strong>1 Carro</strong> é permitido <strong>2 viaturas</strong> ou <strong>1 viatura</strong> e uma equipe de GAM (<strong>limite 2 motos</strong>);  
+        A partir de 2 ou mais veículos, já se encaixa na regra como está no fórum.</p>
+
+        <p><strong>Exemplo 1:</strong> Quando tem <strong>2 motos</strong> dando fuga, já entra na regra de 2 veículos, ou seja, <strong>2 motos</strong> são permitidas com <strong>3 viaturas</strong> e uma equipe GAM, e assim por diante.</p>
+
+        <p><strong>Exemplo 2:</strong> Caso tenha <strong>1 moto</strong> e <strong>1 carro</strong> dando fuga, também vai se encaixar na regra de <strong>2 veículos</strong> e será permitido <strong>3 viaturas</strong> e uma equipe GAM, e assim por diante.</p>
+
+        <div class="rules">
+            <p><strong>2 Veículos:</strong> é permitido <strong>3 viaturas</strong> e uma equipe de GAM (<strong>limite 2 motos</strong>);</p>
+            <p><strong>3 Veículos:</strong> é permitido <strong>4 viaturas</strong> e uma equipe de GAM (<strong>limite 2 motos</strong>);</p>
+            <p><strong>4 Veículos:</strong> é permitido <strong>5 viaturas</strong> e uma equipe de GAM (<strong>limite 2 motos</strong>);</p>
+            <p><strong>5 Veículos:</strong> é permitido <strong>6 viaturas</strong> e uma equipe de GAM (<strong>limite 2 motos</strong>).</p>
+        </div>
+
+        <p>Caso os policiais estejam em maior quantidade efetuando o acompanhamento de acordo com a quantidade de veículos, eles têm <strong>1 minuto</strong> para entender a quantidade e dar <strong>QTA</strong>.</p>
+
+        <p>Importante dizer que, se chegar um veículo novo durante a fuga e existe a intenção de descer do(s) veículo para atirar, deve-se esperar <strong>30 segundos</strong> dentro do visual da polícia para de fato descer e atirar. Isso vale para cada carro que venha entrar no campo de visão da polícia.</p>
+
+        <p>O policial que modular incorretamente, ocasionando a <strong>punição</strong> de outras pessoas por violação dessa regra, será <strong>responsabilizado</strong> e punido por sua <strong>falha</strong>.</p>
+		
+        <div class="rules">
+		<p><strong><h1>VEÍCULOS DE ACOMPANHAMENTO</h1></strong></p>
+        </div>
+		<p>
+  Quando estiverem em acompanhamento a um veículo e a equipe especializada em apreensão de veículos (<strong>DRFT</strong>) não estiver disponível, é importante permitir que o cidadão guarde o veículo em sua garagem antes de proceder com a detenção.
+</p>
+<p>
+  Em situações de acompanhamento envolvendo tiroteio (<strong>ação de Acompanhamento</strong>), é necessário acionar o guincho para apreender o veículo. Se não houver guincho disponível, o veículo pode permanecer no local. Ou seja, se houver uma ação de acompanhamento, um policial deve permanecer no local com o veículo até que o cidadão passe pelo <strong>raio-x</strong>. Caso o criminoso sobreviva, ele deve ser conduzido ao veículo para destrancá-lo, permitindo que seja levado à delegacia.
+</p>
+<p>
+  <strong>VEÍCULOS DE CÓDIGO 5</strong><br>
+  Para veículos de Código 5, a polícia pode permitir que permaneçam no local. Não é obrigatório para a polícia requisitar um guincho para a apreensão do veículo.
+</p>
+<p>
+  <strong>AÇÃO DE ACOMPANHAMENTO</strong><br>
+  Se uma ação começa com aquela velha abordagem e os bandidos decidem descer do carro em algum momento do acompanhamento, essa é uma ação de acompanhamento. E a ação de acompanhamento tem limite e não é <strong>Código 5</strong>.
+</p>
+<p>
+  <strong>CÓDIGO 5</strong><br>
+  O 'Código 5' é e deve ser empregado exclusivamente para solicitar reforços de todas as unidades disponíveis naquele momento. Ele não deve ser usado em situações de acompanhamento, seja dentro ou fora de veículos, nem em ações que já tenham regras de funcionamento específicas ou limite de quantidade definido.
+</p>
+<p>
+  <strong>CÓDIGO 5</strong> é aquela ação que acontece do nada, como um ataque ao departamento, como uma invasão ao presídio, como uma guerra entre bandidos no meio da praia e policiais precisaram intervir. Essas ações, não possuem limite de pessoas e sequer regras específicas, porque elas são extremamente aleatórias como uma consequência do roleplay.
+</p>
+
+    </div>
 </body>
 </html>
