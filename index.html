@@ -173,6 +173,7 @@
       event.stopPropagation();
       const target = document.getElementById(item.getAttribute('data-target'));
       if (target) {
+        // Remover a classe active de todas as abas antes de adicionar a classe na aba correta
         contents.forEach(c => c.classList.remove('active'));
         target.classList.add('active');
       }
