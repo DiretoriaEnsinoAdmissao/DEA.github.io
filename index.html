@@ -145,16 +145,31 @@
   const dropdownTabs = document.querySelectorAll('.tab-dropdown');
   const contents = document.querySelectorAll('.content');
   const dropdownItems = document.querySelectorAll('.dropdown .tab');
+  const iframe = document.querySelector('iframe');  // Pega o iframe único na página
 
   // Ativação de abas
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
+      // Remove o estilo de aba ativa de todas as abas
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       contents.forEach(c => c.classList.remove('active'));
 
       tab.classList.add('active');
       const target = document.getElementById(tab.getAttribute('data-target'));
       if (target) target.classList.add('active');
+
+      // Altera o conteúdo do iframe de acordo com a aba
+      if (tab.getAttribute('data-target') === 'tab1') {
+        iframe.src = 'hierarquia.html';
+      } else if (tab.getAttribute('data-target') === 'tab2') {
+        iframe.src = 'mercadoria.html';
+      } else if (tab.getAttribute('data-target') === 'tab3') {
+        iframe.src = 'revisão.html';
+      } else if (tab.getAttribute('data-target') === 'tab4') {
+        iframe.src = 'limite.html';  // Aqui o conteúdo do 'Limite'
+      } else if (tab.getAttribute('data-target') === 'tab5') {
+        iframe.src = 'horas.html';
+      }
     });
   });
 
@@ -173,7 +188,6 @@
       event.stopPropagation();
       const target = document.getElementById(item.getAttribute('data-target'));
       if (target) {
-        // Remover a classe active de todas as abas antes de adicionar a classe na aba correta
         contents.forEach(c => c.classList.remove('active'));
         target.classList.add('active');
       }
@@ -181,5 +195,6 @@
     });
   });
 </script>
+
 </body>
 </html>
