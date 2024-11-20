@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vídeos Motivacionais</title>
+  <style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  text-align: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  color: #4fa2f2;
+}
+
+#videoContainer {
+  display: flex;
+  flex-wrap: wrap;  /* Permite a quebra de linha */
+  justify-content: center; /* Alinha os vídeos ao centro */
+  gap: 20px;  /* Espaçamento entre os vídeos */
+  max-width: 1200px; /* Limita o tamanho máximo do container */
+  margin: 0 auto; /* Centraliza o container */
+}
+
+.videoItem {
+  width: 30%;  /* Define a largura de cada vídeo */
+  background-color: transparent;  /* Remove o fundo da div */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+}
+
+.videoItem iframe {
+  width: 100%;
+  height: 250px;
+  border: none;  /* Remove a borda do iframe */
+  border-radius: 0;  /* Remove a borda arredondada do iframe */
+  background: transparent;  /* Remove qualquer fundo do iframe */
+}
+
+
+  </style>
+</head>
+<body>
+  <h1>Vídeos Motivacionais</h1>
+  <div id="videoContainer"></div>
+
+  <script>
+    async function obterVideos() {
+      const url = 'https://script.google.com/macros/s/AKfycbxguj_-TRj1pc86mbx1siM8QWa7vCvpjmGQOHraeKCDqU7JG4DYG1Kt2DAddrIvjlDKLw/exec';
+      
+      try {
+        const resposta = await fetch(url);
+        const dados = await resposta.json();
+
+        const videoContainer = document.getElementById("videoContainer");
+
+        if (dados.length === 0) {
+          videoContainer.innerHTML = "<p>Nenhum vídeo encontrado.</p>";
+          return;
+        }
+
+        // Percorre os dados recebidos da planilha
+        dados.forEach((item) => {
+          const videoItem = document.createElement("div");
+          videoItem.classList.add("videoItem");
+
+          // Adiciona o vídeo dentro de um iframe
+          const iframe = document.createElement("iframe");
+          iframe.src = item.videoLink;
+          iframe.allow = "fullscreen";
+
+          // Adiciona o iframe à div do vídeo
+          videoItem.appendChild(iframe);
+
+          // Adiciona a div ao container de vídeos
+          videoContainer.appendChild(videoItem);
+        });
+        
+      } catch (error) {
+        console.error("Erro ao carregar vídeos:", error);
+        document.getElementById("videoContainer").innerHTML = "<p>Erro ao carregar os vídeos.</p>";
+      }
+    }
+
+    obterVideos();  // Chama a função ao carregar a página
+  </script>
+</body>
+</html>
