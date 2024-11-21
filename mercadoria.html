@@ -4,187 +4,141 @@
     <meta charset="UTF-8">
 	<meta http-equiv="Content-Language" content="pt-BR">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Procedimentos operacionais da Polícia Militar para abordagem de veículos e fiscalização de trânsito.">
-    <meta name="keywords" content="abordagem policial, fiscalização, DRP, Polícia Militar, procedimentos operacionais">
+    <meta name="description" content="Mercadorias ilegais da cidade.">
+    <meta name="keywords" content="Mercadorias ilegais da cidade.">
     <meta name="author" content="Wellinton Jose - 25347">
     <title>Mercadorias</title>
-<style>
-  /* Estilos para o corpo */
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    text-align: center;
-    color: #e0e0e0;
-  }
+    <!-- Link para o Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Estilos para o corpo */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+            color: #e0e0e0;
+			background-color: transparent;
+        }
 
-  h1 {
-    text-align: center;
-    color: #58a6ff; /* Azul vibrante */
-    margin-bottom: 10px;
-    font-size: 28px;
-  }
+        h1 {
+            text-align: center;
+            color: #58a6ff; /* Azul vibrante */
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
 
-  #search-container {
+#search-container {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 15px;
-  }
+}
 
-  #search-input {
+#search-input {
     padding: 10px;
     font-size: 15px;
     border: 1px solid #30363d; /* Borda cinza escuro */
     border-radius: 5px;
     height: 30px;
-    background-color: #161b22; /* Verde para botão */
-    color: #c9d1d9; /* Texto em cinza claro */
-  }
+    color: #FFFFFF; /* Texto branco para maior contraste */
+    background-color: #30363d; /* Fundo sem opacidade, cor sólida */
+}
 
-  #search-button {
+#search-button {
     margin-left: 10px;
     padding: 5px 15px;
     font-size: 15px;
     border: none;
-    background-color: #161b22; /* Verde para botão */
-    color: white;
+    color: #FFFFFF; /* Texto do botão branco para maior contraste */
+    background-color: #30363d; /* Fundo sólido */
     border-radius: 15px;
     cursor: pointer;
     height: 42px;
-  }
+}
 
-  #search-button:hover {
+#search-button:hover {
     background-color: #161b22; /* Verde para botão */
-  }
+}
 
-  .item-container {
-    width: 90%;
-    max-width: 1000px;
-    min-width: 300px;
-    margin: 20px auto;
-    padding: 15px;
-    background-color: transparent;
-    border-radius: 8px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
 
-  .item-container img {
-    width: 100px;
-    margin-bottom: 10px;
-  }
 
-  .item-container h3 {
-    color: #58a6ff; /* Azul vibrante */
-    margin: 10px 0;
-    font-size: 22px;
-  }
 
-  .item-container p {
-    margin: 5px 0;
-    padding: 0;
-    text-align: left;
-    width: 100%;
-    color: #8b949e; /* Cinza intermediário */
-  }
+        .item-container {
+            width: 90%;
+            max-width: 1000px;
+            min-width: 300px;
+            margin: 20px auto;
+            padding: 15px;
+            background-color: transparent;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-  /* Estilos para o carregamento */
-  #loading-container {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  }
+        .item-container img {
+            width: 100px;
+            margin-bottom: 10px;
+        }
 
-  #loading-container img {
-    width: 150px;
-    margin-bottom: 10px;
-  }
+        .item-container h3 {
+            color: #58a6ff; /* Azul vibrante */
+            margin: 10px 0;
+            font-size: 22px;
+        }
 
-  #loading-container p {
-    font-size: 20px;
-    color: #c9d1d9; /* Cinza claro */
-    animation: pulsar 1s infinite;
-  }
+        .item-container p {
+            margin: 5px 0;
+            padding: 0;
+            text-align: left;
+            width: 100%;
+            color: #8b949e; /* Cinza intermediário */
+        }
 
-  @keyframes pulsar {
-    0% { opacity: 0.5; }
-    50% { opacity: 1; }
-    100% { opacity: 0.5; }
-  }
+        /* Estilos para o carregamento */
+        #loading-container {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
 
-  /* Estilos para o container */
-  .container {
-    max-width: 800px;
-    width: 100%; /* Garante que o container se ajuste a telas pequenas */
-    margin: 0 auto;
-    text-align: left;
-  }
+        #loading-container img {
+            width: 150px;
+            margin-bottom: 10px;
+        }
 
-  /* Para telas menores que 768px */
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 24px;
-    }
+        #loading-container p {
+            font-size: 20px;
+            color: #c9d1d9; /* Cinza claro */
+            animation: pulsar 1s infinite;
+        }
 
-    .container {
-      max-width: 95%;
-      padding: 5px;
-    }
+        @keyframes pulsar {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
 
-    .container img {
-      width: 100%;
-      max-width: none;
-    }
-
-    .container p {
-      font-size: 14px;
-    }
-
-    /* Adiciona responsividade ao item-container */
-    .item-container {
-      width: 80%;
-    }
-  }
-
-  /* Para telas menores que 480px */
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 20px;
-    }
-
-    .container p {
-      font-size: 12px;
-    }
-
-    .item-container {
-      width: 100%; /* Garante que o container ocupe toda a largura */
-    }
-
-    #search-input {
-      font-size: 14px; /* Ajuste do tamanho da fonte para telas menores */
-      height: 28px;
-    }
-
-    #search-button {
-      font-size: 14px; /* Ajuste do tamanho da fonte para telas menores */
-      height: 36px;
-    }
-  }
-</style>
-
+        /* Estilos para o container */
+        .container {
+            max-width: 800px;
+            width: 100%; /* Garante que o container se ajuste a telas pequenas */
+            margin: 0 auto;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
     <h1>Mercadorias</h1>
 
     <div id="search-container">
-        <input type="text" id="search-input" placeholder="Digite o nome do item">
-        <button id="search-button">🔍</button>
+        <input type="text" id="search-input" class="form-control" placeholder="Digite o nome do item" style="width: 25%;">
+        <button id="search-button" class="btn btn-primary">🔍</button>
     </div>
 
     <div id="loading-container">
@@ -192,8 +146,10 @@
         <p>Carregando...</p>
     </div>
 
-    <div id="items-list"></div>
+    <div id="items-list" class="container"></div>
 
+    <!-- Script do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         const itemsList = document.getElementById('items-list');
         const loadingContainer = document.getElementById('loading-container');
