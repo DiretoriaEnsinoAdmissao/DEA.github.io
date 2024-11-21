@@ -4,130 +4,99 @@
     <meta charset="UTF-8">
     <meta http-equiv="Content-Language" content="pt-BR">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Procedimentos operacionais da Polícia Militar para abordagem de veículos e fiscalização de trânsito.">
-    <meta name="keywords" content="abordagem policial, fiscalização, DRP, Polícia Militar, procedimentos operacionais">
+    <meta name="description" content="Inicio - DEA">
+    <meta name="keywords" content="Inicio - DEA">
     <meta name="author" content="Wellinton Jose - 25347">
     <title>Vídeos Motivacionais</title>
+    <!-- Link do CSS do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
-  text-align: center;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.2);
-  margin: 0; /* Remove margens externas */
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            margin: 0; /* Remove margens externas */
+        }
 
-h1 {
-  color: #4fa2f2;
-  margin-bottom: 20px; /* Espaçamento abaixo do título */
-}
+        h1 {
+            color: #4fa2f2;
+            margin-bottom: 20px; /* Espaçamento abaixo do título */
+        }
 
-#videoContainer {
-  display: flex;
-  flex-wrap: wrap; /* Permite a quebra de linha */
-  justify-content: center; /* Alinha os vídeos ao centro */
-  gap: 20px; /* Espaçamento entre os vídeos */
-  max-width: 1200px; /* Limita o tamanho máximo do container */
-  margin: 0 auto; /* Centraliza o container */
-  padding: 10px; /* Adiciona espaçamento interno */
-}
+        .videoItem {
+            background-color: transparent; /* Remove o fundo da div */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            transition: transform 0.3s ease; /* Efeito de hover */
+        }
 
-.videoItem {
-  width: 30%; /* Define a largura de cada vídeo */
-  background-color: transparent; /* Remove o fundo da div */
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  transition: transform 0.3s ease; /* Efeito de hover */
-}
+        .videoItem:hover {
+            transform: scale(1.05); /* Leve aumento ao passar o mouse */
+        }
 
-.videoItem:hover {
-  transform: scale(1.05); /* Leve aumento ao passar o mouse */
-}
-
-.videoItem iframe {
-  width: 100%;
-  height: 250px;
-  border: none; /* Remove a borda do iframe */
-  border-radius: 0; /* Remove a borda arredondada do iframe */
-  background: transparent; /* Remove qualquer fundo do iframe */
-}
-
-/* Para telas menores que 768px */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 24px;
-    }
-
-    .videoItem {
-        width: 45%; /* Apenas dois vídeos por linha em tablets */
-    }
-
-    iframe {
-        height: 200px; /* Ajusta a altura do iframe */
-    }
-}
-
-/* Para telas menores que 480px */
-@media (max-width: 480px) {
-    h1 {
-        font-size: 20px;
-    }
-
-    .videoItem {
-        width: 100%; /* Apenas um vídeo por linha em celulares */
-    }
-
-    iframe {
-        height: 180px; /* Ajusta a altura do iframe */
-    }
-}
+        .videoItem iframe {
+            width: 100%;
+            height: 250px;
+            border: none; /* Remove a borda do iframe */
+            background: transparent; /* Remove qualquer fundo do iframe */
+        }
     </style>
 </head>
 <body>
-  <h1>Vídeos Motivacionais</h1>
-  <div id="videoContainer"></div>
+    <div class="container">
+        <h1>Vídeos Motivacionais</h1>
+        <div id="videoContainer" class="row justify-content-center gy-4"></div>
+    </div>
 
-  <script>
-    async function obterVideos() {
-      const url = 'https://script.google.com/macros/s/AKfycbxguj_-TRj1pc86mbx1siM8QWa7vCvpjmGQOHraeKCDqU7JG4DYG1Kt2DAddrIvjlDKLw/exec';
-      
-      try {
-        const resposta = await fetch(url);
-        const dados = await resposta.json();
+    <!-- Script do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-        const videoContainer = document.getElementById("videoContainer");
+    <script>
+        async function obterVideos() {
+            const url = 'https://script.google.com/macros/s/AKfycbxguj_-TRj1pc86mbx1siM8QWa7vCvpjmGQOHraeKCDqU7JG4DYG1Kt2DAddrIvjlDKLw/exec';
+            
+            try {
+                const resposta = await fetch(url);
+                const dados = await resposta.json();
 
-        if (dados.length === 0) {
-          videoContainer.innerHTML = "<p>Nenhum vídeo encontrado.</p>";
-          return;
+                const videoContainer = document.getElementById("videoContainer");
+
+                if (dados.length === 0) {
+                    videoContainer.innerHTML = "<p>Nenhum vídeo encontrado.</p>";
+                    return;
+                }
+
+                // Percorre os dados recebidos da planilha
+                dados.forEach((item) => {
+                    const colDiv = document.createElement("div");
+                    colDiv.classList.add("col-12", "col-sm-6", "col-lg-4");
+
+                    const videoItem = document.createElement("div");
+                    videoItem.classList.add("videoItem");
+
+                    // Adiciona o vídeo dentro de um iframe
+                    const iframe = document.createElement("iframe");
+                    iframe.src = item.videoLink;
+                    iframe.allow = "fullscreen";
+
+                    // Adiciona o iframe à div do vídeo
+                    videoItem.appendChild(iframe);
+                    colDiv.appendChild(videoItem);
+
+                    // Adiciona a div ao container de vídeos
+                    videoContainer.appendChild(colDiv);
+                });
+                
+            } catch (error) {
+                console.error("Erro ao carregar vídeos:", error);
+                document.getElementById("videoContainer").innerHTML = "<p>Erro ao carregar os vídeos.</p>";
+            }
         }
 
-        // Percorre os dados recebidos da planilha
-        dados.forEach((item) => {
-          const videoItem = document.createElement("div");
-          videoItem.classList.add("videoItem");
-
-          // Adiciona o vídeo dentro de um iframe
-          const iframe = document.createElement("iframe");
-          iframe.src = item.videoLink;
-          iframe.allow = "fullscreen";
-
-          // Adiciona o iframe à div do vídeo
-          videoItem.appendChild(iframe);
-
-          // Adiciona a div ao container de vídeos
-          videoContainer.appendChild(videoItem);
-        });
-        
-      } catch (error) {
-        console.error("Erro ao carregar vídeos:", error);
-        document.getElementById("videoContainer").innerHTML = "<p>Erro ao carregar os vídeos.</p>";
-      }
-    }
-
-    obterVideos();  // Chama a função ao carregar a página
-  </script>
+        obterVideos();  // Chama a função ao carregar a página
+    </script>
 </body>
 </html>
