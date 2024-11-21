@@ -8,83 +8,104 @@
     <meta name="keywords" content="abordagem policial, fiscalização, DRP, Polícia Militar, procedimentos operacionais">
     <meta name="author" content="Wellinton Jose - 25347">
     <title>Limite de Acompanhamento</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            color: #e0e0e0;
-            background: rgba(0, 0, 0, 0.2);
-        }
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    color: #e0e0e0;
+    background: rgba(0, 0, 0, 0.2);
+}
 
-        h1 {
-            color: #58a6ff;
-            font-size: 28px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
+h1 {
+    color: #58a6ff;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-        .container {
-            max-width: 800px;
-            width: 100%; /* Garante que o container se ajuste a telas pequenas */
-            margin: 0 auto;
-            text-align: left; /* Alinha o texto à esquerda */
-        }
-        .observacao {
-            font-weight: bold;
-            color: #ffeb3b !important;
-            display: block;
-            margin-bottom: 4px;
-            font-size: 15px;
-        }
+.container {
+    max-width: 800px;
+    width: 100%; /* Garante que o container se ajuste a telas pequenas */
+    margin: 0 auto;
+    text-align: left; /* Alinha o texto à esquerda */
+}
 
-        .observacao-texto {
-            display: block;
-            margin-bottom: 4px;
-			color: #c9d1d9; /* Cor do texto - troque essa cor */
-            font-size: 14px;
-        }
+.observacao {
+    font-weight: bold;
+    color: #ffeb3b !important;
+    display: block;
+    margin-bottom: 4px;
+    font-size: 15px;
+}
 
-        @media (max-width: 768px) { /* Para telas menores, como celulares */
-            .container {
-                max-width: 95%; /* O container ocupará 95% da largura da tela */
-            }
-        }
+.observacao-texto {
+    display: block;
+    margin-bottom: 4px;
+    color: #c9d1d9; /* Cor do texto - troque essa cor */
+    font-size: 14px;
+}
 
-        .container {
-            max-width: 90%; /* O container ocupará até 90% da largura da tela */
-            width: 100%; /* Garante ajuste total em telas menores */
-            margin: 0 auto;
-            text-align: left;
-        }
+/* Media Queries */
+@media (max-width: 768px) { /* Para telas menores, como celulares */
+    .container {
+        max-width: 95%; /* O container ocupará 95% da largura da tela */
+    }
+}
 
-        .container img {
-            display: block;
-            margin: 0 auto 20px auto; /* Centraliza a imagem com espaçamento inferior */
-            width: 100%; /* Faz a imagem ocupar toda a largura do container */
-            max-width: 600px; /* Limita o tamanho máximo da imagem */
-        }
+@media (max-width: 480px) { /* Para telas ainda menores */
+    .container {
+        max-width: 100%; /* O container ocupará 100% da largura da tela */
+    }
 
-        .container p {
-            margin: 10px 0;
-            line-height: 1.6; /* Aumenta o espaçamento entre linhas */
-            color: #c9d1d9;
-        }
+    h1 {
+        font-size: 24px; /* Reduz o tamanho do título */
+    }
 
-        .container strong {
-            color: #58a6ff; /* Destaca palavras importantes */
-        }
+    .observacao {
+        font-size: 13px; /* Ajusta o tamanho da observação */
+    }
 
-        .rules {
-            margin-top: 20px;
-            padding: 10px;
-            border-radius: 8px;
-        }
+    .observacao-texto {
+        font-size: 12px; /* Ajusta o tamanho do texto de observação */
+    }
+}
 
-        .rules p {
-            margin: 5px 0;
-        }
-    </style>
+.container {
+    max-width: 90%; /* O container ocupará até 90% da largura da tela */
+    width: 100%; /* Garante ajuste total em telas menores */
+    margin: 0 auto;
+    text-align: left;
+}
+
+.container img {
+    display: block;
+    margin: 0 auto 20px auto; /* Centraliza a imagem com espaçamento inferior */
+    width: 100%; /* Faz a imagem ocupar toda a largura do container */
+    max-width: 600px; /* Limita o tamanho máximo da imagem */
+}
+
+.container p {
+    margin: 10px 0;
+    line-height: 1.6; /* Aumenta o espaçamento entre linhas */
+    color: #c9d1d9;
+}
+
+.container strong {
+    color: #58a6ff; /* Destaca palavras importantes */
+}
+
+.rules {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.rules p {
+    margin: 5px 0;
+}
+</style>
+
 </head>
 <body>
     <h1>Limite de Acompanhamento</h1>
