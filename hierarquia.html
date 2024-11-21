@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
 	<meta http-equiv="Content-Language" content="pt-BR">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Procedimentos operacionais da Polícia Militar para abordagem de veículos e fiscalização de trânsito.">
-    <meta name="keywords" content="abordagem policial, fiscalização, DRP, Polícia Militar, procedimentos operacionais">
+    <meta name="description" content="Procedimentos de Hierarquia e Função dentro da Diretoria de Ensino e Admissão">
+    <meta name="keywords" content="Procedimentos de Hierarquia e Função dentro da Diretoria de Ensino e Admissão">
     <meta name="author" content="Wellinton Jose - 25347">
   <title>Hierarquia Diretoria de Ensino e Admissão</title>
 <style>
@@ -96,8 +96,8 @@ h1 {
 
 #toggle-button {
     position: absolute;
-    top: 20px;  /* Altere conforme necessário para ajustar a altura */
-    left: 50px;  /* Coloca o botão no lado esquerdo da tela */
+    top: 20px;  /* Ajuste conforme necessário */
+    left: 50px;  /* Posição lateral do botão */
     padding: 10px 20px;
     font-size: 16px;
     background-color: #58a6ff;
@@ -114,22 +114,23 @@ h1 {
     display: none;
     opacity: 0;
     visibility: hidden;
-    background-color: rgba(32, 32, 32, 0.4);  /* Corrigido a cor */
+    background-color: rgba(32, 32, 32, 0.4); 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
     text-align: center;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease;
     width: 300px;
     max-width: 90%;
-    top: 60px;  /* Ajusta a posição para ficar abaixo do botão */
-    left: 50px;  /* Alinha ao lado direito, igual ao botão */
+    top: 60px;  /* Ajusta posição abaixo do botão */
+    left: 50px;
 }
 
 #extra-info.visible {
     display: block;
     opacity: 1;
     visibility: visible;
+    margin-bottom: 20px; /* Adiciona espaço extra */
 }
 
 #extra-info p {
@@ -159,33 +160,30 @@ h1 {
 
 /* Para telas menores que 768px */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 24px;
+    #extra-info {
+        position: relative;
+        width: 90%;
+        margin: 20px auto;
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease;
     }
 
-    .container {
-        max-width: 95%;
-        padding: 5px;
+    #extra-info.visible {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        margin-bottom: 20px;
     }
 
-    .container img {
-        width: 100%;
-        max-width: none;
-    }
-
-    .container p {
-        font-size: 14px;
+    #hierarquia {
+        margin-top: 20px;
     }
 
     #toggle-button {
-        left: 20px;  /* Ajusta o botão para ficar mais distante das bordas */
+        left: 20px;
         top: 20px;
-    }
-
-    #extra-info {
-        width: 90%;  /* Ajusta a largura para telas menores */
-        left: 5%;    /* Centraliza o extra-info */
-        top: 80px;   /* Ajusta a posição para evitar sobreposição */
     }
 }
 
@@ -200,17 +198,16 @@ h1 {
     }
 
     #toggle-button {
-        left: 10px;  /* Ajusta o botão mais para a esquerda */
+        left: 10px;
         top: 20px;
     }
 
     #extra-info {
-        width: 95%;  /* Torna o extra-info maior em telas muito pequenas */
-        left: 2.5%;  /* Centraliza o extra-info */
-        top: 80px;   /* Ajusta a posição para não ficar em cima de outros conteúdos */
+        width: 95%;
+        left: 2.5%;
+        top: 80px;
     }
 }
-
 
 @keyframes piscar {
     0% { opacity: 1; }
@@ -221,6 +218,7 @@ h1 {
 .piscando {
     animation: piscar 1s infinite;
 }
+
 </style>
 
 </head>
@@ -346,19 +344,21 @@ h1 {
     obterDadosPlanilha();
 
     // Função para alternar a exibição de informações extras
-    const toggleButton = document.getElementById('toggle-button');
-    const extraInfo = document.getElementById('extra-info');
+const toggleButton = document.getElementById("toggle-button");
+const extraInfo = document.getElementById("extra-info");
 
-    toggleButton.addEventListener('click', () => {
-      const isVisible = extraInfo.classList.contains('visible');
-      if (isVisible) {
-        extraInfo.classList.remove('visible');
-        toggleButton.textContent = 'Fardamento D.E.A';
-      } else {
-        extraInfo.classList.add('visible');
-        toggleButton.textContent = 'Ocultar Informações';
-      }
-    });
+toggleButton.addEventListener("click", () => {
+    // Alterna a visibilidade das informações extras
+    extraInfo.classList.toggle("visible");
+
+    // Altera o texto do botão dependendo do estado de visibilidade
+    if (extraInfo.classList.contains("visible")) {
+        toggleButton.textContent = 'X'; // Exibe o texto para ocultar
+    } else {
+        toggleButton.textContent = 'Fardamento D.E.A'; // Exibe o texto para mostrar
+    }
+});
+
   </script>
 </body>
 </html>
