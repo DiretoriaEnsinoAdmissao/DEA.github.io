@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
 	<meta http-equiv="Content-Language" content="pt-BR">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Procedimentos operacionais da Polícia Militar para abordagem de veículos e fiscalização de trânsito.">
-    <meta name="keywords" content="abordagem policial, fiscalização, DRP, Polícia Militar, procedimentos operacionais">
+    <meta name="description" content="Procedimentos para realizar revisões de bens.">
+    <meta name="keywords" content="Procedimentos para realizar revisões de bens.">
     <meta name="author" content="Wellinton Jose - 25347">
     <title>Parâmetros de revisão</title>
 <style>
@@ -153,7 +153,7 @@
 </head>
 <body>
     <h1>Parâmetros de revisão</h1>
-    <button id="toggle-button">Regras de Resgate</button>
+    <button id="toggle-button">+</button>
 
 <div id="extra-info">
     <h2>Regras de Resgate</h2>
@@ -186,10 +186,10 @@
     const isVisible = extraInfo.classList.contains('visible');
     if (isVisible) {
         extraInfo.classList.remove('visible');
-        toggleButton.textContent = 'Regras de Resgate';
+        toggleButton.textContent = '+';
     } else {
         extraInfo.classList.add('visible');
-        toggleButton.textContent = 'Ocultar Informações';
+        toggleButton.textContent = 'X';
     }
 });
 
