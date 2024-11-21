@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Language" content="pt-BR">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Procedimentos operacionais da Polícia Militar para abordagem de veículos e fiscalização de trânsito.">
+    <meta name="keywords" content="abordagem policial, fiscalização, DRP, Polícia Militar, procedimentos operacionais">
+    <meta name="author" content="Wellinton Jose - 25347">
   <title>Diretoria de Ensino e Admissão</title>
   <link rel="icon" href="https://i.ibb.co/Y0vjshh/ICON-DISCORD.png" type="image/png">
   <style>
@@ -31,11 +35,37 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
     }
 
-    @media (max-width: 768px) {
-      .container {
-        max-width: 95%;
-      }
+/* Para telas menores que 768px */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
     }
+
+    .container {
+        max-width: 95%;
+        padding: 5px;
+    }
+
+    .container img {
+        width: 100%;
+        max-width: none;
+    }
+
+    .container p {
+        font-size: 14px;
+    }
+}
+
+/* Para telas menores que 480px */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .container p {
+        font-size: 12px;
+    }
+}
 
     .tabs {
       display: flex;
@@ -135,7 +165,7 @@
       <div class="tab tab-dropdown calculadoraTab" role="tab" aria-label="Calculadora">
         Calculadora
         <div class="dropdown">
-          <div class="tab" data-target="tab7" role="tab">Hora C.F.S.D</div>
+          <div class="tab" data-target="tab7" role="tab">Horas C.F.S.D</div>
           <div class="tab" data-target="tab8" role="tab">Hora D.P.D</div>
         </div>
       </div>
@@ -164,7 +194,7 @@
     </div>
     <!-- Nova seção para a Calculadora -->
     <div class="content" id="tab7">
-      <iframe src="horas.html" title="Hora C.F.S.D"></iframe>
+      <iframe src="horas.html" title="Horas C.F.S.D"></iframe>
     </div>
     <div class="content" id="tab8">
       <iframe src="horaD.P.D.html" title="Hora D.P.D"></iframe>
