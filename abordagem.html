@@ -106,15 +106,37 @@
             }
         }
 
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 20px;
-            }
+/* Para telas menores que 768px */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+    }
 
-            .container p {
-                font-size: 12px;
-            }
-        }
+    .container {
+        max-width: 95%;
+        padding: 5px;
+    }
+
+    .container img {
+        width: 100%;
+        max-width: none;
+    }
+
+    .container p {
+        font-size: 14px;
+    }
+}
+
+/* Para telas menores que 480px */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .container p {
+        font-size: 12px;
+    }
+}
 		
     </style>
 </head>
