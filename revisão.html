@@ -24,17 +24,17 @@
             padding: 15px;
             background-color: transparent;
             border-radius: 8px;
-            text-align: left; /* Texto alinhado à esquerda */
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); /* Sombra sutil */
+            text-align: left;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
             display: flex;
-            align-items: center; /* Alinha a imagem e o texto verticalmente */
+            align-items: center;
             gap: 15px;
             width: 90%;
             max-width: 600px;
         }
 
         .item-container img {
-            width: 80px;  /* Ajuste o tamanho da imagem (ícone) */
+            width: 80px;
             height: auto;
             border-radius: 15px;
         }
@@ -44,43 +44,113 @@
         }
 
         .item-container h3 {
-            color: #58a6ff; /* Azul vibrante */
+            color: #58a6ff;
             margin: 0;
         }
 
         .item-container p {
-            color: #c9d1d9; /* Cinza claro */
+            color: #c9d1d9;
             margin: 5px 0;
         }
 
-        .container {
-            max-width: 800px;
-            width: 100%; /* Garante que o container se ajuste a telas pequenas */
-            margin: 0 auto;
-            text-align: left;
+        #toggle-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #58a6ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
         }
 
-        @media (max-width: 768px) { /* Para telas menores, como celulares */
-            .container {
-                max-width: 95%; /* O container ocupará 95% da largura da tela */
-            }
+        #toggle-button:hover {
+            background-color: #4591dd;
         }
 
-        .container {
-            max-width: 90%; /* O container ocupará até 90% da largura da tela */
-            width: 100%; /* Garante ajuste total em telas menores */
-            margin: 0 auto;
-            text-align: left;
+#extra-info {
+    display: none; /* Oculta por padrão */
+    opacity: 0;    /* Inicia invisível */
+    visibility: hidden; /* Torna invisível e sem ocupar espaço */
+    background-color: #202020;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+#extra-info.visible {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+        #extra-info p {
+            margin: 10px 0; /* Maior espaçamento entre parágrafos */
+            color: #c9d1d9;
+            line-height: 1.5; /* Deixa o texto mais espaçado e legível */
         }
+
+        #extra-info p strong {
+            font-weight: bold;
+            color: #e0e0e0;
+            display: inline; /* Impede quebras de linha indesejadas */
+        }
+
+        #extra-info .info {
+            margin-left: 20px; /* Recuo para o texto explicativo */
+            text-indent: -10px; /* Identação negativa para alinhar texto explicativo */
+        }
+
     </style>
 </head>
 <body>
     <h1>Parâmetros de revisão</h1>
+    <button id="toggle-button">Regras de Resgate</button>
+
+<div id="extra-info">
+    <h2>Regras de Resgate</h2>
+
+    <p><strong>1. Participantes:</strong></p>
+    <p class="info">Permitido até <strong>8 bandidos</strong>, no mínimo <strong>2 policiais</strong> e no máximo <strong>16 policiais</strong>.</p>
+	
+    <p><strong>2. Restrições de Comunicação e Apoio:</strong></p>
+    <p class="info">Não será permitido solicitar apoio na central (<strong>APOIO</strong>).</p>
+    <p class="info">Será permitido o envolvimento de terceiros apenas para obtenção de informações.</p>
+
+    <p><strong>3. Locais e momentos para o resgate:</strong></p>
+    <p class="info">O resgate não poderá ser iniciado na região do departamento policial.</p>
+    <p class="info">O resgate deve começar durante o trajeto até a prisão; caso a van chegue à prisão sem que a ação tenha sido iniciada, o resgate não poderá ocorrer.</p>
+    <p class="info">Não será permitido acampar nas proximidades do presídio.</p>
+
+    <p><strong>4. Revisão de Bens:</strong> Os policiais só farão a revisão de bens ao chegarem na prisão, permitindo que o resgate seja executado até esse momento para evitar perdas e tempo de encarceramento.</p>
+</div>
+
 
     <div id="items-list"></div>
 
     <script>
         const itemsList = document.getElementById('items-list');
+        const toggleButton = document.getElementById('toggle-button');
+        const extraInfo = document.getElementById('extra-info');
+
+        toggleButton.addEventListener('click', () => {
+    const isVisible = extraInfo.classList.contains('visible');
+    if (isVisible) {
+        extraInfo.classList.remove('visible');
+        toggleButton.textContent = 'Regras de Resgate';
+    } else {
+        extraInfo.classList.add('visible');
+        toggleButton.textContent = 'Ocultar Informações';
+    }
+});
+
 
         async function loadItems() {
             try {
@@ -101,19 +171,16 @@
                 itemsList.innerHTML = items.map(item => {
                     let quantia = item.minima;
 
-                    // Verifica se o valor de 'item.minima' é numérico e maior que 0
                     if (!isNaN(quantia) && quantia > 0) {
-                        // Verifica se o número é maior que 1.000 e aplica o formato R$
-                        if (quantia >= 1000) {
-                            quantia = `R$ ${quantia.toLocaleString()} Notas Marcadas.`;
-                        } else {
-                            quantia = quantia === 1 ? `${quantia} unidade.` : `${quantia} unidades.`;  // Se for 1, coloca "unidade", senão "unidades"
-                        }
+                        quantia = quantia >= 1000 
+                            ? `R$ ${quantia.toLocaleString()} Notas Marcadas.` 
+                            : quantia === 1 
+                                ? `${quantia} unidade.` 
+                                : `${quantia} unidades.`;
                     } else if (typeof quantia === 'string' && quantia.trim() !== '') {
-                        // Se 'item.minima' for uma string não vazia (como "4 armas ou 60 peças de arma"), mantemos o texto original
                         quantia = `${quantia}.`;
                     } else {
-                        quantia = 'Não especificado.';  // Exibe "Não especificado" quando não há valor válido
+                        quantia = 'Não especificado.';
                     }
 
                     return `
