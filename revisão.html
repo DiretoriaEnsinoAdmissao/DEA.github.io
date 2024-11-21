@@ -8,125 +8,148 @@
     <meta name="keywords" content="abordagem policial, fiscalização, DRP, Polícia Militar, procedimentos operacionais">
     <meta name="author" content="Wellinton Jose - 25347">
     <title>Parâmetros de revisão</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            text-align: center;
-            color: #e0e0e0;
-        }
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        color: #e0e0e0;
+    }
 
-        h1 {
-            color: #58a6ff; /* Azul vibrante */
-            margin-bottom: 10px;
-            font-size: 28px;
+    h1 {
+        color: #58a6ff; /* Azul vibrante */
+        margin-bottom: 10px;
+        font-size: 28px;
+    }
+
+    #items-list .item-container {
+        margin: 20px auto;
+        padding: 15px;
+        background-color: transparent;
+        border-radius: 8px;
+        text-align: left;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        width: 90%;
+        max-width: 600px;
+    }
+
+    .item-container img {
+        width: 80px;
+        height: auto;
+        border-radius: 15px;
+    }
+
+    .item-container .item-details {
+        flex-grow: 1;
+    }
+
+    .item-container h3 {
+        color: #58a6ff;
+        margin: 0;
+    }
+
+    .item-container p {
+        color: #c9d1d9;
+        margin: 5px 0;
+    }
+
+    #toggle-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #58a6ff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    #toggle-button:hover {
+        background-color: #4591dd;
+    }
+
+    #extra-info {
+        display: none; /* Oculta por padrão */
+        opacity: 0;    /* Inicia invisível */
+        visibility: hidden; /* Torna invisível e sem ocupar espaço */
+        background-color: #202020;
+        padding: 20px;
+        border-radius: 8px;
+        margin-top: 20px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        text-align: left;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    #extra-info.visible {
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    #extra-info p {
+        margin: 10px 0; /* Maior espaçamento entre parágrafos */
+        color: #c9d1d9;
+        line-height: 1.5; /* Deixa o texto mais espaçado e legível */
+    }
+
+    #extra-info p strong {
+        font-weight: bold;
+        color: #e0e0e0;
+        display: inline; /* Impede quebras de linha indesejadas */
+    }
+
+    #extra-info .info {
+        margin-left: 20px; /* Recuo para o texto explicativo */
+        text-indent: -10px; /* Identação negativa para alinhar texto explicativo */
+    }
+    
+    .container {
+        max-width: 90%; /* Limita a largura máxima */
+        width: 100%; /* O container ocupa toda a largura disponível */
+        margin: 0 auto; /* Centraliza o container */
+        text-align: left; /* Alinha o texto à esquerda */
+    }
+
+    /* Media Queries para telas pequenas e médias */
+    @media (max-width: 768px) { 
+        .container {
+            max-width: 95%; /* Ajusta o tamanho máximo para 95% */
         }
 
         #items-list .item-container {
-            margin: 20px auto;
-            padding: 15px;
-            background-color: transparent;
-            border-radius: 8px;
-            text-align: left;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            width: 90%;
-            max-width: 600px;
+            flex-direction: column; /* Alinha os itens verticalmente em telas menores */
+            padding: 10px; /* Reduz o espaçamento interno */
+            gap: 10px; /* Menor espaçamento entre itens */
         }
 
-        .item-container img {
-            width: 80px;
-            height: auto;
-            border-radius: 15px;
+        h1 {
+            font-size: 24px; /* Ajusta o tamanho da fonte do título */
         }
-
-        .item-container .item-details {
-            flex-grow: 1;
-        }
-
-        .item-container h3 {
-            color: #58a6ff;
-            margin: 0;
-        }
-
-        .item-container p {
-            color: #c9d1d9;
-            margin: 5px 0;
-        }
-
-        #toggle-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #58a6ff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        #toggle-button:hover {
-            background-color: #4591dd;
-        }
-
-#extra-info {
-    display: none; /* Oculta por padrão */
-    opacity: 0;    /* Inicia invisível */
-    visibility: hidden; /* Torna invisível e sem ocupar espaço */
-    background-color: #202020;
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    text-align: left;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-#extra-info.visible {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-}
-
-
-        #extra-info p {
-            margin: 10px 0; /* Maior espaçamento entre parágrafos */
-            color: #c9d1d9;
-            line-height: 1.5; /* Deixa o texto mais espaçado e legível */
-        }
-
-        #extra-info p strong {
-            font-weight: bold;
-            color: #e0e0e0;
-            display: inline; /* Impede quebras de linha indesejadas */
-        }
-
-        #extra-info .info {
-            margin-left: 20px; /* Recuo para o texto explicativo */
-            text-indent: -10px; /* Identação negativa para alinhar texto explicativo */
-        }
-		
-.container {
-    max-width: 90%; /* Limita a largura máxima */
-    width: 100%; /* O container ocupa toda a largura disponível */
-    margin: 0 auto; /* Centraliza o container */
-    text-align: left; /* Alinha o texto à esquerda */
-}
-
-@media (max-width: 768px) { /* Para telas menores */
-    .container {
-        max-width: 95%; /* Ajusta o tamanho máximo para 95% */
     }
-}
 
+    @media (max-width: 480px) { 
+        .container {
+            max-width: 100%; /* Ajusta para 100% de largura */
+        }
 
-    </style>
+        #items-list .item-container {
+            padding: 8px; /* Diminui o padding para telas pequenas */
+        }
+
+        h1 {
+            font-size: 20px; /* Tamanho de fonte ainda menor para celulares */
+        }
+    }
+</style>
+
 </head>
 <body>
     <h1>Parâmetros de revisão</h1>
