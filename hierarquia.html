@@ -120,7 +120,7 @@
     display: none; /* Oculta por padrão */
     opacity: 0; /* Inicia invisível */
     visibility: hidden; /* Torna invisível e sem ocupar espaço */
-    background-color: #202020;
+    background-color: #202020(0, 0, 0, 0.9);
     padding: 20px;
     border-radius: 8px;
     margin-top: 20px; /* Espaçamento opcional */
@@ -197,7 +197,7 @@
         const dados = await resposta.json();
 
         if (!Array.isArray(dados) || dados.length === 0) {
-        document.getElementById("hierarquia").innerHTML = "<p class='piscando'>Está com pressa por quê? Aguenta, estamos mexendo na hierarquia.</p>";
+        document.getElementById("hierarquia").innerHTML = "<p class='piscando'>Ta com pressa porque? aguenta to mexendo na Hierarquia.</p>";
           return;
         }
 
