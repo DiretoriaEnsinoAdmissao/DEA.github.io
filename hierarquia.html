@@ -8,7 +8,7 @@
     <meta name="keywords" content="abordagem policial, fiscalização, DRP, Polícia Militar, procedimentos operacionais">
     <meta name="author" content="Wellinton Jose - 25347">
   <title>Hierarquia Diretoria de Ensino e Admissão</title>
-  <style>
+<style>
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -94,6 +94,74 @@ h1 {
     text-align: left;
 }
 
+#toggle-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #58a6ff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+#toggle-button:hover {
+    background-color: #4591dd;
+}
+
+#extra-info {
+    position: absolute;
+    z-index: 10;
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    background-color: #202020(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    width: 300px;
+    max-width: 90%;
+    top: 60px;
+    left: 20px;
+}
+
+#extra-info.visible {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+#extra-info p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+
+#extra-info img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+#extra-info p strong {
+    font-weight: bold;
+    color: #e0e0e0;
+    display: inline;
+}
+
+#extra-info .info {
+    margin-left: 20px;
+    text-indent: -10px;
+}
+
+/* Media Queries */
+
 /* Para telas menores que 768px */
 @media (max-width: 768px) {
     h1 {
@@ -126,72 +194,6 @@ h1 {
     }
 }
 
-#toggle-button {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #58a6ff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-}
-
-#toggle-button:hover {
-    background-color: #4591dd;
-}
-
-#extra-info {
-    position: absolute; /* Para posicionar sobre o conteúdo existente */
-    z-index: 10; /* Garante que fique acima de outros elementos */
-    display: none; /* Oculta por padrão */
-    opacity: 0; /* Inicia invisível */
-    visibility: hidden; /* Torna invisível e sem ocupar espaço */
-    background-color: #202020(0, 0, 0, 0.9);
-    padding: 20px;
-    border-radius: 8px;
-    margin-top: 20px; /* Espaçamento opcional */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-    text-align: center; /* Centraliza texto e elementos inline como a imagem */
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-    width: 300px; /* Define uma largura fixa */
-    max-width: 90%; /* Garante que seja responsivo */
-    top: 60px; /* Ajusta a posição vertical */
-    left: 20px; /* Ajusta a posição horizontal */
-}
-
-#extra-info.visible {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-}
-
-#extra-info p {
-    display: flex; /* Ativa flexbox */
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    margin: 10px 0; /* Adiciona espaçamento entre os parágrafos */
-}
-
-#extra-info img {
-    max-width: 100%; /* Garante que a imagem não ultrapasse o contêiner */
-    border-radius: 5px; /* Bordas arredondadas */
-}
-
-#extra-info p strong {
-    font-weight: bold;
-    color: #e0e0e0;
-    display: inline; /* Impede quebras de linha indesejadas */
-}
-
-#extra-info .info {
-    margin-left: 20px; /* Recuo para o texto explicativo */
-    text-indent: -10px; /* Identação negativa para alinhar texto explicativo */
-}
-
 @keyframes piscar {
     0% { opacity: 1; }
     50% { opacity: 0; }
@@ -201,8 +203,8 @@ h1 {
 .piscando {
     animation: piscar 1s infinite;
 }
+</style>
 
-  </style>
 </head>
 <body>
   <h1>Hierarquia de Funções</h1>
