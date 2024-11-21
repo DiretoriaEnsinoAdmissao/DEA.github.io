@@ -8,7 +8,7 @@
     <meta name="keywords" content="abordagem policial, fiscalização, DRP, Polícia Militar, procedimentos operacionais">
     <meta name="author" content="Wellinton Jose - 25347">
   <title>Calculadora de Horas Trabalhadas</title>
-  <style>
+<style>
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -32,57 +32,56 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra leve */
 }
 
+h1, h2, p {
+  color: white; /* Define as cores dos textos como branco */
+}
 
-    h1, h2, p {
-      color: white; /* Define as cores dos textos como branco */
-    }
+textarea {
+  width: 100%;
+  height: 150px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  margin: 10px 0; /* Espaçamento para centralizar */
+}
 
-    textarea {
-      width: 100%;
-      height: 150px;
-      padding: 10px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      resize: vertical;
-      margin: 10px 0; /* Espaçamento para centralizar */
-    }
+button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
 
-    button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
-      margin-top: 10px;
-    }
+button:hover {
+  background-color: #45a049;
+}
 
-    button:hover {
-      background-color: #45a049;
-    }
+#totalHoras {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
 
-    #totalHoras {
-      margin-top: 20px;
-      font-size: 18px;
-      font-weight: bold;
-    }
+input {
+  padding: 10px;
+  font-size: 16px;
+  margin: 10px 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: transparent; /* Fundo dos campos transparente */
+  color: white; /* Letras brancas */
+}
 
-    input {
-      padding: 10px;
-      font-size: 16px;
-      margin: 10px 0;
-      width: 100%;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      background-color: transparent; /* Fundo dos campos transparente */
-      color: white; /* Letras brancas */
-    }
-
-    input::placeholder {
-      color: rgba(255, 255, 255, 0.7); /* Placeholder branco com transparência */
-    }
+input::placeholder {
+  color: rgba(255, 255, 255, 0.7); /* Placeholder branco com transparência */
+}
 
 /* Para telas menores que 768px */
 @media (max-width: 768px) {
@@ -103,6 +102,14 @@ body {
     .container p {
         font-size: 14px;
     }
+    .login-container {
+        max-width: 350px; /* Ajuste para a largura da tela menor */
+        padding: 20px; /* Menos padding para aproveitar o espaço */
+    }
+
+    input, textarea, button {
+        font-size: 14px; /* Ajuste do tamanho da fonte para telas menores */
+    }
 }
 
 /* Para telas menores que 480px */
@@ -114,8 +121,17 @@ body {
     .container p {
         font-size: 12px;
     }
+    .login-container {
+        width: 90%; /* Ajuste a largura para 90% em telas muito pequenas */
+        padding: 15px; /* Menos padding */
+    }
+
+    input, textarea, button {
+        font-size: 12px; /* Menor fonte */
+    }
 }
-  </style>
+</style>
+>
   <script>
     // Função para garantir que o horário esteja no formato correto (hh:mm)
     function formatarHorario(horario) {
