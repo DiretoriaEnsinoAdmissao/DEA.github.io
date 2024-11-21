@@ -115,7 +115,7 @@
 <body>
   <div class="container">
     <div class="tabs" role="tablist">
-	  <div class="tab active" data-target="tab0" role="tab">Início</div>
+      <div class="tab active" data-target="tab0" role="tab">Início</div>
       <div class="tab" data-target="tab1" role="tab">Hierarquia</div>
       <div class="tab tab-dropdown mercadoriasTab" role="tab" aria-label="Mercadorias">
         Mercadorias
@@ -129,15 +129,21 @@
         <div class="dropdown">
           <div class="tab" data-target="tab4" role="tab">Limite</div>
           <div class="tab" data-target="tab5" role="tab">Abordagem</div>
-		  <div class="tab" data-target="tab6" role="tab">Modulação</div>
+          <div class="tab" data-target="tab6" role="tab">Modulação</div>
         </div>
       </div>
-      <div class="tab" data-target="tab7" role="tab">Horas</div>
+      <div class="tab tab-dropdown calculadoraTab" role="tab" aria-label="Calculadora">
+        Calculadora
+        <div class="dropdown">
+          <div class="tab" data-target="tab7" role="tab">Horas</div>
+          <div class="tab" data-target="tab8" role="tab">Hora D.P.D</div>
+        </div>
+      </div>
     </div>
- 
+
     <div class="content active" id="tab0">
       <iframe src="início.html" title="Início"></iframe>
-    </div> 
+    </div>
     <div class="content" id="tab1">
       <iframe src="hierarquia.html" title="Hierarquia"></iframe>
     </div>
@@ -156,8 +162,12 @@
     <div class="content" id="tab6">
       <iframe src="modulação.html" title="Modulação"></iframe>
     </div>
+    <!-- Nova seção para a Calculadora -->
     <div class="content" id="tab7">
       <iframe src="horas.html" title="Horas"></iframe>
+    </div>
+    <div class="content" id="tab8">
+      <iframe src="horaD.P.D.html" title="Hora D.P.D"></iframe>
     </div>
   </div>
 
