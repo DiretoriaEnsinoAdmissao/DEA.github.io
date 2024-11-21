@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
 	<meta http-equiv="Content-Language" content="pt-BR">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Procedimentos para realizar revisões de bens.">
     <meta name="keywords" content="Procedimentos para realizar revisões de bens.">
     <meta name="author" content="Wellinton Jose - 25347">
     <title>Parâmetros de revisão</title>
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ6D7D4yR6bhA54RmBoc9h5dV6pqlh4+f6A04DkTw6+XmXSkYO9XQ8A7Y2z6" crossorigin="anonymous">
+	
 <style>
     body {
         font-family: Arial, sans-serif;
@@ -117,37 +119,6 @@
         margin: 0 auto; /* Centraliza o container */
         text-align: left; /* Alinha o texto à esquerda */
     }
-
-    /* Media Queries para telas pequenas e médias */
-    @media (max-width: 768px) { 
-        .container {
-            max-width: 95%; /* Ajusta o tamanho máximo para 95% */
-        }
-
-        #items-list .item-container {
-            flex-direction: column; /* Alinha os itens verticalmente em telas menores */
-            padding: 10px; /* Reduz o espaçamento interno */
-            gap: 10px; /* Menor espaçamento entre itens */
-        }
-
-        h1 {
-            font-size: 24px; /* Ajusta o tamanho da fonte do título */
-        }
-    }
-
-    @media (max-width: 480px) { 
-        .container {
-            max-width: 100%; /* Ajusta para 100% de largura */
-        }
-
-        #items-list .item-container {
-            padding: 8px; /* Diminui o padding para telas pequenas */
-        }
-
-        h1 {
-            font-size: 20px; /* Tamanho de fonte ainda menor para celulares */
-        }
-    }
 </style>
 
 </head>
@@ -243,5 +214,8 @@
 
         window.onload = loadItems;
     </script>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-GLhlTQ8iRAB+5zybZ2T5nD3oAKb5C6fFf5V5S1vH8b/6EwEXJ1tD0X6oABgE2mS5" crossorigin="anonymous"></script>
+	
 </body>
 </html>
