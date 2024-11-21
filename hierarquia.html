@@ -126,7 +126,7 @@
         transition: opacity 0.3s ease, visibility 0.3s ease, height 0.3s ease;
         width: 300px;
         max-width: 90%;
-        top: 60px;  /* Ajusta posição abaixo do botão */
+        top: 70px;  /* Ajusta posição abaixo do botão */
         left: 50px;
     }
 
@@ -174,7 +174,7 @@
 </head>
 <body>
   <h1>Hierarquia de Funções</h1>
-  <button id="toggle-button" class="btn btn-primary">Fardamento</button>
+  <button id="toggle-button" class="btn btn-primary">+</button>
   <div id="extra-info">
     <h2>Fardamento padrão D.E.A</h2>
     <p>Camisa do aluno;</p>
@@ -290,15 +290,25 @@
       }
     }
 
-    function mostrarInfoFardamento() {
-      const info = document.getElementById("extra-info");
-      info.classList.toggle("visible");
+function mostrarInfoFardamento() {
+    const extraInfo = document.getElementById("extra-info");
+    const toggleButton = document.getElementById("toggle-button");
+
+    const isVisible = extraInfo.classList.contains('visible');
+    if (isVisible) {
+        extraInfo.classList.remove('visible');
+        toggleButton.textContent = '+';
+    } else {
+        extraInfo.classList.add('visible');
+        toggleButton.textContent = 'X';
     }
+}
 
-    document.getElementById("toggle-button").addEventListener("click", mostrarInfoFardamento);
+document.getElementById("toggle-button").addEventListener("click", mostrarInfoFardamento);
 
-    // Chama a função para carregar os dados ao carregar a página
-    window.onload = obterDadosPlanilha;
+// Chama a função para carregar os dados ao carregar a página
+window.onload = obterDadosPlanilha;
+
   </script>
 
   <!-- Bootstrap JS -->
