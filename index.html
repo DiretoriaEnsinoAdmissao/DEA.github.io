@@ -9,7 +9,7 @@
     <meta name="author" content="Wellinton Jose - 25347">
   <title>Diretoria de Ensino e Admissão</title>
   <link rel="icon" href="https://i.ibb.co/Y0vjshh/ICON-DISCORD.png" type="image/png">
-  <style>
+<style>
     body {
       margin: 0;
       padding: 0;
@@ -35,37 +35,47 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
     }
 
-/* Para telas menores que 768px */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 24px;
+    /* Para telas menores que 768px */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 24px;
+        }
+
+        .container {
+            max-width: 95%;
+            padding: 5px;
+        }
+
+        .container img {
+            width: 100%;
+            max-width: none;
+        }
+
+        .container p {
+            font-size: 14px;
+        }
+
+        /* Ajustando o vídeo para responsividade no tablet */
+        iframe {
+            height: 250px;
+        }
     }
 
-    .container {
-        max-width: 95%;
-        padding: 5px;
-    }
+    /* Para telas menores que 480px */
+    @media (max-width: 480px) {
+        h1 {
+            font-size: 20px;
+        }
 
-    .container img {
-        width: 100%;
-        max-width: none;
-    }
+        .container p {
+            font-size: 12px;
+        }
 
-    .container p {
-        font-size: 14px;
+        /* Ajustando o vídeo para responsividade no celular */
+        iframe {
+            height: 200px;
+        }
     }
-}
-
-/* Para telas menores que 480px */
-@media (max-width: 480px) {
-    h1 {
-        font-size: 20px;
-    }
-
-    .container p {
-        font-size: 12px;
-    }
-}
 
     .tabs {
       display: flex;
@@ -140,7 +150,8 @@
       height: 100%;
       border: none;
     }
-  </style>
+</style>
+
 </head>
 <body>
   <div class="container">
