@@ -180,38 +180,47 @@
             }
         }
 
-        function displayItems(items) {
-            if (items.length > 0) {
-                itemsList.innerHTML = items.map(item => {
-                    let quantia = item.minima;
+function displayItems(items) {
+    if (items.length > 0) {
+        itemsList.innerHTML = items.map(item => {
+            let quantia = item.minima;
 
-                    if (!isNaN(quantia) && quantia > 0) {
-                        quantia = quantia >= 1000 
-                            ? `R$ ${quantia.toLocaleString()} Notas Marcadas.` 
-                            : quantia === 1 
-                                ? `${quantia} unidade.` 
-                                : `${quantia} unidades.`;
-                    } else if (typeof quantia === 'string' && quantia.trim() !== '') {
-                        quantia = `${quantia}.`;
-                    } else {
-                        quantia = 'Não especificado.';
-                    }
+            if (!isNaN(quantia) && quantia > 0) {
+                quantia = quantia >= 1000 
+                    ? `R$ ${quantia.toLocaleString()} Notas Marcadas.` 
+                    : quantia === 1 
+                        ? `${quantia} unidade.` 
+                        : `${quantia} unidades.`;
+            } else if (typeof quantia === 'string' && quantia.trim() !== '') {
+                // Verifica se contém números e letras
+                const hasNumbers = /\d/.test(quantia);
+                const hasLetters = /[a-zA-Z]/.test(quantia);
 
-                    return `
-                        <div class="item-container">
-                            <img src="${item.imagem}" alt="${item.nome}">
-                            <div class="item-details">
-                                <h3>${item.nome}</h3>
-                                <p><strong>Descrição:</strong> ${item.descricao}</p>
-                                <p><strong>Quantia Mínima:</strong> ${quantia}</p>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
+                if (hasNumbers && hasLetters) {
+                    quantia = `<strong>Quantia Mínima:</strong> ${quantia}`;
+                } else {
+                    quantia = `<strong>Observação:</strong> ${quantia}`;
+                }
             } else {
-                itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";
+                quantia = 'Não especificado.';
             }
-        }
+
+            return `
+                <div class="item-container">
+                    <img src="${item.imagem}" alt="${item.nome}">
+                    <div class="item-details">
+                        <h3>${item.nome}</h3>
+                        <p><strong>Descrição:</strong> ${item.descricao}</p>
+                        <p>${quantia}</p>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    } else {
+        itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";
+    }
+}
+
 
         window.onload = loadItems;
     </script>
