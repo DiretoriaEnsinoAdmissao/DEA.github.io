@@ -17,7 +17,7 @@ body {
     margin: 0;
     padding: 20px;
     text-align: center;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte moderna e mais elegante */
+    font-family: 'Arial', Tahoma, Geneva, Verdana, sans-serif; /* Fonte moderna e mais elegante */
     background: #1e1e1e; /* Fundo escuro mais sóbrio */
     background-size: cover;
     background-position: center center;
@@ -25,10 +25,15 @@ body {
 }
 
 h1 {
-    color: #58a6ff; /* Azul vibrante */
-    margin-bottom: 15px;
-    font-size: 32px; /* Maior tamanho para um título mais imponente */
-    font-weight: 600; /* Negrito para destaque */
+    background-color: #3a3a3a; /* Tom escuro sóbrio */
+    color: #fff; /* Texto claro para contraste */
+    text-align: center;
+    padding: 30px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    position: relative;
+    font-family: 'Times New Roman', Times, serif; /* Fonte formal */
+    font-size: 48px;
+    margin: 0;
 }
 
 #items-list .item-container {
@@ -67,7 +72,7 @@ h1 {
 }
 
 .item-container h3 {
-    color: #58a6ff;
+    color: #000000;
     font-size: 20px; /* Tamanho mais adequado para subtítulo */
     margin: 0;
     font-weight: 500; /* Peso de fonte mais equilibrado */
@@ -81,21 +86,21 @@ h1 {
 
 #toggle-button {
     position: absolute;
-    top: 20px;
+    top: 22px;
     left: 20px;
-    padding: 12px 24px;
+    padding: 10px 20px;
     font-size: 16px;
-    background-color: #58a6ff;
+    background-color: #3a3a3a;
     color: #fff;
     border: none;
-    border-radius: 8px; /* Bordas mais suaves */
+    border-radius: 5px;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
 }
 
 #toggle-button:hover {
-    background-color: #4591dd;
+    background-color: #020202;
 }
 
 #extra-info {
@@ -166,7 +171,7 @@ h1 {
 
 </head>
 <body>
-    <h1>Parâmetros</h1>
+    <h1>Parâmetros de Revisão de bens</h1>
     <button id="toggle-button">+</button>
 
 <div id="extra-info">
