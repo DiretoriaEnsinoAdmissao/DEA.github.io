@@ -38,9 +38,9 @@ h1 {
 
 .home-button {
     position: absolute;
-    top: 50%;
+    top: 10%; /* Ajustado para ficar mais acima */
     left: 20px;
-    transform: translateY(-50%);
+    transform: translateY(0); /* Remove o efeito de centralização */
     width: 50px;
     height: 50px;
     background-color: #333333;
@@ -68,17 +68,18 @@ h1 {
 
 .side-menu {
     position: fixed;
-    top: 0;
-    left: -300px;
-    width: 300px;
-    height: 100%;
+    top: 60px; /* Mantém o menu deslocado do topo */
+    left: -300px; /* Puxa o menu 5px mais para a esquerda */
+    width: 250px;
+    height: calc(100% - 10px); /* Mantém a altura proporcional */
     background-color: #3a3a3a; /* Tonalidade de cinza escuro */
     box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2); 
-    padding: 30px 20px;
+    padding: 20px 20px;
     transition: all 0.4s ease;
     z-index: 999;
-    border-radius: 10px 0 0 10px;
+    border-radius: 10px; /* Aplica bordas arredondadas em todos os cantos */
 }
+
 
 .side-menu.active {
     left: 0;
@@ -106,6 +107,7 @@ h1 {
 
 .side-menu ul li a:hover {
     background-color: #555555; /* Cinza mais escuro no hover */
+    border-radius: 8px;
     color: #fff;
 }
 
@@ -277,7 +279,6 @@ h1 {
             const menu = document.getElementById('sideMenu');
             const homeButton = document.querySelector('.home-button');
             menu.classList.toggle('active');
-            homeButton.classList.toggle('invisible');
         }
 
         function toggleDropdown(dropdownId) {
