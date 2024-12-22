@@ -65,70 +65,72 @@
 
         /* Menu Lateral */
         .side-menu {
-            position: absolute;
-            top: 85px; /* Mantém o menu deslocado do topo */
-            left: -300px; /* Puxa o menu 5px mais para a esquerda */
-            width: 205px;
-            height: 103,5%;
-            background: #3a3a3a;
-            box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            transition: left 0.4s ease;
-            overflow-y: auto;
-            z-index: 1000; /* Garante que o menu fique acima do container */
-        }
+    position: absolute;
+    top: 85px;
+    left: -300px;
+    width: 205px;
+    height: auto; /* Ajusta a altura conforme o conteúdo */
+    background: #3a3a3a;
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    transition: left 0.4s ease;
+    overflow-y: auto;
+    z-index: 1000;
+}
 
-        .side-menu.active {
-            left: 0;
-        }
+.side-menu.active {
+    left: 0;
+}
 
-        .side-menu ul {
-            list-style: none;
-            padding: 0;
-        }
+.side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-        .side-menu ul li {
-            margin: 15px 0;
-        }
+.side-menu ul li {
+    margin: 15px 0;
+}
 
-        .side-menu ul li a {
-            display: block;
-            text-decoration: none;
-            color: #ddd;
-            font-size: 18px;
-            padding: 12px;
-            border-radius: 8px;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+.side-menu ul li a {
+    display: block;
+    text-decoration: none;
+    color: #ddd;
+    font-size: 18px;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
 
-        .side-menu ul li a:hover {
-            background-color: #555555;
-            color: white;
-        }
+.side-menu ul li a:hover {
+    background-color: #555555;
+    color: white;
+}
 
-        /* Dropdown */
-        .tab-dropdown {
-            cursor: pointer;
-            background: #555555;
-            color: white;
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            transition: background-color 0.3s ease;
-        }
+/* Dropdown */
+.tab-dropdown {
+    cursor: pointer;
+    background: #555555;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    transition: background-color 0.3s ease;
+}
 
-        .tab-dropdown:hover {
-            background: #444444;
-        }
+.tab-dropdown:hover {
+    background: #444444;
+}
 
-        .dropdown {
-            display: none;
-            padding-left: 20px;
-        }
+.dropdown {
+    display: none;
+    padding-left: 20px;
+}
 
-        .tab-dropdown.active .dropdown {
-            display: block;
-        }
+.tab-dropdown.active .dropdown {
+    display: block;
+}
+
 
         .container.mt-4 {
             background-color: #cdcdce;
@@ -333,11 +335,11 @@
                     <a href="#" onclick="navigateTo('modulação.html')">Modulação</a>
                 </div>
             </li>
-            <li class="tab-dropdown" onclick="toggleDropdown('sistemaDeaDropdown')">Sistema D.E.A
-                <div class="dropdown" id="sistemaDeaDropdown">
-                    <a href="#" onclick="navigateTo('horas.html')">Horas C.F.S.D</a>
-                    <a href="#" onclick="navigateTo('horaD.P.D.html')">Hora D.P.D</a>
+            <li class="tab-dropdown" onclick="toggleDropdown('DocumentosDropdown')">Documentos
+                <div class="dropdown" id="DocumentosDropdown">
+                    <a href="https://docs.google.com/document/d/1I4u1HrMR_UDl0VGcRScm1vgvc6zrzoE6JYX4NGPhyq8/edit?usp=sharing" target="_blank">Apostila</a>
                 </div>
+            </li>            
             </li>
         </ul>
     </div>
