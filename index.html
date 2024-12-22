@@ -30,6 +30,7 @@
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         }
 
+
         /* Botão do Menu */
         .home-button {
             position: absolute;
@@ -63,9 +64,9 @@
         /* Menu Lateral */
         .side-menu {
             position: fixed;
-            top: 60px; /* Mantém o menu deslocado do topo */
-    left: -300px; /* Puxa o menu 5px mais para a esquerda */
-    width: 250px;
+            top: 85px; /* Mantém o menu deslocado do topo */
+            left: -300px; /* Puxa o menu 5px mais para a esquerda */
+            width: 250px;
             height: 100%;
             background: #3a3a3a;
             box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
@@ -147,6 +148,41 @@
             border: none;
             border-radius: 10px;
         }
+        .container.mt-4 {
+    background-color: #cdcdce; /* Fundo personalizado */
+    padding: 15px;
+    color: rgb(0, 0, 0);
+    display: flex; /* Ativa o flexbox */
+    flex-direction: column; /* Organiza os itens em coluna (vertical) */
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    width: 200%; /* Faz o fundo ocupar toda a largura da tela */
+    margin-top: 10px; /* Adiciona um espaço acima do container */
+    margin-bottom: 20px; /* Adiciona um espaço abaixo do container */
+    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+        /* Estilo de Imagem */
+        .imageItem {
+            background: #333(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin: 20px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .imageItem:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .imageItem img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
 
     </style>
 </head>
@@ -155,8 +191,8 @@
     <header>
         <h1>
             Diretoria de Ensino e Admissão
-            <button class="home-button" onclick="toggleMenu()">
-                <i class="bi bi-house"></i>
+            <button class="home-button" onclick="toggleMenu()" aria-label="Abrir menu">
+                <i class="bi bi-list"></i>
             </button>
         </h1>
     </header>
@@ -264,6 +300,67 @@
             toggleMenu();
         }
     </script>
+
+<div class="container"> 
+    <h1 style="font-size: 14px;">Momentos D.E.A</h1>
+    <div id="imageContainer" class="row justify-content-center gy-4"></div>
+</div>
+
+<script>
+    async function obterImagens() {
+        const url = 'https://script.google.com/macros/s/AKfycbxz63NqnZKRvoqhNauWvjbAVbxLHuGJu7V9xj3TYZvY_-Aft3DM-bQXivcLdEamUXzK2Q/exec'; // Substitua com a URL de seu script
+
+        try {
+            const resposta = await fetch(url);
+            const dados = await resposta.json();
+
+            const imageContainer = document.getElementById("imageContainer");
+
+            if (dados.length === 0) {
+                imageContainer.innerHTML = "<p>Nenhuma imagem encontrada.</p>";
+                return;
+            }
+
+            dados.forEach((item) => {
+                const colDiv = document.createElement("div");
+                colDiv.classList.add("col-12", "col-sm-6", "col-lg-4");
+
+                const imageItem = document.createElement("div");
+                imageItem.classList.add("imageItem");
+
+                const img = document.createElement("img");
+                img.src = item.imageLink; // Ajuste para puxar o link de imagem
+                img.alt = "Imagem do Imgur";
+
+                imageItem.appendChild(img);
+                colDiv.appendChild(imageItem);
+                imageContainer.appendChild(colDiv);
+            });
+
+        } catch (error) {
+            console.error("Erro ao carregar imagens:", error);
+            document.getElementById("imageContainer").innerHTML = "<p>Erro ao carregar as imagens.</p>";
+        }
+    }
+
+    obterImagens();
+
+    function toggleMenu() {
+        const menu = document.getElementById('sideMenu');
+        const homeButton = document.querySelector('.home-button');
+        menu.classList.toggle('active');
+    }
+
+    function toggleDropdown(dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+        dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function navigateTo(page) {
+        window.location.href = page;
+        toggleMenu();
+    }
+</script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </body>
