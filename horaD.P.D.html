@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+	<meta http-equiv="Content-Language" content="pt-BR">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Procedimentos operacionais da Polícia Militar para abordagem de veículos e fiscalização de trânsito.">
+    <meta name="keywords" content="abordagem policial, fiscalização, DRP, Polícia Militar, procedimentos operacionais">
+    <meta name="author" content="Wellinton Jose - 25347">
+  <title>Horas Trabalhadas</title>
+  <link rel="icon" href="https://i.ibb.co/Y0vjshh/ICON-DISCORD.png" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+body {
+    font-family: 'Arial', sans-serif; /* Fonte clássica e moderna */
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9; /* Fundo claro e suave */
+    color: #333; /* Cor do texto em cinza escuro */
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff; /* Fundo branco para destacar o conteúdo */
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    position: relative;
+}
+
+h1 {
+    font-size: 24px;
+    color: #333; /* Texto em cinza escuro */
+    margin-bottom: 20px;
+    font-family: 'Georgia', serif; /* Fonte clássica e elegante */
+}
+
+.drop-area {
+    width: 100%;
+    height: 100px;
+    border: 2px dashed #333; /* Cor cinza escuro */
+    border-radius: 8px;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.drop-area.dragover {
+    background-color: #e9e9e9; /* Fundo cinza claro */
+    border-color: #555; /* Borda mais escura quando arrasta */
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.download-link {
+    background-color: #333; /* Cor de fundo escura */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.download-link:hover {
+    background-color: #555; /* Cor mais clara ao passar o mouse */
+}
+
+.resultado-item {
+    margin: 10px 0;
+    padding: 10px;
+    background-color: rgba(169, 169, 169, 0.5); /* Cinza suave */
+    border-radius: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 16px;
+    color: #555; /* Cor do texto em cinza */
+    line-height: 1.4;
+    text-align: center;
+}
+
+#result {
+    margin-top: 20px;
+    text-align: left;
+    font-size: 16px;
+    line-height: 1.3;
+    color: #555;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-radius: 30px;
+    background-color: transparent;
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-label {
+    background-color: #333; /* Cor escura para o botão */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.file-label:hover {
+    background-color: #555; /* Cor mais clara ao passar o mouse */
+}
+
+#content {
+    background-color: transparent;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 40px;
+    width: 100%;
+    max-width: 400px;
+    background-color: transparent;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    color: #333; /* Cor do título */
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    margin: 10px 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: transparent;
+    color: #333; /* Texto em cinza escuro */
+}
+
+input::placeholder {
+    color: rgba(0, 0, 0, 0.7); /* Placeholder em cinza escuro */
+}
+
+button {
+    background-color: #333; /* Fundo escuro para o botão */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #555; /* Cor mais clara ao passar o mouse */
+}
+
+/* Para telas menores que 768px */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .container {
+        max-width: 95%;
+        padding: 5px;
+    }
+
+    .container img {
+        width: 100%;
+        max-width: none;
+    }
+
+    .container p {
+        font-size: 14px;
+    }
+}
+
+/* Para telas menores que 480px */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    .container p {
+        font-size: 12px;
+    }
+}
+
+.back-button {
+    position: absolute;
+    top: 22px;
+    left: 75px;
+    background-color: #333; /* Cor escura para o botão */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: block;
+    z-index: 1000;
+}
+
+.back-button:hover {
+    background-color: #555; /* Cor mais clara ao passar o mouse */
+}
+
+
+  </style>
+    <button class="back-button" onclick="window.location.href='index.html'">
+      Home
+    </button>
+</head>
+<body>
+
+  <!-- Tela de login -->
+  <div class="login-container" id="loginContainer">
+    <h2>Login</h2>
+    <input type="text" id="usuario" placeholder="Usuário">
+    <input type="password" id="senha" placeholder="Senha">
+    <button onclick="login()">Entrar</button>
+  </div>
+
+  <!-- Página de conteúdo, inicialmente escondida -->
+  <div id="content" style="display: none;">
+    <div class="container">
+      <h1>Horas Trabalhadas</h1>
+
+      <!-- Link de Download com ícone -->
+      <a id="downloadLink" class="download-link" style="display: none;" href="#" download="resultado_horas.txt">
+        <i class="fas fa-download"></i>
+      </a>
+
+      <!-- Área de Drop -->
+      <div id="dropArea" class="drop-area">
+        Arraste e solte o arquivo aqui
+      </div>
+      
+      <!-- Botão para Escolher Arquivo -->
+      <input type="file" id="fileInput" class="file-input" onchange="processarArquivo(this.files[0])">
+      <label for="fileInput" class="file-label">Escolher arquivo</label>
+
+      <div id="result"></div>
+    </div>
+  </div>
+
+<script>
+  // Função para verificar o login
+  function login() {
+    var usuario = document.getElementById('usuario').value;
+    var senha = document.getElementById('senha').value;
+
+    if (usuario === 'DEA' && senha === '1414') {
+      document.getElementById('loginContainer').style.display = 'none'; // Esconde o formulário de login
+      document.getElementById('content').style.display = 'block'; // Exibe o conteúdo
+    } else {
+      alert('Usuário ou senha incorretos');
+    }
+  }
+
+  // Função para converter tempo no formato "x hora(s) y minuto(s)" para formato "hh:mm"
+  function converterTempoParaHorasMinutos(tempo) {
+    let horas = 0, minutos = 0;
+    
+    let matchHoras = tempo.match(/(\d+)\s*(hora|h)/);
+    if (matchHoras) {
+      horas = parseInt(matchHoras[1]);
+    }
+    
+    let matchMinutos = tempo.match(/(\d+)\s*(minuto|min|m)/);
+    if (matchMinutos) {
+      minutos = parseInt(matchMinutos[1]);
+    }
+
+    // Retorna no formato "hh:mm", com zero à esquerda se necessário
+    return `${horas < 10 ? '0' + horas : horas}:${minutos < 10 ? '0' + minutos : minutos}`;
+  }
+
+  // Função para processar o arquivo de texto
+// Função para converter tempo no formato "x hora(s) y minuto(s)" para formato "hh:mm"
+function converterTempoParaHorasMinutos(tempo) {
+    let horas = 0, minutos = 0;
+
+    let matchHoras = tempo.match(/(\d+)\s*(hora|h)/);
+    if (matchHoras) {
+        horas = parseInt(matchHoras[1]);
+    }
+
+    let matchMinutos = tempo.match(/(\d+)\s*(minuto|min|m)/);
+    if (matchMinutos) {
+        minutos = parseInt(matchMinutos[1]);
+    }
+
+    return { horas, minutos };
+}
+
+// Função para somar as horas trabalhadas
+function somarHorasTrabalhadas(tempos) {
+    let totalHoras = 0;
+    let totalMinutos = 0;
+
+    tempos.forEach(tempo => {
+        let { horas, minutos } = converterTempoParaHorasMinutos(tempo);
+        totalHoras += horas;
+        totalMinutos += minutos;
+    });
+
+    // Se os minutos ultrapassarem 60, convertemos em horas
+    totalHoras += Math.floor(totalMinutos / 60);
+    totalMinutos = totalMinutos % 60;
+
+    // Retorna o total em formato "hh:mm"
+    return `${totalHoras < 10 ? '0' + totalHoras : totalHoras}:${totalMinutos < 10 ? '0' + totalMinutos : totalMinutos}`;
+}
+
+// Função para processar o arquivo de texto e calcular a somatória
+// Função para converter tempo no formato "x hora(s) y minuto(s)" para horas e minutos
+function converterTempoParaHorasMinutos(tempo) {
+    let horas = 0;
+    let minutos = 0;
+
+    // Regex para capturar horas
+    let matchHoras = tempo.match(/(\d+)\s*(hora|h)/);
+    if (matchHoras) {
+        horas = parseInt(matchHoras[1]);
+    }
+
+    // Regex para capturar minutos
+    let matchMinutos = tempo.match(/(\d+)\s*(minuto|min|m)/);
+    if (matchMinutos) {
+        minutos = parseInt(matchMinutos[1]);
+    }
+
+    return { horas: horas, minutos: minutos };
+}
+
+// Função para somar os tempos
+// Função para converter tempo no formato "x hora(s) y minuto(s)" para horas e minutos
+function converterTempoParaHorasMinutos(tempo) {
+    let horas = 0;
+    let minutos = 0;
+
+    // Regex para capturar horas
+    let matchHoras = tempo.match(/(\d+)\s*(hora|h)/);
+    if (matchHoras) {
+        horas = parseInt(matchHoras[1]);
+    }
+
+    // Regex para capturar minutos
+    let matchMinutos = tempo.match(/(\d+)\s*(minuto|min|m)/);
+    if (matchMinutos) {
+        minutos = parseInt(matchMinutos[1]);
+    }
+
+    return { horas: horas, minutos: minutos };
+}
+
+// Função para somar os tempos
+function somarHorasTrabalhadas(tempos) {
+    let totalHoras = 0;
+    let totalMinutos = 0;
+
+    tempos.forEach(tempo => {
+        let { horas, minutos } = converterTempoParaHorasMinutos(tempo);
+        totalHoras += horas;
+        totalMinutos += minutos;
+    });
+
+    // Ajustar caso os minutos ultrapassem 60
+    totalHoras += Math.floor(totalMinutos / 60);
+    totalMinutos = totalMinutos % 60;
+
+    return { horas: totalHoras, minutos: totalMinutos };
+}
+
+// Função para processar o arquivo e mostrar o nome, RG e tempo somado
+function processarArquivo(file) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+        var dadosBrutos = e.target.result.trim();
+        console.log("Dados Brutos Inseridos: ", dadosBrutos);
+
+        dadosBrutos = dadosBrutos.replace(/Bate Ponto/g, '').trim();
+
+        var regexNomeRG = /([A-Za-z\s]+)\s\((\d+)\)/g;
+        var regexTempo = /Tempo de serviço:\s*([\d\s\w]+)/g;
+
+        var resultado = [];
+        var resultadoTextoSimples = [];
+        var temposPorPessoa = {}; // Armazenar tempos por pessoa (nome e RG)
+
+        let nomeRGMatch;
+        let tempoMatch;
+        while ((nomeRGMatch = regexNomeRG.exec(dadosBrutos)) !== null) {
+            let nome = nomeRGMatch[1].trim();
+            let rg = nomeRGMatch[2].trim();
+            tempoMatch = regexTempo.exec(dadosBrutos);
+            if (tempoMatch) {
+                let tempo = tempoMatch[1];
+
+                // Criar chave para cada pessoa (nome + RG) e somar os tempos
+                let chavePessoa = nome + ' - ' + rg;
+                if (!temposPorPessoa[chavePessoa]) {
+                    temposPorPessoa[chavePessoa] = [];
+                }
+                temposPorPessoa[chavePessoa].push(tempo);
+            }
+        }
+
+        // Processando os tempos somados para cada pessoa
+        for (let chavePessoa in temposPorPessoa) {
+            let tempos = temposPorPessoa[chavePessoa];
+
+            // Somando os tempos para cada pessoa
+            let { horas, minutos } = somarHorasTrabalhadas(tempos);
+
+            // Adicionando resultado HTML
+            resultado.push(`
+                <div class="resultado-item">
+                    ${chavePessoa}<br>
+                    Tempo de serviço: ${horas}:${minutos < 10 ? '0' + minutos : minutos}
+                </div>
+            `);
+
+            // Adicionando formato de texto simples para o download
+            resultadoTextoSimples.push(`${chavePessoa}\nTempo de serviço: ${horas}:${minutos < 10 ? '0' + minutos : minutos}`);
+        }
+
+        // Exibindo os resultados no HTML
+        if (resultado.length > 0) {
+            var resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = resultado.join(''); // Exibindo os resultados formatados
+
+            // Gerando o link para download do arquivo
+            var downloadLink = document.getElementById('downloadLink');
+            downloadLink.style.display = 'inline-block';
+
+            var textoParaDownload = resultadoTextoSimples.join('\n\n');
+            var arquivoBlob = new Blob([textoParaDownload], { type: 'text/plain' });
+            var arquivoURL = URL.createObjectURL(arquivoBlob);
+            downloadLink.href = arquivoURL;
+
+            downloadLink.onclick = function() {
+                resultDiv.innerHTML = '';
+                downloadLink.style.display = 'none';
+            };
+        }
+    };
+
+    reader.readAsText(file);
+}
+
+  // Estilos de interação com o drag-and-drop
+  const dropArea = document.getElementById('dropArea');
+  dropArea.addEventListener('dragover', function(e) {
+    e.preventDefault();
+    dropArea.classList.add('dragover');
+  });
+
+  dropArea.addEventListener('dragleave', function() {
+    dropArea.classList.remove('dragover');
+  });
+
+  dropArea.addEventListener('drop', function(e) {
+    e.preventDefault();
+    dropArea.classList.remove('dragover');
+    let arquivo = e.dataTransfer.files[0];
+    processarArquivo(arquivo);
+  });
+
+
+</script>
+</body>
+</html>
