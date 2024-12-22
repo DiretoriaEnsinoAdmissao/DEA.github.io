@@ -6,6 +6,8 @@
     <title>Diretoria de Ensino e Admissão</title>
     <link rel="icon" href="https://i.ibb.co/Y0vjshh/ICON-DISCORD.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
     <style>
         /* Estilo Global */
         body {
@@ -127,27 +129,6 @@
             display: block;
         }
 
-        /* Estilo de vídeos */
-        .videoItem {
-            background: #333(0, 0, 0, 0.1);
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            margin: 20px 0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .videoItem:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .videoItem iframe {
-            width: 100%;
-            height: 250px;
-            border: none;
-            border-radius: 10px;
-        }
         .container.mt-4 {
     background-color: #cdcdce; /* Fundo personalizado */
     padding: 15px;
@@ -162,26 +143,101 @@
     box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
 }
 
-        /* Estilo de Imagem */
-        .imageItem {
-            background: #333(0, 0, 0, 0.1);
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            margin: 20px 0;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+/* Estilo de vídeos */
+/* Estilo de vídeos */
+.videoItem {
+    background: none; /* Remove o fundo do contêiner */
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição para box-shadow e scale */
+    display: inline-block;
+    width: calc(50% - 10px); /* Ajusta a largura para compensar o espaçamento */
+    box-sizing: border-box;
+}
 
-        .imageItem:hover {
-            transform: scale(1.05);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-        }
+.videoItem:hover {
+    transform: scale(1.05); /* Aumenta a escala do vídeo em 5% ao passar o mouse */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Efeito de box-shadow na imagem */
+}
 
-        .imageItem img {
+/* Estilo do iframe dentro do videoItem */
+.videoItem iframe {
+    width: 100%; /* A largura do vídeo ocupa toda a largura do contêiner */
+    height: 250px; /* Ajuste para altura do vídeo */
+    border: none;
+    border-radius: 5px; /* Arredonda os cantos do vídeo */
+    display: block; /* Garante que o iframe ocupe toda a largura disponível */
+}
+
+
+/* Estilo de Imagem */
+.imageItem {
+    background: none; /* Remove o fundo do contêiner */
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 5px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    width: calc(50% - 10px); /* Ajusta a largura para compensar o espaçamento */
+    box-sizing: border-box;
+}
+
+.imageItem img {
+    width: 100%; /* A imagem ocupa toda a largura do contêiner */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Remove espaçamento extra */
+    border-radius: 5px; /* Arredonda os cantos da imagem */
+    transition: box-shadow 0.3s ease; /* Aplica a transição de box-shadow */
+}
+
+.imageItem:hover img {
+    transform: scale(1.05); /* Efeito de zoom */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Box-shadow na imagem */
+}
+
+
+
+
+        /* Estilo de Imagem em fullscreen */
+        .fullscreenImageWrapper {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: auto;
-            border-radius: 10px;
+            height: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
+
+        .fullscreenImage {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        /* Botão X para fechar */
+        .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px; /* Ajuste do tamanho da fonte */
+    color: white;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.5); /* Fundo semi-transparente */
+    width: 40px; /* Largura fixa */
+    height: 40px; /* Altura fixa */
+    border-radius: 50%; /* Torna o botão circular */
+    display: flex; /* Centraliza o ícone */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: center; /* Centraliza horizontalmente */
+    border: none;
+}
+
 
 
     </style>
@@ -191,9 +247,10 @@
     <header>
         <h1>
             Diretoria de Ensino e Admissão
-            <button class="home-button" onclick="toggleMenu()" aria-label="Abrir menu">
-                <i class="bi bi-list"></i>
+            <button class="home-button" onclick="toggleMenu()">
+                <i class="bi bi-house"></i>
             </button>
+            
         </h1>
     </header>
 
@@ -240,51 +297,100 @@
             profissionais.
         </p>
     </div>
-    <div class="container"> 
-        <h1 style="font-size: 14px;">Motivacional</h1>
-        <div id="videoContainer" class="row justify-content-center gy-4"></div>
-    </div>
     
-    <script>
-        async function obterVideos() {
-            const url = 'https://script.google.com/macros/s/AKfycbxguj_-TRj1pc86mbx1siM8QWa7vCvpjmGQOHraeKCDqU7JG4DYG1Kt2DAddrIvjlDKLw/exec';
-            
-            try {
-                const resposta = await fetch(url);
-                const dados = await resposta.json();
-
-                const videoContainer = document.getElementById("videoContainer");
-
-                if (dados.length === 0) {
-                    videoContainer.innerHTML = "<p>Nenhum vídeo encontrado.</p>";
-                    return;
-                }
-
-                dados.forEach((item) => {
-                    const colDiv = document.createElement("div");
-                    colDiv.classList.add("col-12", "col-sm-6", "col-lg-4");
-
-                    const videoItem = document.createElement("div");
-                    videoItem.classList.add("videoItem");
-
-                    const iframe = document.createElement("iframe");
-                    iframe.src = item.videoLink;
-                    iframe.allow = "fullscreen";
-
-                    videoItem.appendChild(iframe);
-                    colDiv.appendChild(videoItem);
-                    videoContainer.appendChild(colDiv);
-                });
-                
-            } catch (error) {
-                console.error("Erro ao carregar vídeos:", error);
-                document.getElementById("videoContainer").innerHTML = "<p>Erro ao carregar os vídeos.</p>";
+        <div class="container">
+            <h1 style="font-size: 14px;">Motivacional</h1>
+            <div id="MotivacionalImagemContainer" class="row justify-content-center gy-4"></div>
+            <div id="MotivacionalVideoContainer" class="d-flex flex-wrap justify-content-center my-4"></div>
+        </div>
+    
+        <div class="container">
+            <h1 style="font-size: 14px;">Momentos D.E.A</h1>
+            <div id="MomentosImagemContainer" class="row justify-content-center gy-4"></div>
+            <div id="MomentosVideoContainer" class="d-flex flex-wrap justify-content-center my-4"></div>
+        </div>
+    
+        <div id="fullscreenImageWrapper" class="fullscreenImageWrapper">
+            <button class="close-btn" onclick="closeFullscreenImage()">X</button>
+            <img id="fullscreenImage" class="fullscreenImage" src="" alt="Imagem Fullscreen">
+        </div>
+    
+        <script>
+            // Função para pegar dados da planilha
+            function fetchDataFromAppsScript() {
+                fetch("https://script.google.com/macros/s/AKfycbyFOwvVrQhoZNv4MPZz2qmijSwfRMioRlfZ_GPrNKtabS_wEtM4OLmVPXwzL_36Xnoa5w/exec") // Substitua pela URL do seu Google Apps Script
+                    .then(response => response.json())
+                    .then(data => {
+                        const rows = data;
+                        if (rows.length) {
+                            rows.forEach(row => {
+                                const link = row.link;  // Assumindo que a chave seja 'link'
+                                const categoria = row.categoria;  // Assumindo que a chave seja 'categoria'
+    
+                                // Divisão por categoria
+                                if (categoria === "Motivacional") {
+                                    addToMotivacional(link);
+                                } else if (categoria === "Momentos") {
+                                    addToMomentos(link);
+                                }
+                            });
+                        }
+                    })
+                    .catch(error => console.error('Erro ao buscar dados: ', error));
             }
-        }
+    
+            // Função para adicionar imagem ou vídeo à categoria Motivacional
+            function addToMotivacional(link) {
+                const isVideo = link.includes("youtube.com") || link.includes("vimeo.com");
+    
+                if (isVideo) {
+                    const videoItem = document.createElement('div');
+                    videoItem.classList.add('col-md-4', 'videoItem');
+                    videoItem.innerHTML = `<iframe src="${link}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                    document.getElementById('MotivacionalVideoContainer').appendChild(videoItem);
+                } else {
+                    const imageItem = document.createElement('div');
+                    imageItem.classList.add('col-md-4', 'imageItem');
+                    imageItem.innerHTML = `<img src="${link}" alt="Motivacional Image" onclick="openFullscreenImage('${link}')">`;
+                    document.getElementById('MotivacionalImagemContainer').appendChild(imageItem);
+                }
+            }
+    
+            // Função para adicionar imagem ou vídeo à categoria Momentos
+            function addToMomentos(link) {
+                const isVideo = link.includes("youtube.com") || link.includes("vimeo.com");
+    
+                if (isVideo) {
+                    const videoItem = document.createElement('div');
+                    videoItem.classList.add('col-md-4', 'videoItem');
+                    videoItem.innerHTML = `<iframe src="${link}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+                    document.getElementById('MomentosVideoContainer').appendChild(videoItem);
+                } else {
+                    const imageItem = document.createElement('div');
+                    imageItem.classList.add('col-md-4', 'imageItem');
+                    imageItem.innerHTML = `<img src="${link}" alt="Momentos D.E.A Image" onclick="openFullscreenImage('${link}')">`;
+                    document.getElementById('MomentosImagemContainer').appendChild(imageItem);
+                }
+            }
+    
+            // Função para abrir imagem em fullscreen
+            function openFullscreenImage(src) {
+                const imageElement = document.getElementById('fullscreenImage');
+                const wrapper = document.getElementById('fullscreenImageWrapper');
+                imageElement.src = src;
+                wrapper.style.display = 'flex';  // Alterado para 'flex' para centralizar a imagem
+            }
+    
+            // Função para fechar a imagem fullscreen
+            function closeFullscreenImage() {
+                const wrapper = document.getElementById('fullscreenImageWrapper');
+                wrapper.style.display = 'none';
+            }
+    
+            // Chama a função para buscar os dados
+            fetchDataFromAppsScript();
 
-        obterVideos();  
-
-        function toggleMenu() {
+            function toggleMenu() {
             const menu = document.getElementById('sideMenu');
             const homeButton = document.querySelector('.home-button');
             menu.classList.toggle('active');
@@ -299,59 +405,10 @@
             window.location.href = page;
             toggleMenu();
         }
-
-    </script>
-
-<div class="container">
-    <h1 style="font-size: 14px;">Momentos D.E.A</h1>
-    <div id="imagemContainer" class="row justify-content-center gy-4"></div>
-</div>
-
-<script>
-async function obterImagens() {
-    const url = 'https://script.google.com/macros/s/AKfycbw-iy0kShmFHtVX64aSPIO3gsJHJ9_XR3BuCbpE2T-irPDsxA4HtOMZDMGlutlTwLW66A/exec';
-    
-    try {
-        const resposta = await fetch(url);
-        const dados = await resposta.json();
-
-        const imagemContainer = document.getElementById("imagemContainer"); // Ajustado para usar imagemContainer
-
-        if (dados.length === 0) {
-            imagemContainer.innerHTML = "<p>Nenhuma imagem encontrada.</p>";
-            return;
-        }
-
-        dados.forEach((item) => {
-            const colDiv = document.createElement("div");
-            colDiv.classList.add("col-12", "col-sm-6", "col-lg-4");
-
-            const imageItem = document.createElement("div");
-            imageItem.classList.add("imageItem");
-
-            const img = document.createElement("img");
-            img.src = item.imagemLink;  // Usando o nome correto da chave do link da imagem
-            img.alt = "Imagem";  // Texto alternativo caso a imagem não carregue
-            img.classList.add("img-fluid");  // Adiciona uma classe para tornar a imagem responsiva
-
-            imageItem.appendChild(img);
-            colDiv.appendChild(imageItem);
-            imagemContainer.appendChild(colDiv); // Adiciona a nova coluna ao container correto
-        });
-        
-    } catch (error) {
-        console.error("Erro ao carregar imagens:", error);
-        document.getElementById("imagemContainer").innerHTML = "<p>Erro ao carregar as imagens.</p>";
-    }
-}
-
-obterImagens();
-
-
 </script>
 
-</script>
+<!-- Incluindo o Bootstrap (caso não tenha incluído) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </body>
 </html>
