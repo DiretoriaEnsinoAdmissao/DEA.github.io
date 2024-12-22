@@ -130,19 +130,19 @@
         }
 
         .container.mt-4 {
-    background-color: #cdcdce; /* Fundo personalizado */
-    padding: 15px;
-    color: rgb(0, 0, 0);
-    display: flex; /* Ativa o flexbox */
-    flex-direction: column; /* Organiza os itens em coluna (vertical) */
-    justify-content: center; /* Centraliza verticalmente */
-    align-items: center; /* Centraliza horizontalmente */
-    width: 200%; /* Faz o fundo ocupar toda a largura da tela */
-    margin-top: 10px; /* Adiciona um espaço acima do container */
-    margin-bottom: 20px; /* Adiciona um espaço abaixo do container */
-    box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
-}
-
+            background-color: #cdcdce;
+            padding: 15px;
+            color: rgb(0, 0, 0);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 70%;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            box-shadow: 3px 0 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
 /* Estilo de vídeos */
 .videoItem {
     background: none; /* Remove o fundo do contêiner */
@@ -253,6 +253,44 @@
             }
         }
 
+        #toggle-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.2rem;
+            padding: 8px 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+            background-color: #333333;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        #toggle-button:hover {
+            background-color: #333333;
+        }
+
+        .popup {
+            position: absolute;
+            top: 160px; /* Alinha o fundo acima do container */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #cdcdce;
+            color: rgb(0, 0, 0);
+            padding: 20px;
+            border-radius: 10px;
+            width: 120%;
+            text-align: center;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+            display: none; /* Começa oculto */
+            z-index: 10;
+        }
+
+        .popup.visible {
+            display: block;
+        }
+
     </style>
 </head>
 <body>
@@ -309,6 +347,31 @@
             de cursos de formação e supervisão de treinamentos para a qualificação e aprimoramento contínuo dos
             profissionais.
         </p>
+        <button id="toggle-button">+</button>
+<div id="extra-info" class="popup">
+    <h3>Histórico da Diretoria de Ensino e Admissão (D.E.A)</h3>
+    <p>
+        A Diretoria de Ensino e Admissão (D.E.A) foi criada em 16 de maio de 2024, em resposta à crescente necessidade de segurança no Estado do Destiny RP. Inicialmente, a D.E.A fazia parte da Academia de Polícia do Destiny, conhecida como Acadepol. 
+    </p>
+    <p>
+        Posteriormente, após uma reformulação geral, cada divisão foi transformada em uma entidade acadêmica independente dentro do sistema da Acadepol. Nesse contexto, a "Acadepol da DRP" foi reestruturada como S.A.C (Sessão de Admissão e Concurso). Após novas mudanças, a Sessão de Admissão e Concurso tornou-se o S.I.A (Setor de Instruções e Admissões), assumindo a responsabilidade exclusiva pelo recrutamento para a Divisão de Rádio Patrulhamento (D.R.P).
+    </p>
+    <p>
+        Após diversas modificações organizacionais e trocas de liderança, o S.I.A evoluiu para a atual Diretoria de Ensino e Admissão (D.E.A), função que desempenha até os dias de hoje.
+    </p>
+    <p>
+        A Diretoria de Ensino e Admissão (D.E.A) é essencial para a eficácia e integridade da Divisão de Rádio Patrulhamento do Destiny RP. Ela garante que os profissionais sejam bem treinados, dedicados e preparados para proteger e servir à comunidade.
+    </p>
+
+    <h3>Curso de Formação de Soldados (C.F.S.D)</h3>
+    <p>
+        O C.F.S.D refere-se ao Curso de Formação de Soldados, um programa educacional essencial oferecido pela Diretoria de Ensino e Admissão (D.E.A) da Divisão de Rádio Patrulhamento (D.R.P) no contexto do Destiny RP do MTA.
+    </p>
+    <p>
+        Este curso foi projetado para preparar recrutas para os desafios das patrulhas urbanas, oferecendo treinamento abrangente em habilidades técnicas, operacionais e comportamentais. Ele é fundamental para que os participantes possam exercer a função policial com eficácia e segurança dentro da D.R.P - Divisão de Rádio Patrulhamento.
+    </p>
+</div>
+
     </div>
     
         <div class="container">
@@ -418,6 +481,20 @@
             window.location.href = page;
             toggleMenu();
         }
+
+        const toggleButton = document.getElementById('toggle-button');
+        const extraInfo = document.getElementById('extra-info');
+
+        toggleButton.addEventListener('click', () => {
+            const isVisible = extraInfo.classList.contains('visible');
+            if (isVisible) {
+                extraInfo.classList.remove('visible');
+                toggleButton.textContent = '+';
+            } else {
+                extraInfo.classList.add('visible');
+                toggleButton.textContent = 'X';
+            }
+        });
 </script>
 
 <!-- Incluindo o Bootstrap (caso não tenha incluído) -->
