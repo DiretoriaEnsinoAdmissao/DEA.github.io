@@ -452,6 +452,129 @@ body.dark-mode #loading-container {
     }
 }
 
+/* Responsividade - Modo Claro e Escuro */
+
+/* Para telas menores que 768px */
+@media (max-width: 768px) {
+
+/* Body */
+body {
+    font-size: 14px;
+}
+
+/* Cabeçalho */
+h1 {
+    font-size: 18px;
+    padding: 15px;
+}
+
+/* Navegação */
+nav ul {
+    flex-direction: column;
+}
+
+nav ul li {
+    margin: 10px 0;
+}
+
+/* Links */
+nav a {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+/* Conteúdo */
+.content {
+    width: 90%;
+    padding: 20px;
+}
+
+/* Janela de Texto */
+.text-window {
+    width: 95%;
+    height: auto;
+    padding: 20px;
+    max-width: 100%;
+}
+
+/* Imagens */
+.item-container img {
+    width: 70px;
+    height: 70px;
+}
+
+/* Botão de Alternância */
+#toggle-button {
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+/* Informações Extras */
+#extra-info {
+    padding: 20px;
+}
+
+/* Container Geral */
+.container {
+    width: 90%;
+    padding: 15px;
+}
+
+/* Container de Carregamento */
+#loading-container {
+    height: auto;
+}
+
+}
+
+/* Para telas maiores que 768px */
+@media (min-width: 769px) {
+
+/* Body */
+body {
+    font-size: 16px;
+}
+
+/* Cabeçalho */
+h1 {
+    font-size: 24px;
+    padding: 20px;
+}
+
+/* Navegação */
+nav ul {
+    flex-direction: row;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+/* Conteúdo */
+.content {
+    width: 70%;
+}
+
+/* Imagens */
+.item-container img {
+    width: 90px;
+    height: 90px;
+}
+
+/* Botão de Alternância */
+#toggle-button {
+    padding: 12px 24px;
+    font-size: 16px;
+}
+
+/* Container Geral */
+.container {
+    width: 80%;
+    padding: 20px;
+}
+
+}
+
 
     </style>
 </head>
