@@ -183,10 +183,10 @@ body.dark-mode .content {
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
     z-index: 1000;
-    width: 40%;
-    max-width: 90%;
-    height: 97%;
-    max-height: 97%;
+    width: 50%;
+    max-width: 80%;
+    height: 35%;
+    max-height: 70%;
     overflow: auto;
     text-align: center;
     padding-bottom: 60px; /* Adiciona um espaço extra para o botão */
@@ -385,8 +385,8 @@ body.dark-mode footer {
 
     /* Janela de Texto */
     .text-window {
-        width: 80%;
-        height: 80%;
+        width: 40%;
+        height: 25%;
     }
 
     /* Botão de alternância */
@@ -485,9 +485,20 @@ body.dark-mode footer {
                 <a href="revisão.html">Revisão de bens</a>
             </div>
         </li>
+
+        <li>
+            <a href="javascript:void(0);" onclick="showTextWindow()" style="display: flex; flex-direction: column; align-items: center;">
+                <img src="https://i.imgur.com/RCzkLlT.png" alt="Contato" style="width: 30px; height: 30px;"/>
+                <span style="margin-top: 3px;">Contato</span>
+            </a>
+        </li>
     </ul>
 </nav>
-
+<div id="textWindow" class="text-window">
+    <p><strong>Informativo</strong></p> 
+    <p>Se você conhece alguém na cidade do <strong>Destiny</strong> que infelizmente faleceu e gostaria que aparecesse no memorial, avise a gente pelo Discord <strong>_caruzo</strong>.</p>
+    <button onclick="closeTextWindow()">x</button>
+</div>
     <header>
         <h1>Memorial</h1>
         <p>Em memória dos que partiram, mas permanecem em nossos corações</p>
