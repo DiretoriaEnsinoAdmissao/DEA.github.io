@@ -286,6 +286,46 @@ body.dark-mode .toggle-btn {
     background-color: #f1f1f1;
     color: #333;
 }
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* Ajusta o tamanho da fonte */
+    }
+
+    h1 {
+        font-size: 18px; /* Ajusta o tamanho do título */
+        padding: 15px; /* Ajusta o padding */
+    }
+
+    .content {
+        width: 90%; /* Ajusta o conteúdo para ocupar 90% da largura */
+        padding: 15px; /* Ajusta o padding */
+    }
+
+    nav ul {
+        flex-direction: column; /* Organiza os itens do menu em coluna */
+    }
+
+    .imageItem, .videoItem {
+        max-width: 100%; /* Ajusta a largura das imagens e vídeos */
+    }
+
+    .imageItem img, .videoItem iframe {
+        height: 150px; /* Ajusta a altura das imagens e vídeos */
+    }
+
+    .text-window {
+        width: 95%; /* Ajusta a largura da janela de texto */
+        height: 80%; /* Ajusta a altura da janela de texto */
+    }
+
+    .toggle-btn {
+        top: 15px; /* Ajusta a posição do botão de alternância */
+        right: 15px;
+        padding: 8px; /* Ajusta o tamanho do botão */
+    }
+}
+
     </style>
 </head>
 <body>
