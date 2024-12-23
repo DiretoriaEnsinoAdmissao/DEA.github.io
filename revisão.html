@@ -452,81 +452,126 @@ body.dark-mode #loading-container {
     }
 }
 
-/* Responsividade - Modo Claro e Escuro */
-
-/* Para telas menores que 768px */
 @media (max-width: 768px) {
+    /* Corpo */
+    body {
+        background-color: #efeff4;
+        color: #333;
+    }
 
-/* Body */
-body {
-    font-size: 14px;
-}
+    /* Cabeçalho */
+    h1 {
+        font-size: 14px;
+        padding: 15px;
+    }
 
-/* Cabeçalho */
-h1 {
-    font-size: 18px;
-    padding: 15px;
-}
-
-/* Navegação */
-nav ul {
-    flex-direction: column;
-}
-
-nav ul li {
-    margin: 10px 0;
-}
-
-/* Links */
-nav a {
-    padding: 10px 20px;
-    font-size: 16px;
-}
-
-/* Conteúdo */
-.content {
-    width: 90%;
-    padding: 20px;
-}
-
-/* Janela de Texto */
-.text-window {
-    width: 95%;
-    height: auto;
-    padding: 20px;
-    max-width: 100%;
-}
-
-/* Imagens */
-.item-container img {
-    width: 70px;
-    height: 70px;
-}
-
-/* Botão de Alternância */
-.toggle-btn {
-        top: 70px;
-        right: 15px;
+    /* Header */
+    header {
         padding: 8px;
     }
 
-/* Informações Extras */
-#extra-info {
-    padding: 20px;
+    /* Navegação */
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    /* Conteúdo */
+    .content {
+        width: 90%;
+        padding: 15px;
+    }
+
+    /* Imagens */
+    .item-container img {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* Botão de Alternância */
+    #toggle-button {
+        top: 70px !important;
+        right: 15px !important;
+        padding: 8px !important;
+        font-size: 12px!important;
+        padding: 8px 16px!important;
+    }
+
+    /* Informações Extras */
+    #extra-info {
+        padding: 20px;
+    }
 }
 
-/* Container Geral */
-.container {
-    width: 90%;
-    padding: 15px;
+@media (max-width: 480px) {
+    /* Corpo */
+    body {
+        background-color: #efeff4;
+        color: #333;
+    }
+
+    /* Cabeçalho */
+    h1 {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    /* Header */
+    header {
+        padding: 6px;
+    }
+
+    /* Navegação */
+    nav ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 8px 0;
+        font-size: 16px;
+    }
+
+    nav a {
+        padding: 8px 10px;
+    }
+
+    /* Conteúdo */
+    .content {
+        width: 95%;
+        padding: 10px;
+    }
+
+    /* Imagens */
+    .item-container img {
+        width: 60px;
+        height: 60px;
+    }
+
+    /* Botão de Alternância */
+    #toggle-button {
+        top: 70px !important;
+        right: 15px !important;
+        padding: 8px !important;
+        font-size: 12px!important;
+        padding: 8px 16px!important;
+    }
+
+    /* Informações Extras */
+    #extra-info {
+        padding: 15px;
+    }
+
+    /* Container Geral */
+    .container {
+        padding: 15px;
+        max-width: 90%;
+    }
 }
 
-/* Container de Carregamento */
-#loading-container {
-    height: auto;
-}
-
-}
 
 
     </style>
