@@ -192,10 +192,11 @@ footer {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
+    z-index: 101;
     width: 90%;
-    max-width: 90%;
+    max-width: 100%;
     height: 90%;
+	padding-bottom: 20px;
 }
 
 .text-window button {
@@ -205,7 +206,11 @@ footer {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 2px;
+    margin-top: 20px; /* Adiciona uma margem superior para o botão */
+    position: absolute; /* Fixar o botão na parte inferior */
+    bottom: 30px; /* Aumente o valor para descer o botão mais */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza o botão horizontalmente */
 }
 
 .text-window button:hover {
@@ -349,7 +354,8 @@ body.dark-mode .toggle-btn {
     <p>Após diversas modificações organizacionais e trocas de liderança, o S.I.A evoluiu para a atual Diretoria de Ensino e Admissão (D.E.A), função que desempenha até os dias de hoje.</p>
     <p>A Diretoria de Ensino e Admissão (D.E.A) é essencial para a eficácia e integridade da Divisão de Rádio Patrulhamento do Destiny RP. Ela garante que os profissionais sejam bem treinados, dedicados e preparados para proteger e servir à comunidade.</p>
 
-    <h3>Curso de Formação de Soldados (C.F.S.D)</h3>
+    <p><strong>Curso de Formação de Soldados (C.F.S.D)</strong></p>
+	
     <p>O C.F.S.D refere-se ao Curso de Formação de Soldados, um programa educacional essencial oferecido pela Diretoria de Ensino e Admissão (D.E.A) da Divisão de Rádio Patrulhamento (D.R.P) no contexto do Destiny RP do MTA.</p>
     <p>Este curso foi projetado para preparar recrutas para os desafios das patrulhas urbanas, oferecendo treinamento abrangente em habilidades técnicas, operacionais e comportamentais. Ele é fundamental para que os participantes possam exercer a função policial com eficácia e segurança dentro da D.R.P - Divisão de Rádio Patrulhamento.</p>
     <button onclick="closeTextWindow()">x</button>
