@@ -351,20 +351,94 @@ body.dark-mode footer {
 
 /* Responsividade: Ajuste para telas menores */
 @media (max-width: 768px) {
-    header h1 {
-        font-size: 36px;
+    /* Cabeçalho */
+    h1 {
+        font-size: 12px;
+        padding: 15px;
     }
+
+    /* Header */
+    header {
+        padding: 15px;
+    }
+
+    /* Navegação */
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    /* Conteúdo */
+    .content {
+        width: 90%;
+        padding: 20px;
+    }
+
+    /* Janela de Texto */
+    .text-window {
+        width: 80%;
+        height: 80%;
+    }
+
+    /* Botão de alternância */
+    .toggle-btn {
+        top: 15px;
+        right: 15px;
+        padding: 8px;
+    }
+
+    /* Container */
     .container {
         width: 90%;
+        margin: 20px auto;
+        padding: 15px;
     }
+
+    /* Entry */
     .entry img {
         width: 150px;
         height: 150px;
     }
+
+    .entry h2 {
+        font-size: 20px;
+    }
+
+    .entry p {
+        font-size: 14px;
+    }
+
+    /* Footer */
     footer {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    /* Modo Escuro: Estilos responsivos */
+    body.dark-mode h1 {
+        font-size: 12px;
+    }
+
+    body.dark-mode .text-window {
+        background-color: #333;
+        color: #f1f1f1;
+    }
+
+    body.dark-mode .container {
+        background-color: #333;
+        color: #f1f1f1;
+    }
+
+    body.dark-mode footer {
+        background-color: #222;
         font-size: 14px;
     }
 }
+
 
     </style>
 </head>
