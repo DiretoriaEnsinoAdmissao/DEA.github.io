@@ -17,7 +17,7 @@
 
 /* Modo Claro (Padrão) */
 body {
-    background-color: #efeff4;
+    background-color: #e4e4e8;
     color: #333;
 }
 
@@ -181,11 +181,14 @@ body.dark-mode .content {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    z-index: 101;
-    width: 97%;
-    max-width: 100%;
+    z-index: 1000;
+    width: 40%;
+    max-width: 90%;
     height: 97%;
-	padding-bottom: 30px;
+    max-height: 97%;
+    overflow: auto;
+    text-align: center;
+    padding-bottom: 60px; /* Adiciona um espaço extra para o botão */
 }
 
 .text-window button {
@@ -197,14 +200,13 @@ body.dark-mode .content {
     cursor: pointer;
     margin-top: 20px; /* Adiciona uma margem superior para o botão */
     position: absolute; /* Fixar o botão na parte inferior */
-    bottom: 10px; /* Aumente o valor para descer o botão mais */
+    bottom: 30px; /* Aumente o valor para descer o botão mais */
     left: 50%;
     transform: translateX(-50%); /* Centraliza o botão horizontalmente */
-    z-index: 200;
 }
 
 .text-window button:hover {
-    background-color: #ffffff;
+    background-color: #2980b9;
 }
 
 /* Modo Escuro */
@@ -238,173 +240,133 @@ body.dark-mode .toggle-btn {
     background-color: #f1f1f1;
     color: #333;
 }
+/* Divisórias para o Modo Claro e Escuro */
 
-
-
-
-/* Tema Claro e Escuro */
-
-/* Modo Claro */
-#items-list .item-container {
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #e4e4e8; /* Fundo mais claro para contraste com o texto */
-    border-radius: 10px;
-    text-align: left;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra mais suave e elegante */
+/* Container de Busca */
+#search-container {
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: center;
+    margin: 20px auto;
+    width: 75%; /* Largura centralizada */
+}
+
+#search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc; /* Borda suave */
+    border-radius: 5px;
+    height: 40px;
+    color: #333;
+    background-color: #e4e4e8; /* Fundo branco */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+/* Modo Escuro: Busca Input */
+body.dark-mode #search-input {
+    background-color: #333;
+    color: #f1f1f1;
+    border: 1px solid #555;
+}
+
+/* Modo Claro: Busca Button */
+#search-button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    color: #fff; /* Texto branco */
+    background-color: #e4e4e8; /* Fundo escuro */
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+}
+
+/* Modo Escuro: Busca Button */
+body.dark-mode #search-button {
+    background-color: #555;
+}
+
+/* Hover Busca Button */
+#search-button:hover {
+    background-color: #333; /* Cor de destaque ao passar o mouse */
+}
+
+/* Container de Itens */
+.item-container {
     width: 90%;
-    max-width: 70%;
-    transition: transform 0.3s ease; /* Suaviza o efeito de hover */
-}
-
-/* Modo Escuro */
-body.dark-mode #items-list .item-container {
-    background-color: #333; /* Fundo mais escuro */
-    color: #f1f1f1; /* Texto mais claro */
-    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.4); /* Sombra mais suave no modo escuro */
-}
-
-/* Efeito Hover */
-#items-list .item-container:hover {
-    transform: translateY(-5px); /* Efeito sutil ao passar o mouse */
-}
-
-/* Imagens */
-.item-container img {
-    width: 90px;
-    height: 90px;
-    border-radius: 15px;
-    object-fit: cover;
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #e4e4e8; /* Fundo branco */
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.09); /* Sombra suave */
+    text-align: center;
     transition: transform 0.3s ease;
 }
 
-/* Efeito Hover nas Imagens */
+/* Modo Escuro: Item Container */
+body.dark-mode .item-container {
+    background: #333;
+    color: #f1f1f1;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Hover Item Container */
+.item-container:hover {
+    transform: scale(1.05); /* Aumenta ligeiramente o tamanho no hover */
+}
+
+/* Item Container Imagem */
+.item-container img {
+    width: 100px;
+    margin-bottom: 10px;
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar a imagem */
+    transition: transform 0.3s ease;
+}
+
+/* Modo Escuro: Imagem Container */
+body.dark-mode .item-container img {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Hover Item Container Imagem */
 .item-container img:hover {
-    transform: scale(1.1); /* Aumenta a imagem ao passar o mouse */
+    transform: scale(1.05); /* Rotação leve no hover */
 }
 
-/* Detalhes do Item */
-.item-container .item-details {
-    flex-grow: 1;
-}
-
+/* Título Item Container */
 .item-container h3 {
-    color: #000000; /* Título no modo claro */
-    font-size: 20px;
-    margin: 0;
-    font-weight: 500;
+    color: #000000; /* Tom sóbrio */
+    margin: 10px 0;
+    font-size: 22px;
+    font-family: 'Georgia', serif; /* Fonte clássica */
 }
 
-/* Modo Escuro: Título */
+/* Modo Escuro: Título Item Container */
 body.dark-mode .item-container h3 {
-    color: #ffffff; /* Título no modo escuro */
+    color: #ffffff;
 }
 
+/* Parágrafo Item Container */
 .item-container p {
-    color: #000000; /* Texto no modo claro */
     margin: 5px 0;
-    font-size: 14px;
-}
-
-/* Modo Escuro: Texto */
-body.dark-mode .item-container p {
-    color: #f1f1f1; /* Texto no modo escuro */
-}
-
-/* Botão de Alternância */
-#toggle-button {
-    position: absolute;
-    top: 22px;
-    left: 20px;
-    padding: 12px 24px;
-    font-size: 16px;
-    background-color: #3a3a3a;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s;
-}
-
-/* Modo Escuro: Botão de Alternância */
-body.dark-mode #toggle-button {
-    background-color: #555; /* Fundo mais claro no modo escuro */
-}
-
-/* Hover no Botão de Alternância */
-#toggle-button:hover {
-    background-color: #020202;
-}
-
-/* Informações Extras */
-#extra-info {
-    display: none;
-    opacity: 0;
-    visibility: hidden;
-    background-color: #2a2a2a;
-    padding: 25px;
-    border-radius: 10px;
-    margin-top: 25px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 0;
     text-align: left;
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-/* Modo Escuro: Informações Extras */
-body.dark-mode #extra-info {
-    background-color: #444; /* Fundo mais escuro no modo escuro */
-}
-
-/* Visibilidade das Informações Extras */
-#extra-info.visible {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Parágrafo das Informações Extras */
-#extra-info p {
-    margin: 15px 0;
-    color: #c9d1d9;
-    line-height: 1.6;
-    font-size: 16px;
-}
-
-/* Modo Escuro: Parágrafo das Informações Extras */
-body.dark-mode #extra-info p {
-    color: #f1f1f1; /* Texto mais claro no modo escuro */
-}
-
-#extra-info p strong {
-    font-weight: 600;
-    color: #e0e0e0;
-}
-
-#extra-info .info {
-    margin-left: 25px;
-    text-indent: -10px;
-}
-
-/* Container Geral */
-.container {
-    max-width: 80%;
     width: 100%;
-    margin: 0 auto;
-    text-align: left;
-    padding: 20px;
+    color: #555; /* Texto cinza escuro */
+    line-height: 1.6;
 }
 
-/* Modo Escuro: Container Geral */
-body.dark-mode .container {
-    background-color: #333; /* Fundo escuro para o container */
-    color: #f1f1f1; /* Texto mais claro */
+/* Modo Escuro: Parágrafo Item Container */
+body.dark-mode .item-container p {
+    color: #f1f1f1;
 }
 
-
+/* Container de Carregamento */
 #loading-container {
     display: flex;
     justify-content: center; /* Alinha horizontalmente */
@@ -412,108 +374,101 @@ body.dark-mode .container {
     flex-direction: column;  /* Organiza os itens em coluna */
     height: 100vh;           /* Garante que ocupe toda a altura da tela */
     text-align: center;      /* Centraliza o texto */
-    position: absolute;      /* Altera para absoluto para não bloquear o fundo */
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0); /* Fundo transparente */
-    z-index: 1000;           /* Garante que o conteúdo de carregamento fique acima de outros elementos */
-    pointer-events: none;    /* Impede que o container de carregamento bloqueie interação com o conteúdo */
 }
 
 /* Modo Escuro: Container de Carregamento */
 body.dark-mode #loading-container {
-    background-color: rgba(0, 0, 0, 0); /* Fundo transparente também no modo escuro */
+    background-color: #333;
     color: #f1f1f1;
 }
 
-/* Imagem do Carregando (opcional) */
 #loading-container img {
     width: 150px;
     margin-bottom: 10px;
 }
 
-/* Estilo para o Texto */
 #loading-container p {
     font-size: 20px;
     color: #777; /* Cinza intermediário */
-    animation: pulsar 1s infinite; /* Animação de pulsação */
+    animation: pulsar 1s infinite;
 }
 
-/* Animação de pulsação para o texto */
-@keyframes pulsar {
-    0% {
-        opacity: 0.1;
-    }
-    50% {
-        opacity: 0.5;
-    }
-    100% {
-        opacity: 1;
-    }
+/* Estilo da Divisão do Contêiner */
+.container {
+    max-width: 90%;
+    width: 100%;
+    margin: 30px auto;
+    text-align: left;
+    padding: 20px;
+    background: #e4e4e8;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); /* Caixa suave */
+    transition: background-color 0.3s, color 0.3s;
 }
+
+/* Modo Escuro: Estilo da Divisão do Contêiner */
+body.dark-mode .container {
+    background: #333;
+    color: #f1f1f1;
+}
+
 
 @media (max-width: 768px) {
-    /* Corpo */
-    body {
-        background-color: #efeff4;
-        color: #333;
-    }
-
+    /* Ajustes para dispositivos com tela pequena */
+    
     /* Cabeçalho */
     h1 {
-        font-size: 14px;
+        font-size: 12px;
         padding: 15px;
-    }
-
-    /* Header */
-    header {
-        padding: 8px;
     }
 
     /* Navegação */
     nav ul {
         flex-direction: column;
+        margin: 0;
+        padding: 0;
     }
 
     nav ul li {
         margin: 10px 0;
     }
 
-    /* Conteúdo */
-    .content {
+    /* Container de Itens */
+    .item-container {
         width: 90%;
         padding: 15px;
     }
 
-    /* Imagens */
-    .item-container img {
-        width: 70px;
-        height: 70px;
+    /* Container de Busca */
+    #search-container {
+        width: 90%;
     }
 
-    /* Botão de Alternância */
-    #toggle-btn {
+    /* Janela de Texto */
+    .text-window {
+        width: 80%;
+        max-width: 95%;
+        height: auto;
+        padding: 20px;
+    }
+
+    /* Botão de alternância */
+    .toggle-btn {
         top: 70px;
-        right: 15px;
+        right: 10px;
         padding: 8px;
     }
 
-    /* Informações Extras */
-    #extra-info {
-        padding: 20px;
-    }
-    .text-window {
-        width: 95%; /* Ajusta a largura da janela de texto */
-        height: 95%; /* Ajusta a altura da janela de texto */
-        font-size: 12px; /* Ajusta o tamanho da fonte */
-        z-index: 200;
-    }
+    /* Container de Carregamento */
     #loading-container img {
-        width: 120px;
+        width: 90px;
+    }
+
+    /* Container de Divisão */
+    .container {
+        padding: 15px;
     }
 }
-
 
 
     </style>
@@ -545,7 +500,7 @@ body.dark-mode #loading-container {
         <li class="tab-dropdown">
             <a href="#">Mercadorias 📦</a>
             <div class="dropdown">
-                <a href="mercadoria.html">Mercadoria</a>
+                <a href="revisão.html">Revisão de bens</a>
             </div>
         </li>
         <li class="tab-dropdown">
@@ -554,38 +509,22 @@ body.dark-mode #loading-container {
                 <a href="https://docs.google.com/document/d/1I4u1HrMR_UDl0VGcRScm1vgvc6zrzoE6JYX4NGPhyq8/edit?usp=sharing" target="_blank">Apostila</a>
             </div>
         </li>
-        <li>
-            <a href="javascript:void(0);" onclick="showTextWindow()">Regras ℹ️</a>
-        </li>
     </ul>
 </nav>
-<div id="textWindow" class="text-window">
-    <h2>Regras de Resgate</h2>
 
-    <p><strong>1. Participantes:</strong></p>
-    <p>Permitido até <strong>8 bandidos</strong>, no mínimo <strong>2 policiais</strong> e no máximo <strong>16 policiais</strong>.</p>
-	
-    <p><strong>2. Restrições de Comunicação e Apoio:</strong></p>
-    <p>Não será permitido solicitar apoio na central (<strong>APOIO</strong>).</p>
-    <p>Será permitido o envolvimento de terceiros apenas para obtenção de informações.</p>
+<h1>Mercadorias</h1>  
 
-    <p><strong>3. Locais e momentos para o resgate:</strong></p>
-    <p>O resgate não poderá ser iniciado na região do departamento policial.</p>
-    <p>O resgate deve começar durante o trajeto até a prisão; caso a van chegue à prisão sem que a ação tenha sido iniciada, o resgate não poderá ocorrer.</p>
-    <p>Não será permitido acampar nas proximidades do presídio.</p>
+    <div id="search-container">
+        <input type="text" id="search-input" class="form-control" placeholder="Digite o nome do item" style="width: 25%;">
+        <button id="search-button" class="btn btn-primary">🔍</button>
+    </div>
 
-    <p><strong>4. Revisão de Bens:</strong></p>
-	<p>Os policiais só farão a revisão de bens ao chegarem na prisão, permitindo que o resgate seja executado até esse momento para evitar perdas e tempo de encarceramento.</p>
-    <button onclick="closeTextWindow()">x</button>
-</div>
     <div id="loading-container">
         <img src="https://i.imgur.com/5ICVZeE.gif" alt="Carregando...">
         <p>Carregando...</p>
     </div>
-<!-- Div de Hierarquia -->
-<h1>Revisão de bens</h1>
-<div id="items-list"></div>
 
+    <div id="items-list" class="container"></div>
 
 <script>
 
@@ -598,72 +537,59 @@ body.dark-mode #loading-container {
     }
 	
   
+//script novo
         const itemsList = document.getElementById('items-list');
-        const extraInfo = document.getElementById('extra-info');  
-  
-  
-     async function loadItems() {
-        try {
-            // Exibe o container de carregamento
-            document.getElementById('loading-container').style.display = 'flex';
+        const loadingContainer = document.getElementById('loading-container');
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
 
-            const url = 'https://script.google.com/macros/s/AKfycbwHbk58WBHFxyfvudIEZYfeiDf8k4NmKUclCvMMk1AIgNLZrDwSfTiQUUPGHICdvLkyAw/exec';
+        let allItems = [];
 
-            const response = await fetch(url);
-            const items = await response.json();
-            displayItems(items);
-        } catch (error) {
-            console.error('Erro ao carregar os itens:', error);
-            itemsList.innerHTML = "<p>Erro ao carregar os itens.</p>";
-        } finally {
-            // Esconde o container de carregamento quando a resposta for recebida
-            document.getElementById('loading-container').style.display = 'none';
-        }
-    }
+        async function loadItems(search = "") {
+            try {
+                loadingContainer.style.display = 'block';
+                itemsList.innerHTML = '';
 
-function displayItems(items) {
-    if (items.length > 0) {
-        itemsList.innerHTML = items.map(item => {
-            let quantia = item.minima;
+                const url = new URL('https://script.google.com/macros/s/AKfycbzprjrFTFbUJKsRlmRl5Itt3ijwYfOhrJgOGQiVyHYbqh4H23Jt64An1D-HsLVan6zKSA/exec');
+                if (search) url.searchParams.append('search', search);
 
-            if (!isNaN(quantia) && quantia > 0) {
-                quantia = quantia >= 1000 
-                    ? `R$ ${quantia.toLocaleString()} Notas Marcadas.` 
-                    : quantia === 1 
-                        ? `${quantia} unidade.` 
-                        : `${quantia} unidades.`;
-            } else if (typeof quantia === 'string' && quantia.trim() !== '') {
-                // Verifica se contém números e letras
-                const hasNumbers = /\d/.test(quantia);
-                const hasLetters = /[a-zA-Z]/.test(quantia);
+                const response = await fetch(url);
+                allItems = await response.json();
 
-                if (hasNumbers && hasLetters) {
-                    quantia = `<strong>Quantia Mínima:</strong> ${quantia}`;
-                } else {
-                    quantia = `<strong>Observação:</strong> ${quantia}`;
-                }
-            } else {
-                quantia = 'Não especificado.';
+                displayItems(allItems);
+            } catch (error) {
+                console.error('Erro ao carregar os itens:', error);
+                itemsList.innerHTML = "<p>Erro ao carregar os itens.</p>";
+            } finally {
+                loadingContainer.style.display = 'none';
             }
+        }
 
-            return `
-                <div class="item-container">
-                    <img src="${item.imagem}" alt="${item.nome}">
-                    <div class="item-details">
+        function displayItems(items) {
+            if (items.length > 0) {
+                itemsList.innerHTML = items.map(item => `
+                    <div class="item-container">
+                        <img src="${item.imagem}" alt="${item.nome}" width="100">
                         <h3>${item.nome}</h3>
+                        <p><strong>Quantia Mínima:</strong> ${item.minima && item.minima > 0 ? (item.minima.toString().includes('.') ? `R$ ${item.minima.toLocaleString('pt-BR')} em Notas Marcadas.` : (item.minima > 1 ? `${item.minima} unidades.` : `${item.minima} unidade.`)) : ''}</p>
                         <p><strong>Descrição:</strong> ${item.descricao}</p>
-                        <p>${quantia}</p>
+                        <p><strong>Revisão de bens:</strong> ${item.revisao && item.revisao > 0 ? (item.revisao.toString().includes('.') ? `R$ ${item.revisao.toLocaleString('pt-BR')} em Notas Marcadas.` : (item.revisao > 1 ? `${item.revisao} unidades.` : `${item.revisao} unidade.`)) : 'Não se enquadra na revisão de bens.'}</p>
                     </div>
-                </div>
-            `;
-        }).join('');
-    } else {
-        itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";
-    }
-}
+                `).join('');
+            } else {
+                itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";
+            }
+            console.log('Itens exibidos:', items);
+        }
 
+        searchButton.addEventListener('click', () => {
+            const searchQuery = searchInput.value.trim();
+            loadItems(searchQuery);
+        });
 
-        window.onload = loadItems;  
+        window.onload = () => loadItems();  
+  
+  
   
   
   
@@ -706,7 +632,6 @@ if (savedTheme === "dark") {
 
 // Adiciona um ouvinte de evento para o clique no botão
 toggleBtn.addEventListener("click", toggleMode);
-
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
