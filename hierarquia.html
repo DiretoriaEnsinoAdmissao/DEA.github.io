@@ -9,32 +9,44 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
     <style>
-/* Estilos gerais */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Modo Claro (Padrão) */
 body {
-    font-family: 'Georgia', serif;
     background-color: #efeff4;
     color: #333;
-    transition: background-color 0.3s, color 0.3s;
 }
 
+/* Modo Escuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+/* Cabeçalho */
 h1 {
-    background: #333333;
+    background: #333;
     color: white;
     padding: 20px;
     text-align: center;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Georgia', serif;
     font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Modo Escuro: Cabeçalho */
+body.dark-mode h1 {
+    background-color: #1c1c1c;
+    color: #f1f1f1;
+}
+
+/* Header */
 header {
     background-color: #333;
     color: white;
@@ -42,13 +54,26 @@ header {
     text-align: center;
 }
 
+/* Modo Escuro: Header */
+body.dark-mode header {
+    background-color: #222;
+    color: #f1f1f1;
+}
+
+/* Navegação */
 nav {
-    background-color: #333333;
+    background-color: #333;
     text-align: center;
     padding: 5px 0;
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Modo Escuro: Navegação */
+body.dark-mode nav {
+    background-color: #222;
+}
+
+/* Navegação - Links */
 nav ul {
     list-style: none;
     padding: 0;
@@ -71,13 +96,26 @@ nav a {
     transition: background-color 0.3s;
 }
 
-nav a:hover {
-    background-color: #555555;
+/* Modo Escuro: Links */
+body.dark-mode nav a {
+    color: #f1f1f1;
 }
 
+/* Hover Navegação */
+nav a:hover {
+    background-color: #555;
+}
+
+/* Modo Escuro: Hover Links */
+body.dark-mode nav a:hover {
+    background-color: #444;
+}
+
+/* Dropdown */
 .tab-dropdown:hover .dropdown {
     display: block;
     border-radius: 5px;
+	
 }
 
 .dropdown {
@@ -85,7 +123,7 @@ nav a:hover {
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #333333;
+    background-color: #333;
     min-width: 180px;
     border-radius: 5px;
     padding: 5px 0;
@@ -99,10 +137,22 @@ nav a:hover {
     font-size: 16px;
 }
 
+/* Modo Escuro: Dropdown */
+body.dark-mode .dropdown {
+    background-color: #222;
+}
+
+/* Hover Dropdown */
 .dropdown a:hover {
     background-color: #e4e4e800;
 }
 
+/* Modo Escuro: Hover Dropdown */
+body.dark-mode .dropdown a:hover {
+    background-color: #444;
+}
+
+/* Conteúdo */
 .content {
     padding: 30px;
     background-color: #e4e4e8;
@@ -115,73 +165,121 @@ nav a:hover {
     margin-right: auto;
 }
 
-/* Rodapé */
-footer {
-    background-color: #333;
-    color: white;
+/* Modo Escuro: Conteúdo */
+body.dark-mode .content {
+    background-color: #1c1c1c;
+}
+
+/* Nível */
+.nivel {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
     text-align: center;
-    padding: 10px;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
+    background-color: #e4e4e8;
     padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: none; /* Remover transição */
+
 }
 
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
+/* Modo Escuro: Nível */
+body.dark-mode .nivel {
+    background-color: #333;
 }
 
-.imageItem, .videoItem {
-    width: 100%;
-    max-width: 300px;
-    margin-bottom: 20px;
+/* Nível Hover */
+.nivel:hover {
+    transform: none; /* Remover o efeito de transformação */
+    background-color: #e4e4e8; /* Manter a cor original no hover */
 }
 
-.imageItem img, .videoItem iframe {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    cursor: pointer;
+/* Modo Escuro: Nível Hover */
+body.dark-mode .nivel:hover {
+    background-color: #333; /* Manter a cor original no hover no modo escuro */
 }
 
-.fullscreenImageWrapper {
-    display: none;
-    position: fixed;
+/* Título Nível */
+.nivel h2 {
+    font-size: 20px;
+    color: #4b79a1;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    word-wrap: break-word;
+    position: relative;
+    z-index: 1;
+}
+
+/* Modo Escuro: Título Nível */
+body.dark-mode .nivel h2 {
+    color: #78aaff;
+}
+
+/* Lista Nível */
+.nivel ul li {
+    margin: 10px auto;
+    font-size: 16px;
+    color: #555;
+    padding: 8px 12px;
+    border-left: 4px solid #4b79a1;
+    background-color: #d8d8db;
+    border-radius: 5px;
+}
+
+/* Modo Escuro: Lista Nível */
+body.dark-mode .nivel ul li {
+    background-color: #444;
+    color: #f1f1f1;
+    border-left: 4px solid #78aaff;
+}
+
+/* Responsável */
+.nivel ul li .responsavel {
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+}
+
+/* Modo Escuro: Responsável */
+body.dark-mode .nivel ul li .responsavel {
+    color: #f1f1f1;
+}
+
+/* Auxiliar */
+.nivel ul li .auxiliar {
+    color: #666;
+    font-style: italic;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Modo Escuro: Auxiliar */
+body.dark-mode .nivel ul li .auxiliar {
+    color: #aaa;
+}
+
+/* Animação para o fundo */
+.nivel h2::before {
+    content: '';
+    position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 1);
-    align-items: center;
-    justify-content: center;
+    right: 0;
+    bottom: 0;
+    background-color: #4b79a1;
+    z-index: -1;
+    border-radius: 12px;
+    opacity: 0.2;
 }
 
-.fullscreenImage {
-    max-width: 90%;
-    max-height: 90%;
-    border-radius: 10px;
+/* Modo Escuro: Animação para o fundo */
+body.dark-mode .nivel h2::before {
+    background-color: #78aaff;
 }
 
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background-color: transparent;
-    border: none;
-    color: white;
-    font-size: 20px;
-    cursor: pointer;
-}
 
+/* Janela de Texto */
 .text-window {
     display: none;
     position: fixed;
@@ -192,11 +290,14 @@ footer {
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    z-index: 101;
-    width: 90%;
-    max-width: 100%;
-    height: 90%;
-	padding-bottom: 20px;
+    z-index: 1000;
+    width: 40%;
+    max-width: 90%;
+    height: 97%;
+    max-height: 97%;
+    overflow: auto;
+    text-align: center;
+    padding-bottom: 60px; /* Adiciona um espaço extra para o botão */
 }
 
 .text-window button {
@@ -223,48 +324,10 @@ body.dark-mode {
     color: #ddd;
 }
 
-body.dark-mode h1 {
-    background: #444;
-    color: #fff;
-}
-
-body.dark-mode header, 
-body.dark-mode nav, 
-body.dark-mode footer {
-    background-color: #222;
-}
-
-body.dark-mode nav a {
-    color: #ddd;
-}
-
-body.dark-mode nav a:hover {
-    background-color: #444;
-}
-
-body.dark-mode .dropdown {
-    background-color: #444;
-}
-
-body.dark-mode .dropdown a {
-    color: #ddd;
-}
-
-body.dark-mode .dropdown a:hover {
-    background-color: #555;
-}
-
-body.dark-mode .content {
-    background-color: #333;
-}
-
+/* Modo Escuro: Janela de Texto */
 body.dark-mode .text-window {
     background-color: #333;
-    color: #ddd;
-}
-
-body.dark-mode .text-window button {
-    background-color: #2980b9;
+    color: #f1f1f1;
 }
 
 /* Botão de alternância */
@@ -286,21 +349,20 @@ body.dark-mode .toggle-btn {
     background-color: #f1f1f1;
     color: #333;
 }
+
     </style>
 </head>
 <body>
 <button class="toggle-btn" id="toggle-btn"></button>
+
 <header>
     <h1>Diretoria de Ensino e Admissão</h1>
 </header>
 
 <nav>
     <ul>
-        <li class="tab-dropdown">
-            <a href="#">D.E.A 📜</a>
-            <div class="dropdown">
-                <a href="hierarquia.html">Hierarquia</a>
-            </div>
+        <li>
+            <a href="index.html">Home</a>
         </li>
         <li class="tab-dropdown">
             <a href="#">D.R.P 🕵️‍♂️</a>
@@ -321,58 +383,24 @@ body.dark-mode .toggle-btn {
                 <a href="https://docs.google.com/document/d/1I4u1HrMR_UDl0VGcRScm1vgvc6zrzoE6JYX4NGPhyq8/edit?usp=sharing" target="_blank">Apostila</a>
             </div>
         </li>
-        <!-- Novo botão -->
         <li>
-            <a href="javascript:void(0);" onclick="showTextWindow()">Info ℹ️</a>
+            <a href="javascript:void(0);" onclick="showTextWindow()">Farda ℹ️</a>
         </li>
     </ul>
 </nav>
-
-
-<div class="content">
-            A Diretoria de Ensino e Admissão (D.E.A) é responsável pela coordenação de processos seletivos, organização
-            de cursos de formação e supervisão de treinamentos para a qualificação e aprimoramento contínuo dos
-            profissionais.
-</div>
-
-<div class="container">
-    <h1>Motivacional</h1>
-    <div id="MotivacionalImagemContainer" class="row justify-content-center gy-4"></div>
-    <div id="MotivacionalVideoContainer" class="row justify-content-center my-4"></div>
-</div>
-
-<div class="container">
-    <h1>Momentos</h1>
-    <div id="MomentosImagemContainer" class="row justify-content-center gy-4"></div>
-    <div id="MomentosVideoContainer" class="row justify-content-center my-4"></div>
-</div>
-
-<!-- Janela com texto -->
 <div id="textWindow" class="text-window">
-    <p>A Diretoria de Ensino e Admissão (D.E.A) foi criada em 16 de maio de 2024, em resposta à crescente necessidade de segurança no Estado do Destiny RP. Inicialmente, a D.E.A fazia parte da Academia de Polícia do Destiny, conhecida como Acadepol.</p>
-    <p>Posteriormente, após uma reformulação geral, cada divisão foi transformada em uma entidade acadêmica independente dentro do sistema da Acadepol. Nesse contexto, a "Acadepol da DRP" foi reestruturada como S.A.C (Sessão de Admissão e Concurso). Após novas mudanças, a Sessão de Admissão e Concurso tornou-se o S.I.A (Setor de Instruções e Admissões), assumindo a responsabilidade exclusiva pelo recrutamento para a Divisão de Rádio Patrulhamento (D.R.P).</p>
-    <p>Após diversas modificações organizacionais e trocas de liderança, o S.I.A evoluiu para a atual Diretoria de Ensino e Admissão (D.E.A), função que desempenha até os dias de hoje.</p>
-    <p>A Diretoria de Ensino e Admissão (D.E.A) é essencial para a eficácia e integridade da Divisão de Rádio Patrulhamento do Destiny RP. Ela garante que os profissionais sejam bem treinados, dedicados e preparados para proteger e servir à comunidade.</p>
-
-    <p><strong>Curso de Formação de Soldados (C.F.S.D)</strong></p>
-	
-    <p>O C.F.S.D refere-se ao Curso de Formação de Soldados, um programa educacional essencial oferecido pela Diretoria de Ensino e Admissão (D.E.A) da Divisão de Rádio Patrulhamento (D.R.P) no contexto do Destiny RP do MTA.</p>
-    <p>Este curso foi projetado para preparar recrutas para os desafios das patrulhas urbanas, oferecendo treinamento abrangente em habilidades técnicas, operacionais e comportamentais. Ele é fundamental para que os participantes possam exercer a função policial com eficácia e segurança dentro da D.R.P - Divisão de Rádio Patrulhamento.</p>
+    <p><strong>Fardamento padrão D.E.A</strong></p>
+    <p>Camisa do aluno;</p>
+    <p>Colete DRP;</p>
+    <p>
+        <img src="https://imgur.com/IL0Taya.png" alt="Fardamento D.E.A" class="img-fluid" style="max-width: 200px; border-radius: 5px;">
     <button onclick="closeTextWindow()">x</button>
 </div>
-
-</div>
-
-<div id="fullscreenImageWrapper" class="fullscreenImageWrapper">
-    <button class="close-btn" onclick="closeFullscreenImage()">X</button>
-    <img id="fullscreenImage" class="fullscreenImage" src="" alt="Imagem Fullscreen">
-</div>
-
-<footer>
-    <p>&copy; 2024 Meu Site. Todos os direitos reservados.</p>
-</footer>
+<!-- Div de Hierarquia -->
+<div id="hierarquia"></div>
 
 <script>
+
     function showTextWindow() {
         document.getElementById('textWindow').style.display = 'block';
     }
@@ -380,74 +408,117 @@ body.dark-mode .toggle-btn {
     function closeTextWindow() {
         document.getElementById('textWindow').style.display = 'none';
     }
-
-    function fetchDataFromAppsScript() {
-        fetch("https://script.google.com/macros/s/AKfycbyFOwvVrQhoZNv4MPZz2qmijSwfRMioRlfZ_GPrNKtabS_wEtM4OLmVPXwzL_36Xnoa5w/exec")
-            .then(response => response.json())
-            .then(data => {
-                const rows = data;
-                if (rows.length) {
-                    rows.forEach(row => {
-                        const link = row.link;
-                        const categoria = row.categoria;
-    
-                        if (categoria === "Motivacional") {
-                            addToMotivacional(link);
-                        } else if (categoria === "Momentos") {
-                            addToMomentos(link);
-                        }
-                    });
-                }
-            })
-            .catch(error => console.error('Erro ao buscar dados: ', error));
-    }
-
-    function addToMotivacional(link) {
-        const isVideo = link.includes("youtube.com") || link.includes("vimeo.com");
-
-        if (isVideo) {
-            const videoItem = document.createElement('div');
-            videoItem.classList.add('videoItem');
-            videoItem.innerHTML = `<iframe src="${link}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-            document.getElementById('MotivacionalVideoContainer').appendChild(videoItem);
-        } else {
-            const imageItem = document.createElement('div');
-            imageItem.classList.add('imageItem');
-            imageItem.innerHTML = `<img src="${link}" alt="Motivacional Image" onclick="openFullscreenImage('${link}')">`;
-            document.getElementById('MotivacionalImagemContainer').appendChild(imageItem);
-        }
-    }
-
-    function addToMomentos(link) {
-        const isVideo = link.includes("youtube.com") || link.includes("vimeo.com");
-
-        if (isVideo) {
-            const videoItem = document.createElement('div');
-            videoItem.classList.add('videoItem');
-            videoItem.innerHTML = `<iframe src="${link}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
-            document.getElementById('MomentosVideoContainer').appendChild(videoItem);
-        } else {
-            const imageItem = document.createElement('div');
-            imageItem.classList.add('imageItem');
-            imageItem.innerHTML = `<img src="${link}" alt="Momentos D.E.A Image" onclick="openFullscreenImage('${link}')">`;
-            document.getElementById('MomentosImagemContainer').appendChild(imageItem);
-        }
-    }
-
-    function openFullscreenImage(src) {
-        const imageElement = document.getElementById('fullscreenImage');
-        const wrapper = document.getElementById('fullscreenImageWrapper');
-        imageElement.src = src;
-        wrapper.style.display = 'flex';
-    }
-
-    function closeFullscreenImage() {
-        const wrapper = document.getElementById('fullscreenImageWrapper');
-        wrapper.style.display = 'none';
-    }
-
-    fetchDataFromAppsScript();
 	
+  async function obterDadosPlanilha() {
+    const url = 'https://script.google.com/macros/s/AKfycbwQofmcgkhNRZM-329DMtRrh2e7XhbvnO-X_x6Bjwz9Qx4achNoEdSUXX0C-FhEnmmn/exec';
+
+    try {
+      const resposta = await fetch(url);
+      const dados = await resposta.json();
+
+      if (!Array.isArray(dados) || dados.length === 0) {
+        document.getElementById("hierarquia").innerHTML = "<p class='piscando'>Ta com pressa porque? aguenta to mexendo na Hierarquia.</p>";
+        return;
+      }
+
+      const categoriasFuncoes = {
+        'Coordenador de Ensino': 'CHEFIA D.E.A',
+        'Diretor da AMEC': 'CHEFIA D.E.A',
+        'Supervisor A.M.E.C': 'SUPERVISÃO',
+        'Supervisor D.E.A': 'SUPERVISÃO',
+        'Coord. S.C.D': 'COORDENAÇÃO',
+        'Coord. S.R.H': 'COORDENAÇÃO',
+        'Coord. S.F.M': 'COORDENAÇÃO',
+        'Coord. S.E.I': 'COORDENAÇÃO',
+        'Coord. S.O.D': 'COORDENAÇÃO',
+        'SubCoord. S.C.D': 'Setor de Cumprimento de Disciplina',
+        'Auxiliar S.C.D': 'Setor de Cumprimento de Disciplina',
+        'Estagiário S.C.D': 'Setor de Cumprimento de Disciplina',
+        'SubCoord. S.R.H': 'Setor de Recursos Humanos',
+        'Auxiliar S.R.H': 'Setor de Recursos Humanos',
+        'Estagiário S.R.H': 'Setor de Recursos Humanos',
+        'SubCoord. S.E.I': 'Setor de Educacional e Instrucional',
+        'Instrutor S.E.I': 'Setor de Educacional e Instrucional',
+        'Auxiliar S.E.I': 'Setor de Educacional e Instrucional',
+        'SubCoord. S.F.M': 'Setor de Fiscalização e Monitoria',
+        'Monitor S.F.M': 'Setor de Fiscalização e Monitoria',
+        'Auxiliar S.F.M': 'Setor de Fiscalização e Monitoria',
+        'SubCoord. S.O.D': 'Setor de Operações Direcionadas',
+        'Operador S.O.D': 'Setor de Operações Direcionadas',
+        'Estagiário S.O.D': 'Setor de Operações Direcionadas',
+      };
+
+      const categorias = {
+        'CHEFIA D.E.A': [],
+        'SUPERVISÃO': [],
+        'COORDENAÇÃO': [],
+        'Setor de Cumprimento de Disciplina': [],
+        'Setor de Recursos Humanos': [],
+        'Setor de Fiscalização e Monitoria': [],
+        'Setor de Educacional e Instrucional': [],
+        'Setor de Operações Direcionadas': [],
+      };
+
+      dados.forEach(linha => {
+        if (linha.funcao && categoriasFuncoes[linha.funcao]) {
+          const categoria = categoriasFuncoes[linha.funcao];
+          categorias[categoria].push(linha);
+        }
+      });
+
+function construirHierarquia(categoria, subordinados) {
+    const divCategoria = document.createElement("div");
+    divCategoria.classList.add("nivel");
+
+    const h2 = document.createElement("h2");
+    h2.textContent = categoria;
+    divCategoria.appendChild(h2);
+
+    const ulSubordinados = document.createElement("ul");
+
+    subordinados.forEach(subordinado => {
+        const liSubordinado = document.createElement("li");
+
+        liSubordinado.innerHTML = `
+            <span><strong>${subordinado.funcao}</strong></span>
+            <span class="responsavel">${subordinado.patente ? subordinado.patente.trim() + ' ' : ''}${subordinado.nome} - ${subordinado.funcional}</span>
+        `;
+
+        if (subordinado.auxiliares && subordinado.auxiliares.length > 0) {
+            const ulAuxiliares = document.createElement("ul");
+            subordinado.auxiliares.forEach(auxiliar => {
+                const liAuxiliar = document.createElement("li");
+                liAuxiliar.innerHTML = `<span class="auxiliar">${auxiliar.nome} | Funcional: ${auxiliar.funcional}</span>`;
+                ulAuxiliares.appendChild(liAuxiliar);
+            });
+            liSubordinado.appendChild(ulAuxiliares);
+        }
+
+        ulSubordinados.appendChild(liSubordinado);
+    });
+
+    divCategoria.appendChild(ulSubordinados);
+    return divCategoria;
+}
+
+
+      Object.keys(categorias).forEach(categoria => {
+        const subordinados = categorias[categoria];
+        if (subordinados.length > 0) {
+          const itemHierarquia = construirHierarquia(categoria, subordinados);
+          document.getElementById("hierarquia").appendChild(itemHierarquia);
+        }
+      });
+
+    } catch (error) {
+      console.error('Erro ao obter os dados:', error);
+      document.getElementById("hierarquia").innerHTML = "<p>Wellinton está verificando estrutura. Tente novamente.</p>";
+    }
+  }
+
+  // Chama a função para carregar os dados ao carregar a página
+  window.onload = obterDadosPlanilha;
+  
 // Seleciona o botão de alternância e o body
 const toggleBtn = document.getElementById("toggle-btn");
 const body = document.body;
@@ -481,7 +552,6 @@ if (savedTheme === "dark") {
 
 // Adiciona um ouvinte de evento para o clique no botão
 toggleBtn.addEventListener("click", toggleMode);
-
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
