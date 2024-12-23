@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Diretoria de Ensino e Admissão</title>
+    <link rel="icon" href="https://i.ibb.co/Y0vjshh/ICON-DISCORD.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Modo Claro (Padrão) */
+body {
+    background-color: #e4e4e8;
+    color: #333;
+}
+
+/* Modo Escuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+/* Cabeçalho */
+h1 {
+    background: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Modo Escuro: Cabeçalho */
+body.dark-mode h1 {
+    background-color: #1c1c1c;
+    color: #f1f1f1;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Modo Escuro: Header */
+body.dark-mode header {
+    background-color: #222;
+    color: #f1f1f1;
+}
+
+/* Navegação */
+nav {
+    background-color: #333;
+    text-align: center;
+    padding: 5px 0;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Modo Escuro: Navegação */
+body.dark-mode nav {
+    background-color: #222;
+}
+
+/* Navegação - Links */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 15px;
+    font-size: 18px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 5px;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Modo Escuro: Links */
+body.dark-mode nav a {
+    color: #f1f1f1;
+}
+
+/* Hover Navegação */
+nav a:hover {
+    background-color: #555;
+}
+
+/* Modo Escuro: Hover Links */
+body.dark-mode nav a:hover {
+    background-color: #444;
+}
+
+/* Dropdown */
+.tab-dropdown:hover .dropdown {
+    display: block;
+    border-radius: 5px;
+	
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    min-width: 135px;
+    border-radius: 5px;
+    padding: 5px 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown a {
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 16px;
+    width: 135px; /* Ajuste o valor conforme necessário */
+}
+
+/* Modo Escuro: Dropdown */
+body.dark-mode .dropdown {
+    background-color: #222;
+}
+
+/* Hover Dropdown */
+.dropdown a:hover {
+    background-color: rgb(126, 125, 125);
+}
+
+/* Modo Escuro: Hover Dropdown */
+body.dark-mode .dropdown a:hover {
+    background-color: #444;
+}
+
+/* Conteúdo */
+.content {
+    padding: 30px;
+    background-color: #e4e4e8;
+    margin-top: 20px;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Modo Escuro: Conteúdo */
+body.dark-mode .content {
+    background-color: #1c1c1c;
+}
+
+/* Janela de Texto */
+.text-window {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    width: 40%;
+    max-width: 90%;
+    height: 97%;
+    max-height: 97%;
+    overflow: auto;
+    text-align: center;
+    padding-bottom: 60px; /* Adiciona um espaço extra para o botão */
+}
+
+.text-window button {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Adiciona uma margem superior para o botão */
+    position: absolute; /* Fixar o botão na parte inferior */
+    bottom: 30px; /* Aumente o valor para descer o botão mais */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza o botão horizontalmente */
+}
+
+.text-window button:hover {
+    background-color: #2980b9;
+}
+
+/* Modo Escuro */
+body.dark-mode {
+    background-color: #181818;
+    color: #ddd;
+}
+
+/* Modo Escuro: Janela de Texto */
+body.dark-mode .text-window {
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+/* Botão de alternância */
+.toggle-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+/* Modo Escuro: Botão de alternância */
+body.dark-mode .toggle-btn {
+    background-color: #f1f1f1;
+    color: #333;
+}
+/* Divisórias para o Modo Claro e Escuro */
+
+/* Container de Busca */
+#search-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    width: 75%; /* Largura centralizada */
+}
+
+#search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc; /* Borda suave */
+    border-radius: 5px;
+    height: 40px;
+    color: #333;
+    background-color: #e4e4e8; /* Fundo branco */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra leve */
+}
+
+/* Modo Escuro: Busca Input */
+body.dark-mode #search-input {
+    background-color: #333;
+    color: #f1f1f1;
+    border: 1px solid #555;
+}
+
+/* Modo Claro: Busca Button */
+#search-button {
+    margin-left: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    color: #fff; /* Texto branco */
+    background-color: #e4e4e8; /* Fundo escuro */
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra para destaque */
+}
+
+/* Modo Escuro: Busca Button */
+body.dark-mode #search-button {
+    background-color: #555;
+}
+
+/* Hover Busca Button */
+#search-button:hover {
+    background-color: #333; /* Cor de destaque ao passar o mouse */
+}
+
+/* Container de Itens */
+.item-container {
+    width: 90%;
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #e4e4e8; /* Fundo branco */
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.09); /* Sombra suave */
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+/* Modo Escuro: Item Container */
+body.dark-mode .item-container {
+    background: #333;
+    color: #f1f1f1;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+/* Hover Item Container */
+.item-container:hover {
+    transform: scale(1.05); /* Aumenta ligeiramente o tamanho no hover */
+}
+
+/* Item Container Imagem */
+.item-container img {
+    width: 100px;
+    margin-bottom: 10px;
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra para destacar a imagem */
+    transition: transform 0.3s ease;
+}
+
+/* Modo Escuro: Imagem Container */
+body.dark-mode .item-container img {
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+/* Hover Item Container Imagem */
+.item-container img:hover {
+    transform: scale(1.05); /* Rotação leve no hover */
+}
+
+/* Título Item Container */
+.item-container h3 {
+    color: #000000; /* Tom sóbrio */
+    margin: 10px 0;
+    font-size: 22px;
+    font-family: 'Georgia', serif; /* Fonte clássica */
+}
+
+/* Modo Escuro: Título Item Container */
+body.dark-mode .item-container h3 {
+    color: #ffffff;
+}
+
+/* Parágrafo Item Container */
+.item-container p {
+    margin: 5px 0;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+    color: #555; /* Texto cinza escuro */
+    line-height: 1.6;
+}
+
+/* Modo Escuro: Parágrafo Item Container */
+body.dark-mode .item-container p {
+    color: #f1f1f1;
+}
+
+/* Container de Carregamento */
+#loading-container {
+    display: flex;
+    justify-content: center; /* Alinha horizontalmente */
+    align-items: center;     /* Alinha verticalmente */
+    flex-direction: column;  /* Organiza os itens em coluna */
+    height: 100vh;           /* Garante que ocupe toda a altura da tela */
+    text-align: center;      /* Centraliza o texto */
+}
+
+/* Modo Escuro: Container de Carregamento */
+body.dark-mode #loading-container {
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+#loading-container img {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+#loading-container p {
+    font-size: 20px;
+    color: #777; /* Cinza intermediário */
+    animation: pulsar 1s infinite;
+}
+
+/* Estilo da Divisão do Contêiner */
+.container {
+    max-width: 90%;
+    width: 100%;
+    margin: 30px auto;
+    text-align: left;
+    padding: 20px;
+    background: #e4e4e8;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); /* Caixa suave */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Modo Escuro: Estilo da Divisão do Contêiner */
+body.dark-mode .container {
+    background: #333;
+    color: #f1f1f1;
+}
+
+
+@media (max-width: 768px) {
+    /* Ajustes para dispositivos com tela pequena */
+    
+    /* Cabeçalho */
+    h1 {
+        font-size: 12px;
+        padding: 15px;
+    }
+
+    /* Navegação */
+    nav ul {
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    /* Container de Itens */
+    .item-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    /* Container de Busca */
+    #search-container {
+        width: 90%;
+    }
+
+    /* Janela de Texto */
+    .text-window {
+        width: 80%;
+        max-width: 95%;
+        height: auto;
+        padding: 20px;
+    }
+
+    /* Botão de alternância */
+    .toggle-btn {
+        top: 70px;
+        right: 10px;
+        padding: 8px;
+    }
+
+    /* Container de Carregamento */
+    #loading-container img {
+        width: 90px;
+    }
+
+    /* Container de Divisão */
+    .container {
+        padding: 15px;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+<button class="toggle-btn" id="toggle-btn"></button>
+
+<header>
+    <h1>Diretoria de Ensino e Admissão</h1>
+</header>
+
+<nav>
+    <ul>
+        <li>
+            <a href="index.html" style="display: flex; flex-direction: column; align-items: center;">
+                <img src="https://i.imgur.com/z3TVbbK.png" alt="Home" style="width: 30px; height: 30px;"/><span style="margin-top: 3px;">Home</span></a>
+        </li>
+
+        <li class="tab-dropdown">
+            <a href="#" style="display: flex; flex-direction: column; align-items: center;">
+                <img src="https://i.imgur.com/QLGQ2Bd.png" alt="D.E.A" style="width: 30px; height: 30px;"/><span style="margin-top: 3px;">D.E.A</span></a>
+            <div class="dropdown">
+                <a href="hierarquia.html">Hierarquia</a>
+                <a href="https://docs.google.com/document/d/1I4u1HrMR_UDl0VGcRScm1vgvc6zrzoE6JYX4NGPhyq8/edit?usp=sharing" target="_blank">Apostila</a>
+            </div>
+        </li>
+
+        <li>
+            <a href="memorial.html" style="display: flex; flex-direction: column; align-items: center;">
+                <img src="https://i.imgur.com/UTCbmbi.png" alt="Memorial" style="width: 30px; height: 30px;"/><span style="margin-top: 3px;">Memorial</span></a>
+        </li>
+
+        <li class="tab-dropdown">
+            <a href="#"style="display: flex; flex-direction: column; align-items: center;">
+                <img src="https://i.imgur.com/yQdw0b3.png" alt="Mercadorias" style="width: 30px; height: 30px;"/><span style="margin-top: 3px;">Mercadorias</span></a>
+            <div class="dropdown">
+                <a href="revisão.html">Revisão de bens</a>
+            </div>
+        </li>
+    </ul>
+</nav>
+
+<h1>Mercadorias</h1>  
+
+    <div id="search-container">
+        <input type="text" id="search-input" class="form-control" placeholder="Digite o nome do item" style="width: 25%;">
+        <button id="search-button" class="btn btn-primary">🔍</button>
+    </div>
+
+    <div id="loading-container">
+        <img src="https://i.imgur.com/5ICVZeE.gif" alt="Carregando...">
+        <p>Carregando...</p>
+    </div>
+
+    <div id="items-list" class="container"></div>
+
+<script>
+
+    function showTextWindow() {
+        document.getElementById('textWindow').style.display = 'block';
+    }
+
+    function closeTextWindow() {
+        document.getElementById('textWindow').style.display = 'none';
+    }
+	
+  
+//script novo
+        const itemsList = document.getElementById('items-list');
+        const loadingContainer = document.getElementById('loading-container');
+        const searchInput = document.getElementById('search-input');
+        const searchButton = document.getElementById('search-button');
+
+        let allItems = [];
+
+        async function loadItems(search = "") {
+            try {
+                loadingContainer.style.display = 'block';
+                itemsList.innerHTML = '';
+
+                const url = new URL('https://script.google.com/macros/s/AKfycbzprjrFTFbUJKsRlmRl5Itt3ijwYfOhrJgOGQiVyHYbqh4H23Jt64An1D-HsLVan6zKSA/exec');
+                if (search) url.searchParams.append('search', search);
+
+                const response = await fetch(url);
+                allItems = await response.json();
+
+                displayItems(allItems);
+            } catch (error) {
+                console.error('Erro ao carregar os itens:', error);
+                itemsList.innerHTML = "<p>Erro ao carregar os itens.</p>";
+            } finally {
+                loadingContainer.style.display = 'none';
+            }
+        }
+
+        function displayItems(items) {
+            if (items.length > 0) {
+                itemsList.innerHTML = items.map(item => `
+                    <div class="item-container">
+                        <img src="${item.imagem}" alt="${item.nome}" width="100">
+                        <h3>${item.nome}</h3>
+                        <p><strong>Quantia Mínima:</strong> ${item.minima && item.minima > 0 ? (item.minima.toString().includes('.') ? `R$ ${item.minima.toLocaleString('pt-BR')} em Notas Marcadas.` : (item.minima > 1 ? `${item.minima} unidades.` : `${item.minima} unidade.`)) : ''}</p>
+                        <p><strong>Descrição:</strong> ${item.descricao}</p>
+                        <p><strong>Revisão de bens:</strong> ${item.revisao && item.revisao > 0 ? (item.revisao.toString().includes('.') ? `R$ ${item.revisao.toLocaleString('pt-BR')} em Notas Marcadas.` : (item.revisao > 1 ? `${item.revisao} unidades.` : `${item.revisao} unidade.`)) : 'Não se enquadra na revisão de bens.'}</p>
+                    </div>
+                `).join('');
+            } else {
+                itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";
+            }
+            console.log('Itens exibidos:', items);
+        }
+
+        searchButton.addEventListener('click', () => {
+            const searchQuery = searchInput.value.trim();
+            loadItems(searchQuery);
+        });
+
+        window.onload = () => loadItems();  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+// Seleciona o botão de alternância e o body
+const toggleBtn = document.getElementById("toggle-btn");
+const body = document.body;
+
+// Função para alternar entre os modos e salvar no localStorage
+const toggleMode = () => {
+    // Alterna a classe dark-mode no body
+    body.classList.toggle("dark-mode");
+
+    // Verifica o estado atual do modo e altera o texto do botão
+    if (body.classList.contains("dark-mode")) {
+        toggleBtn.textContent = "Modo Claro";  // Quando estiver no modo escuro
+        localStorage.setItem("theme", "dark");  // Salva o tema como escuro
+    } else {
+        toggleBtn.textContent = "Modo Escuro";  // Quando estiver no modo claro
+        localStorage.setItem("theme", "light");  // Salva o tema como claro
+    }
+};
+
+// Verifica o tema armazenado no localStorage e aplica ao body
+const savedTheme = localStorage.getItem("theme");
+
+// Aplica o tema armazenado ou o padrão
+if (savedTheme === "dark") {
+    body.classList.add("dark-mode");
+    toggleBtn.textContent = "Modo Claro";  // Se o tema for escuro, altera o texto
+} else {
+    body.classList.remove("dark-mode");
+    toggleBtn.textContent = "Modo Escuro";  // Se o tema for claro, altera o texto
+}
+
+// Adiciona um ouvinte de evento para o clique no botão
+toggleBtn.addEventListener("click", toggleMode);
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>

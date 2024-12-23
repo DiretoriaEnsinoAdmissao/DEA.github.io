@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Diretoria de Ensino e Admissão</title>
+    <link rel="icon" href="https://i.ibb.co/Y0vjshh/ICON-DISCORD.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Modo Claro (Padrão) */
+body {
+    background-color: #efeff4;
+    color: #333;
+}
+
+/* Modo Escuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+
+/* Cabeçalho */
+h1 {
+    background: #333;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Modo Escuro: Cabeçalho */
+body.dark-mode h1 {
+    background-color: #1c1c1c;
+    color: #f1f1f1;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Modo Escuro: Header */
+body.dark-mode header {
+    background-color: #222;
+    color: #f1f1f1;
+}
+
+/* Navegação */
+nav {
+    background-color: #333;
+    text-align: center;
+    padding: 5px 0;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Modo Escuro: Navegação */
+body.dark-mode nav {
+    background-color: #222;
+}
+
+/* Navegação - Links */
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 15px;
+    font-size: 18px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 5px;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+/* Modo Escuro: Links */
+body.dark-mode nav a {
+    color: #f1f1f1;
+}
+
+/* Hover Navegação */
+nav a:hover {
+    background-color: #555;
+}
+
+/* Modo Escuro: Hover Links */
+body.dark-mode nav a:hover {
+    background-color: #444;
+}
+
+/* Dropdown */
+.tab-dropdown:hover .dropdown {
+    display: block;
+    border-radius: 5px;
+	
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #333;
+    min-width: 135px;
+    border-radius: 5px;
+    padding: 5px 0;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dropdown a {
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    font-size: 16px;
+    width: 135px; /* Ajuste o valor conforme necessário */
+}
+
+/* Modo Escuro: Dropdown */
+body.dark-mode .dropdown {
+    background-color: #222;
+}
+
+/* Hover Dropdown */
+.dropdown a:hover {
+    background-color: rgb(126, 125, 125);
+}
+
+/* Modo Escuro: Hover Dropdown */
+body.dark-mode .dropdown a:hover {
+    background-color: #444;
+}
+
+/* Conteúdo */
+.content {
+    padding: 30px;
+    background-color: #e4e4e8;
+    margin-top: 20px;
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Modo Escuro: Conteúdo */
+body.dark-mode .content {
+    background-color: #1c1c1c;
+}
+
+/* Janela de Texto */
+.text-window {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    z-index: 101;
+    width: 97%;
+    max-width: 100%;
+    height: 97%;
+	padding-bottom: 30px;
+}
+
+.text-window button {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Adiciona uma margem superior para o botão */
+    position: absolute; /* Fixar o botão na parte inferior */
+    bottom: 10px; /* Aumente o valor para descer o botão mais */
+    left: 50%;
+    transform: translateX(-50%); /* Centraliza o botão horizontalmente */
+    z-index: 200;
+}
+
+.text-window button:hover {
+    background-color: #ffffff;
+}
+
+/* Modo Escuro */
+body.dark-mode {
+    background-color: #181818;
+    color: #ddd;
+}
+
+/* Modo Escuro: Janela de Texto */
+body.dark-mode .text-window {
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+/* Botão de alternância */
+.toggle-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+/* Modo Escuro: Botão de alternância */
+body.dark-mode .toggle-btn {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+
+
+
+/* Tema Claro e Escuro */
+
+/* Modo Claro */
+#items-list .item-container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #e4e4e8; /* Fundo mais claro para contraste com o texto */
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Sombra mais suave e elegante */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 90%;
+    max-width: 70%;
+    transition: transform 0.3s ease; /* Suaviza o efeito de hover */
+}
+
+/* Modo Escuro */
+body.dark-mode #items-list .item-container {
+    background-color: #333; /* Fundo mais escuro */
+    color: #f1f1f1; /* Texto mais claro */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.4); /* Sombra mais suave no modo escuro */
+}
+
+/* Efeito Hover */
+#items-list .item-container:hover {
+    transform: translateY(-5px); /* Efeito sutil ao passar o mouse */
+}
+
+/* Imagens */
+.item-container img {
+    width: 90px;
+    height: 90px;
+    border-radius: 15px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito Hover nas Imagens */
+.item-container img:hover {
+    transform: scale(1.1); /* Aumenta a imagem ao passar o mouse */
+}
+
+/* Detalhes do Item */
+.item-container .item-details {
+    flex-grow: 1;
+}
+
+.item-container h3 {
+    color: #000000; /* Título no modo claro */
+    font-size: 20px;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Modo Escuro: Título */
+body.dark-mode .item-container h3 {
+    color: #ffffff; /* Título no modo escuro */
+}
+
+.item-container p {
+    color: #000000; /* Texto no modo claro */
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Modo Escuro: Texto */
+body.dark-mode .item-container p {
+    color: #f1f1f1; /* Texto no modo escuro */
+}
+
+/* Botão de Alternância */
+#toggle-button {
+    position: absolute;
+    top: 22px;
+    left: 20px;
+    padding: 12px 24px;
+    font-size: 16px;
+    background-color: #3a3a3a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+}
+
+/* Modo Escuro: Botão de Alternância */
+body.dark-mode #toggle-button {
+    background-color: #555; /* Fundo mais claro no modo escuro */
+}
+
+/* Hover no Botão de Alternância */
+#toggle-button:hover {
+    background-color: #020202;
+}
+
+/* Informações Extras */
+#extra-info {
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    background-color: #2a2a2a;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 25px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Modo Escuro: Informações Extras */
+body.dark-mode #extra-info {
+    background-color: #444; /* Fundo mais escuro no modo escuro */
+}
+
+/* Visibilidade das Informações Extras */
+#extra-info.visible {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Parágrafo das Informações Extras */
+#extra-info p {
+    margin: 15px 0;
+    color: #c9d1d9;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+/* Modo Escuro: Parágrafo das Informações Extras */
+body.dark-mode #extra-info p {
+    color: #f1f1f1; /* Texto mais claro no modo escuro */
+}
+
+#extra-info p strong {
+    font-weight: 600;
+    color: #e0e0e0;
+}
+
+#extra-info .info {
+    margin-left: 25px;
+    text-indent: -10px;
+}
+
+/* Container Geral */
+.container {
+    max-width: 80%;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    padding: 20px;
+}
+
+/* Modo Escuro: Container Geral */
+body.dark-mode .container {
+    background-color: #333; /* Fundo escuro para o container */
+    color: #f1f1f1; /* Texto mais claro */
+}
+
+
+#loading-container {
+    display: flex;
+    justify-content: center; /* Alinha horizontalmente */
+    align-items: center;     /* Alinha verticalmente */
+    flex-direction: column;  /* Organiza os itens em coluna */
+    height: 100vh;           /* Garante que ocupe toda a altura da tela */
+    text-align: center;      /* Centraliza o texto */
+    position: absolute;      /* Altera para absoluto para não bloquear o fundo */
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0); /* Fundo transparente */
+    z-index: 1000;           /* Garante que o conteúdo de carregamento fique acima de outros elementos */
+    pointer-events: none;    /* Impede que o container de carregamento bloqueie interação com o conteúdo */
+}
+
+/* Modo Escuro: Container de Carregamento */
+body.dark-mode #loading-container {
+    background-color: rgba(0, 0, 0, 0); /* Fundo transparente também no modo escuro */
+    color: #f1f1f1;
+}
+
+/* Imagem do Carregando (opcional) */
+#loading-container img {
+    width: 150px;
+    margin-bottom: 10px;
+}
+
+/* Estilo para o Texto */
+#loading-container p {
+    font-size: 20px;
+    color: #777; /* Cinza intermediário */
+    animation: pulsar 1s infinite; /* Animação de pulsação */
+}
+
+/* Animação de pulsação para o texto */
+@keyframes pulsar {
+    0% {
+        opacity: 0.1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Corpo */
+    body {
+        background-color: #efeff4;
+        color: #333;
+    }
+
+    /* Cabeçalho */
+    h1 {
+        font-size: 14px;
+        padding: 15px;
+    }
+
+    /* Header */
+    header {
+        padding: 8px;
+    }
+
+    /* Navegação */
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav ul li {
+        margin: 10px 0;
+    }
+
+    /* Conteúdo */
+    .content {
+        width: 90%;
+        padding: 15px;
+    }
+
+    /* Imagens */
+    .item-container img {
+        width: 70px;
+        height: 70px;
+    }
+
+    /* Botão de Alternância */
+    #toggle-btn {
+        top: 70px;
+        right: 15px;
+        padding: 8px;
+    }
+
+    /* Informações Extras */
+    #extra-info {
+        padding: 20px;
+    }
+    .text-window {
+        width: 95%; /* Ajusta a largura da janela de texto */
+        height: 95%; /* Ajusta a altura da janela de texto */
+        font-size: 12px; /* Ajusta o tamanho da fonte */
+        z-index: 200;
+    }
+    #loading-container img {
+        width: 120px;
+    }
+}
+
+
+
+    </style>
+</head>
+<body>
+<button class="toggle-btn" id="toggle-btn"></button>
+
+<header>
+    <h1>Diretoria de Ensino e Admissão</h1>
+</header>
+
+<nav>
+    <ul>
+        <li>
+            <a href="index.html" style="display: flex; flex-direction: column; align-items: center;">
+                <img src="https://i.imgur.com/z3TVbbK.png" alt="Home" style="width: 30px; height: 30px;"/><span style="margin-top: 3px;">Home</span></a>
+        </li>
+
+        <li class="tab-dropdown">
+            <a href="#" style="display: flex; flex-direction: column; align-items: center;">
+                <img src="https://i.imgur.com/QLGQ2Bd.png" alt="D.E.A" style="width: 30px; height: 30px;"/><span style="margin-top: 3px;">D.E.A</span></a>
+            <div class="dropdown">
+                <a href="hierarquia.html">Hierarquia</a>
+                <a href="https://docs.google.com/document/d/1I4u1HrMR_UDl0VGcRScm1vgvc6zrzoE6JYX4NGPhyq8/edit?usp=sharing" target="_blank">Apostila</a>
+            </div>
+        </li>
+
+        <li>
+            <a href="memorial.html" style="display: flex; flex-direction: column; align-items: center;">
+                <img src="https://i.imgur.com/UTCbmbi.png" alt="Memorial" style="width: 30px; height: 30px;"/><span style="margin-top: 3px;">Memorial</span></a>
+        </li>
+
+        <li class="tab-dropdown">
+            <a href="#"style="display: flex; flex-direction: column; align-items: center;">
+                <img src="https://i.imgur.com/yQdw0b3.png" alt="Mercadorias" style="width: 30px; height: 30px;"/><span style="margin-top: 3px;">Mercadorias</span></a>
+            <div class="dropdown">
+                <a href="mercadoria.html">Mercadoria</a>
+            </div>
+        </li>
+
+        <li>
+            <a href="javascript:void(0);" onclick="showTextWindow()" style="display: flex; flex-direction: column; align-items: center;">
+                <img src="https://i.imgur.com/a5PCQfX.png" alt="Farda" style="width: 30px; height: 30px;"/>
+                <span style="margin-top: 3px;">Regras</span>
+            </a>
+        </li>
+    </ul>
+</nav>
+<div id="textWindow" class="text-window">
+    <h2>Regras de Resgate</h2>
+
+    <p><strong>1. Participantes:</strong></p>
+    <p>Permitido até <strong>8 bandidos</strong>, no mínimo <strong>2 policiais</strong> e no máximo <strong>16 policiais</strong>.</p>
+	
+    <p><strong>2. Restrições de Comunicação e Apoio:</strong></p>
+    <p>Não será permitido solicitar apoio na central (<strong>APOIO</strong>).</p>
+    <p>Será permitido o envolvimento de terceiros apenas para obtenção de informações.</p>
+
+    <p><strong>3. Locais e momentos para o resgate:</strong></p>
+    <p>O resgate não poderá ser iniciado na região do departamento policial.</p>
+    <p>O resgate deve começar durante o trajeto até a prisão; caso a van chegue à prisão sem que a ação tenha sido iniciada, o resgate não poderá ocorrer.</p>
+    <p>Não será permitido acampar nas proximidades do presídio.</p>
+
+    <p><strong>4. Revisão de Bens:</strong></p>
+	<p>Os policiais só farão a revisão de bens ao chegarem na prisão, permitindo que o resgate seja executado até esse momento para evitar perdas e tempo de encarceramento.</p>
+    <button onclick="closeTextWindow()">x</button>
+</div>
+    <div id="loading-container">
+        <img src="https://i.imgur.com/5ICVZeE.gif" alt="Carregando...">
+        <p>Carregando...</p>
+    </div>
+<!-- Div de Hierarquia -->
+<h1>Revisão de bens</h1>
+<div id="items-list"></div>
+
+
+<script>
+
+    function showTextWindow() {
+        document.getElementById('textWindow').style.display = 'block';
+    }
+
+    function closeTextWindow() {
+        document.getElementById('textWindow').style.display = 'none';
+    }
+	
+  
+        const itemsList = document.getElementById('items-list');
+        const extraInfo = document.getElementById('extra-info');  
+  
+  
+     async function loadItems() {
+        try {
+            // Exibe o container de carregamento
+            document.getElementById('loading-container').style.display = 'flex';
+
+            const url = 'https://script.google.com/macros/s/AKfycbwHbk58WBHFxyfvudIEZYfeiDf8k4NmKUclCvMMk1AIgNLZrDwSfTiQUUPGHICdvLkyAw/exec';
+
+            const response = await fetch(url);
+            const items = await response.json();
+            displayItems(items);
+        } catch (error) {
+            console.error('Erro ao carregar os itens:', error);
+            itemsList.innerHTML = "<p>Erro ao carregar os itens.</p>";
+        } finally {
+            // Esconde o container de carregamento quando a resposta for recebida
+            document.getElementById('loading-container').style.display = 'none';
+        }
+    }
+
+function displayItems(items) {
+    if (items.length > 0) {
+        itemsList.innerHTML = items.map(item => {
+            let quantia = item.minima;
+
+            if (!isNaN(quantia) && quantia > 0) {
+                quantia = quantia >= 1000 
+                    ? `R$ ${quantia.toLocaleString()} Notas Marcadas.` 
+                    : quantia === 1 
+                        ? `${quantia} unidade.` 
+                        : `${quantia} unidades.`;
+            } else if (typeof quantia === 'string' && quantia.trim() !== '') {
+                // Verifica se contém números e letras
+                const hasNumbers = /\d/.test(quantia);
+                const hasLetters = /[a-zA-Z]/.test(quantia);
+
+                if (hasNumbers && hasLetters) {
+                    quantia = `<strong>Quantia Mínima:</strong> ${quantia}`;
+                } else {
+                    quantia = `<strong>Observação:</strong> ${quantia}`;
+                }
+            } else {
+                quantia = 'Não especificado.';
+            }
+
+            return `
+                <div class="item-container">
+                    <img src="${item.imagem}" alt="${item.nome}">
+                    <div class="item-details">
+                        <h3>${item.nome}</h3>
+                        <p><strong>Descrição:</strong> ${item.descricao}</p>
+                        <p>${quantia}</p>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    } else {
+        itemsList.innerHTML = "<p>Nenhum item encontrado.</p>";
+    }
+}
+
+
+        window.onload = loadItems;  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+// Seleciona o botão de alternância e o body
+const toggleBtn = document.getElementById("toggle-btn");
+const body = document.body;
+
+// Função para alternar entre os modos e salvar no localStorage
+const toggleMode = () => {
+    // Alterna a classe dark-mode no body
+    body.classList.toggle("dark-mode");
+
+    // Verifica o estado atual do modo e altera o texto do botão
+    if (body.classList.contains("dark-mode")) {
+        toggleBtn.textContent = "Modo Claro";  // Quando estiver no modo escuro
+        localStorage.setItem("theme", "dark");  // Salva o tema como escuro
+    } else {
+        toggleBtn.textContent = "Modo Escuro";  // Quando estiver no modo claro
+        localStorage.setItem("theme", "light");  // Salva o tema como claro
+    }
+};
+
+// Verifica o tema armazenado no localStorage e aplica ao body
+const savedTheme = localStorage.getItem("theme");
+
+// Aplica o tema armazenado ou o padrão
+if (savedTheme === "dark") {
+    body.classList.add("dark-mode");
+    toggleBtn.textContent = "Modo Claro";  // Se o tema for escuro, altera o texto
+} else {
+    body.classList.remove("dark-mode");
+    toggleBtn.textContent = "Modo Escuro";  // Se o tema for claro, altera o texto
+}
+
+// Adiciona um ouvinte de evento para o clique no botão
+toggleBtn.addEventListener("click", toggleMode);
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+</body>
+</html>
