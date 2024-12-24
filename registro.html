@@ -514,35 +514,38 @@ body.dark-mode #message {
 </div>
 <h1></h1>
 
-    <div id="formContainer">
-        <form id="form" class="control" method="POST">
-          <!-- Campos do formulário -->
-          <div class="field">
-            <label for="nome" class="label">Nome do Falecido</label>
+<div id="formContainer">
+    <form id="form" class="control" method="POST">
+        <!-- Campos do formulário -->
+        <div class="field">
+            <label for="nome" class="label">Nome Completo</label>
             <div class="control">
                 <input
-                class="input"
-                name="nome"
-                rows="1"
-                placeholder="Nome do Falecido"
-                required
+                    class="input"
+                    name="nome"
+                    rows="1"
+                    placeholder="Digite o nome completo"
+                    required
                 />
+                <p class="help">Insira o nome completo do falecido(a).</p>
             </div>
-          </div>
+        </div>
   
-          <div class="field">
+        <div class="field">
             <div class="control">
-              <label for="Data" class="label">Data de Falecimento</label>
-              <input
-                class="input"
-                type="date"
-                id="Data"
-                name="Data"
-                placeholder="Selecione a data"
-                required
-              />
+                <label for="Data" class="label">Data do Falecimento</label>
+                <input
+                    class="input"
+                    type="date"
+                    id="Data"
+                    name="Data"
+                    placeholder="Selecione a data"
+                    required
+                />
+                <p class="help">Selecione a data do falecimento.</p>
             </div>
-          </div>
+        </div>
+        
           
           
   
