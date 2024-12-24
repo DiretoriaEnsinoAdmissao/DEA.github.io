@@ -408,9 +408,10 @@ body.dark-mode #message {
 
     /* Janela de Texto */
     .text-window {
-        width: 90%;
-        height: 70%;
-        max-height: 80%;
+        width: 95%; /* Ajusta a largura da janela de texto */
+        height: 95%; /* Ajusta a altura da janela de texto */
+        font-size: 12px; /* Ajusta o tamanho da fonte */
+        z-index: 200;
     }
 
     /* Container do formulário */
@@ -437,6 +438,11 @@ body.dark-mode #message {
 
     .control button {
         padding: 10px 20px;
+    }
+    .toggle-btn {
+        top: 70px;
+        right: 15px;
+        padding: 8px;
     }
 }
 
