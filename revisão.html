@@ -513,8 +513,12 @@ body.dark-mode #loading-container {
     }
     #loading-container img {
         width: 90px;
-        margin-bottom: 5px;
     }
+    #loading-container {
+    top: 40%;
+    z-index: 1000;           /* Garante que o conteúdo de carregamento fique acima de outros elementos */
+    pointer-events: none;    /* Impede que o container de carregamento bloqueie interação com o conteúdo */
+}
 }
 
 
