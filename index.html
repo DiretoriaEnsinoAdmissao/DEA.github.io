@@ -130,10 +130,39 @@ footer {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color:rgba(0, 0, 0, 0)
+}
+
+
+#motivational-title {
+    background: linear-gradient(90deg, #000000, hsl(56, 100%, 50%)); /* Fundo em degradê */
+    background-clip: text; /* Compatibilidade com navegadores que suportam sem prefixo */
+    -webkit-background-clip: text; /* Aplica o fundo ao texto para navegadores WebKit */
+    -webkit-text-fill-color: transparent; /* Deixa apenas o texto visível com o fundo */
+    font-weight: bold; /* Opcional: deixa o texto mais destacado */
+    font-size: 2em; /* Ajusta o tamanho do texto */
+    text-align: center; /* Centraliza o texto */
+    max-width: 60%;
     margin: 0 auto;
     padding: 20px;
 }
+
+#Momentos-title {
+    background: linear-gradient(90deg, #000000, hsl(226, 79%, 73%)); /* Fundo em degradê */
+    background-clip: text; /* Compatibilidade com navegadores que suportam sem prefixo */
+    -webkit-background-clip: text; /* Aplica o fundo ao texto para navegadores WebKit */
+    -webkit-text-fill-color: transparent; /* Deixa apenas o texto visível com o fundo */
+    font-weight: bold; /* Opcional: deixa o texto mais destacado */
+    font-size: 2em; /* Ajusta o tamanho do texto */
+    text-align: center; /* Centraliza o texto */
+    max-width: 60%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
 
 .row {
     display: flex;
@@ -386,13 +415,13 @@ body.dark-mode .toggle-btn {
 </div>
 
 <div class="container">
-    <h1>Motivacional</h1>
+    <h1 id="motivational-title">Motivacional</h1>
     <div id="MotivacionalImagemContainer" class="row justify-content-center gy-4"></div>
     <div id="MotivacionalVideoContainer" class="row justify-content-center my-4"></div>
 </div>
 
 <div class="container">
-    <h1>Momentos</h1>
+    <h1 id="Momentos-title">Momentos</h1>
     <div id="MomentosImagemContainer" class="row justify-content-center gy-4"></div>
     <div id="MomentosVideoContainer" class="row justify-content-center my-4"></div>
 </div>
