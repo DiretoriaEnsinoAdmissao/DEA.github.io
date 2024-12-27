@@ -478,7 +478,6 @@ body.dark-mode footer {
             <div class="dropdown">
                 <a href="hierarquia.html">Hierarquia</a>
                 <a href="https://docs.google.com/document/d/1I4u1HrMR_UDl0VGcRScm1vgvc6zrzoE6JYX4NGPhyq8/edit?usp=sharing" target="_blank">Apostila</a>
-                <a href="https://docs.google.com/document/d/1uH848RjFDsNMdz3fwkP6wGC6X4zbrE1E1EAxtSA4KxY/edit?usp=sharing" target="_blank">R.I.D</a>
             </div>
         </li>
 
@@ -535,10 +534,18 @@ body.dark-mode footer {
         <div class="container">
             <div class="entry">
                 <h2><strong>Luiz Quinta</strong></h2>
-                <p class="date">Data de falecimento: 12 de novembro de 2023.</p>
+                <p class="date">Data de falecimento: 12 de novembro de 2023</p>
                 <img src="https://i.imgur.com/HqN9nqe.png" alt="Foto do falecido">
                 <p><i>Em memória de <strong>Luiz Quinta</strong>, cujas palavras, gestos e presença marcante continuam vivos em nossos corações. Lembraremos de Luiz como aquela pessoa audaz, com suas opiniões fortes e sem medo de expô-las, mas sempre sem perder seu lado extrovertido e humilde. Sua sabedoria, seu carinho e dedicação deixaram uma marca indelével em todos que tiveram a sorte de compartilhar momentos ao seu lado. Cada risada, cada conversa, cada pequeno gesto de bondade é agora um tesouro que guardamos com carinho. Embora sua presença física não esteja mais entre nós, seu espírito e as lições que nos deixou continuam a iluminar nossos caminhos, mantendo sua lembrança viva e eterna. Para Luiz, nosso muito obrigado pela dedicação e tempo que esteve conosco.</i></p>
                     
+            </div>
+        </div>
+        <div class="container">
+            <div class="entry">
+                <h2><strong>Leiteiro Teller</strong></h2>
+                <p class="date">Data de falecimento: 03 de agosto de 2024</p>
+                <img src="https://i.imgur.com/dkcHXSS.png" alt="Foto do falecido">
+                <p><i>Em memória de <strong>Leiteiro Teller</strong>, cuja presença marcante e cujas palavras cheias de significado permanecem vivas em nossos corações. Celsinho será sempre lembrado como alguém humilde e bem-humorado. Sua humildade, seu carinho e sua dedicação foram um presente para todos que tiveram a honra de cruzar seu caminho. Cada risada compartilhada, cada conversa cheia de significado e cada gesto de bondade agora são lembranças preciosas que guardamos com afeto. Embora sua presença física tenha partido, seu espírito e os ensinamentos que nos deixou continuam a nos guiar, mantendo sua memória eterna. A você, Celsinho, nossa imensa gratidão por tudo o que representou e pelo legado que permanece em nossas vidas.</i></p>                    
             </div>
 
         <!-- Replique o bloco abaixo para adicionar mais entradas -->
@@ -586,6 +593,37 @@ window.onload = () => {
     // Adiciona o evento de clique ao botão de alternância
     toggleBtn.addEventListener("click", toggleMode);
 }
+
+
+document.addEventListener("DOMContentLoaded", function () {
+        // Função para converter a data do formato "12 de novembro de 2023" para um objeto Date
+        function parseDate(dateString) {
+            const months = {
+                "janeiro": 0, "fevereiro": 1, "março": 2, "abril": 3, "maio": 4, "junho": 5,
+                "julho": 6, "agosto": 7, "setembro": 8, "outubro": 9, "novembro": 10, "dezembro": 11
+            };
+            const [day, monthName, year] = dateString
+                .replace("Data de falecimento: ", "")
+                .split(" de ");
+            return new Date(year, months[monthName.trim().toLowerCase()], day);
+        }
+
+        // Seleciona todos os containers
+        const containers = Array.from(document.querySelectorAll('.container'));
+
+        // Ordena os containers com base na data extraída
+        containers.sort((a, b) => {
+            const dateA = parseDate(a.querySelector('.date').textContent);
+            const dateB = parseDate(b.querySelector('.date').textContent);
+            return dateB - dateA; // Mais recente primeiro
+        });
+
+        // Adiciona os containers ordenados de volta ao DOM
+        const parent = document.body; // Ajuste conforme necessário
+        containers.forEach(container => parent.appendChild(container));
+    });
+
+
 
 </script>
 
