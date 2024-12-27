@@ -123,11 +123,20 @@ footer {
     background-color: #333;
     color: white;
     text-align: center;
-    padding: 10px;
+    padding: 0; /* Remover o padding adicional */
     position: fixed;
     width: 100%;
     bottom: 0;
+    display: flex;
+    justify-content: center; /* Centraliza o texto horizontalmente */
+    align-items: center; /* Centraliza o texto verticalmente */
+    font-size: 14px; /* Tamanho da fonte */
+    height: 40px; /* Define uma altura específica para o rodapé */
 }
+
+
+
+
 
 .container {
     max-width: 80%;
@@ -183,6 +192,7 @@ footer {
     object-fit: cover;
     border-radius: 10px;
     cursor: pointer;
+    z-index: 50;
 }
 
 .fullscreenImageWrapper {
@@ -195,12 +205,14 @@ footer {
     background-color: rgba(0, 0, 0, 1);
     align-items: center;
     justify-content: center;
+    z-index: 50;
 }
 
 .fullscreenImage {
     max-width: 90%;
     max-height: 90%;
     border-radius: 10px;
+    z-index: 50;
 }
 
 .close-btn {
@@ -446,6 +458,10 @@ body.dark-mode .toggle-btn {
     <button class="close-btn" onclick="closeFullscreenImage()">X</button>
     <img id="fullscreenImage" class="fullscreenImage" src="" alt="Imagem Fullscreen">
 </div>
+
+<footer>
+    <p>&copy; 2024 Diretoria de Ensino e Admissão</p>
+</footer>
 
 <script>
     function showTextWindow() {
